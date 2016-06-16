@@ -20,6 +20,7 @@ angular.module('ng-chrome-cast-channels',[])
         function receiverMessage(namespace, message) {
             console.log("receiverMessage: " + namespace + ", " + message);
         };
+
         function onSuccess(message) {
             console.log("onSuccess: " + message);
         }
@@ -129,7 +130,7 @@ angular.module('ng-chrome-cast-channels',[])
                 // create a CastMessageBus to handle messages for a custom namespace
                 window.messageBus =
                     window.castReceiverManager.getCastMessageBus(
-                        'urn:x-cast:com.google.cast.sample.helloworld');
+                        'urn:x-cast:com.google.cast.sample.shipra');
 
 
                 window.messageBus.onMessage = function (event) {
