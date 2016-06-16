@@ -24,9 +24,9 @@
 </head>
 <body ng-app="myapp">
 
-<DIV ng-controller='myctrl' id="message">
+<div ng-controller='myctrl' id="message">
     <h1>{{data}}</h1>
-</DIV>
+</div>
 <script type="text/javascript" src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
 <script src="ng-chrome-cast-channels.js"></script>
@@ -38,10 +38,11 @@
             .controller('myctrl', ['$scope', 'ChromeCastReceiverChannel', function ($scope, ChromeCastReceiverChannel) {
                 $scope.callback = function(data){
                     $scope.data = data;
+                    console.log(JSON.strignify(data));
                     $scope.$apply();
                 };
 
-                ChromeCastReceiverChannel.initialize('urn:x-cast:com.google.cast.sample.helloworld',$scope.callback)
+                ChromeCastReceiverChannel.initialize('urn:x-cast:com.google.cast.sample.shipra',$scope.callback)
             }])
 
 </script>
