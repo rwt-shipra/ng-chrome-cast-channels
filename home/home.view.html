@@ -9,38 +9,24 @@
 
     <div  ng-show="flashVisible" ng-animate="fade" >
                
- <section id="labels">
-  <div class="container">
-	<div class="row">
-        
-        <div class="col-sm-6 col-md-6 col-md-offset-3 ">
-          <div  class="dl">
-            <div class="brand">
-                <h2>
-                   !!! ATTENTION !!!
-                </h2>
-            </div>
-            <div class="discount amethyst">
-                    {{flashBus.body.patientName}} 
-                <div class="type">
-            
-                </div>
-            </div>
-            <div class="descr">
-               <h2 class="text-center">
-                 Please Proceed to 
-                </h2>
-            </div>
-           
-            <div class="coupon midnight-blue">
-                <a data-toggle="collapse" href="#code-4" class="open-code"> Dr. {{flashBus.header.doctorName}}</a>
-                
-            </div>
-          </div>
-        </div>
-	</div>
-  </div>
-</section>
+ <div class=" container" style="width:55% !important; margin-left:24%" >
+
+<p class="text-center" style="color:white; font-size:45px;margin-top:15%; padding-left: 22%; background-color:#cc0000; border-radius:30px; box-shadow:5px 5px 5px #888888;font-weight:bold;">
+!!! ATTENTION !!! 
+</p>
+
+<p style="color:#0092cb; font-size:40px; margin-top:20%; padding-left: 15%">
+{{flashBus.body.patientName}}
+</p>
+
+<p  style=" color:#cc0000; font-size:35px; margin-top:15%; padding-left: 30%;  font-weight:bold;" >
+      Please Proceed To 
+</p>
+
+<p class="text-center" style="color:#0092cb;font-size:40px;margin-top:15%; padding-left:15%">
+ Dr.{{flashBus.header.doctorName}}
+</p>
+</div>
          
         
     </div>
