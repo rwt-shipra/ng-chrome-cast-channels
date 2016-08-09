@@ -1,0 +1,123 @@
+<div>
+
+    <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
+
+    <div ng-show="advVisible" ng-animate="fade">
+        <img class="img-responsive img-rounded" ng-src="{{advertisement.adUrl}}" style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;" />
+    </div>
+
+
+    <div  ng-show="flashVisible" ng-animate="fade" >
+               
+ <section id="labels">
+  <div class="container">
+	<div class="row">
+        
+        <div class="col-sm-6 col-md-6 col-md-offset-3 ">
+          <div  class="dl">
+            <div class="brand">
+                <h2>
+                   !!! ATTENTION !!!
+                </h2>
+            </div>
+            <div class="discount amethyst">
+                    {{flashBus.body.patientName}} 
+                <div class="type">
+            
+                </div>
+            </div>
+            <div class="descr">
+               <h2 class="text-center">
+                 Please Proceed to 
+                </h2>
+            </div>
+           
+            <div class="coupon midnight-blue">
+                <a data-toggle="collapse" href="#code-4" class="open-code"> Dr. {{flashBus.header.doctorName}}</a>
+                
+            </div>
+          </div>
+        </div>
+	</div>
+  </div>
+</section>
+         
+        
+    </div>
+
+    <div class="container" ng-show="docVisible" ng-animate="fade">
+       
+            <ul class=" row container">
+                <li class="col-sm-3">
+                    <img class="img-thumbnail" ng-src="{{doctor.header.doctorImageUrl}}" float=left />
+
+                     <h2 class="text-center"> {{doctor.header.doctorName}}</h2>
+                </li>
+                <li class="col-sm-6">
+                     <h2 class="text-center">Queue Status</h2>
+                </li>
+                <li class="col-sm-2">
+
+                     <h2 class="text-center">{{doctor.header.cinicName}}</h2>
+                </li>
+
+            </ul>
+            <div ng-if="doctor.body.queue.length!=0">
+                <table class="table table-bordered table-view ">
+                    <thead class="view">
+                        <tr>
+                            <th class="text-center">Sr.No</th>
+                            <th class="text-center">Token No.</th>
+                            <th class="text-center">Name</th>
+                            <!--th>Entry Slot Time</th-->
+                            <th class="text-center">Time Of Entry</th>
+                            <th class="text-center">Type of Entry</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!--
+                            "mobileNumber": "+919457523938",
+                            "patientName": "Rashmi",
+                            "patientid": "",
+                            "token": "2",
+                            "entrySlotTime": 660,
+                            "timeOfEntry": 1466361660098,
+                            "typeOfEntry": 132432
+                            -->
+                        <tr ng-repeat="appointment in doctor.body.queue">
+                            <td class="text-center">{{$index + 1}}</td>
+                            <td class="text-center">{{appointment.token}}</td>
+                            <td class="text-center">{{appointment.patientName}}</td>
+                            <!--td>{{appointment.entrySlotTime}}</td-->
+                            <td class="text-center">{{appointment.timeOfEntry| date:'shortTime'}}</td>
+                            <td ng-if="appointment.typeOfEntry === 132432">
+                                <img class="img-thumbnail text-center" src="./images/appointment.png" />
+                            </td>
+                            <td ng-if="appointment.typeOfEntry ===136932">
+                                <img class="img-thumbnail text-center" src="./images/walkin.png" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div ng-if="doctor.body.queue.length==0">
+                <div class="jumbotron">
+                     <h3>No more appointment!</h3>
+                </div>
+            </div>
+            <div class="footer " style="font-family: 'Open Sans', sans-serif; position: absolute; right: 0;bottom: 0;left: 0;background-color: #151172; color:#ffffff ; padding-top:2%;">
+                <marquee>
+                    <p style="letter-spacing:.2em" class="text-center"><span style="font-size:34px; padding-top:1%"> Download &nbsp;</span>
+                         <span> <img src="images/q-logo.png" style="padding-bottom:12px;">  &nbsp; &nbsp;</span>
+                        	<span style="font-size:40px ;">from  &nbsp;
+			 <img src="images/logo.png"> to view scanned prescription</span>
+
+                    </p>
+                </marquee>
+
+
+            </div>
+
+        
+    </div>
+</div>

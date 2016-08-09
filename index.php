@@ -1,1 +1,1 @@
-<?php include_once("receiver.html"); ?>
+<?php include_once("index.html"); ?>
