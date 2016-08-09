@@ -3,13 +3,16 @@ var app = angular.module('app')
     .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$timeout',
         function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $timeout) {
             $scope.advertisements = [{
-                    "adId": "QORQL_AD_0",
-                    "adPriority": "LOW",
-                    "adName": "QORQL_AD_0",
-                    "adUrl": "images/qorql.png",
-                    "adMimeType": "image/png",
-                    "adTime": "5",
-                    "adCount": Infinity
+                "adId":"QORQL_AD_0",
+                "adPriority":"LOW",
+                "adName":"QORQL_AD_0",
+                "adUrl":"images/ad-01.png",
+                "adMimeType":"image/png",
+                "adTime":"",
+                "adCount":Infinity,
+                "adIntervel":0,
+                "lastDisplayed":0,
+                "showticker":true
                 }, {
                     "adId": "QORQL_AD_1",
                     "adPriority": "LOW",
@@ -18,8 +21,36 @@ var app = angular.module('app')
                     "adMimeType": "image/png",
                     "adTime": "5",
                     "adCount": Infinity
-                }
+                },
+                {
+                    "adId":"QORQL_AD_1",
+                    "adPriority":"LOW",
+                    "adName":"QORQL_AD_1",
+                    "adUrl":"images/qorql.png",
+                    "adMimeType":"image/png",
+                    "adTime":"10",
+                    "adCount":Infinity,
+                    "adIntervel":0,
+                    "lastDisplayed":0,
+                    "showticker":true
+                  },
+                  {
+                    "adId":"LOCAL_TRIBE_AD_1",
+                    "adPriority":"LOW",
+                    "adName":"LOCAL_TRIBE_AD_1",
+                    "adUrl":"images/localtribe_ad_1.png",
+                    "adMimeType":"image/png",
+                    "adTime":"10",
+                    "adCount":Infinity,
+                    "adIntervel":300,
+                    "lastDisplayed":0,
+                    "showticker":false
+                  }
+
             ];
+
+
+
             
             $scope.advertisement={};
             $scope.doctors = [];
