@@ -33,9 +33,11 @@
 
     <div class="container" ng-show="docVisible" ng-animate="fade">
        
-            <ul class=" row container">
+            <ul class=" row container" style="display:inline">
+
+
                 <li class="col-sm-3">
-                    <img class="img-thumbnail" ng-src="{{doctor.header.doctorImageUrl}}" float=left />
+                    <img class="img-thumbnail" ng-src="{{doctor.header.doctorImageUrl}}" "float:left;" />
 
                      <h2 class="text-center"> {{doctor.header.doctorName}}</h2>
                 </li>
@@ -48,44 +50,40 @@
                 </li>
 
             </ul>
-            <div ng-if="doctor.body.queue.length!=0">
-                <table class="table table-bordered table-view ">
-                    <thead class="view">
-                        <tr>
-                            <th class="text-center">Sr.No</th>
-                            <th class="text-center">Token No.</th>
-                            <th class="text-center">Name</th>
-                            <!--th>Entry Slot Time</th-->
-                            <th class="text-center">Time Of Entry</th>
-                            <th class="text-center">Type of Entry</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <!--
-                            "mobileNumber": "+919457523938",
-                            "patientName": "Rashmi",
-                            "patientid": "",
-                            "token": "2",
-                            "entrySlotTime": 660,
-                            "timeOfEntry": 1466361660098,
-                            "typeOfEntry": 132432
-                            -->
-                        <tr ng-repeat="appointment in doctor.body.queue">
-                            <td class="text-center">{{$index + 1}}</td>
-                            <td class="text-center">{{appointment.token}}</td>
-                            <td class="text-center">{{appointment.patientName}}</td>
-                            <!--td>{{appointment.entrySlotTime}}</td-->
-                            <td class="text-center">{{appointment.timeOfEntry| date:'shortTime'}}</td>
-                            <td ng-if="appointment.typeOfEntry === 132432">
-                                <img class="img-thumbnail text-center" src="./images/appointment.png" />
-                            </td>
-                            <td ng-if="appointment.typeOfEntry ===136932">
-                                <img class="img-thumbnail text-center" src="./images/walkin.png" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+
+            
+                 <div  ng-if="doctor.body.queue.length!=0">
+                    <div class="row col-md-12 custyle">
+                        <table class="table table-striped custab" style="border:1px solid #000000;">
+                            <thead >
+                           
+                                <tr style="background-color:#2e81b5">
+                                    <th>Sr.No</th>
+                                    <th>Token No.</th>
+                                    <th>Name</th>
+                                    <th class="text-center">Time Of Entry</th>
+                                    <th class="text-center">Type of Entry</th>
+                                    
+                                </tr>
+                            </thead>
+                                <tr ng-repeat="appointment in doctor.body.queue">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{appointment.token}}</td>
+                                    <td>{{appointment.patientName}}</td>
+                                    <td class="text-center">{{appointment.timeOfEntry| date:'shortTime'}}</td>
+                                    <td ng-if="appointment.typeOfEntry === 132432">
+                                        <img class="img-thumbnail text-center" src="./images/appointment.png" />
+                                    </td>
+                                     <td ng-if="appointment.typeOfEntry ===136932">
+                                            <img class="img-thumbnail text-center" src="./images/walkin.png" />
+                                    </td>
+                                </tr>
+                               
+                        </table>
+                </div>
+          
+
+
             <div ng-if="doctor.body.queue.length==0">
                 <div class="jumbotron">
                      <h3>No more appointment!</h3>

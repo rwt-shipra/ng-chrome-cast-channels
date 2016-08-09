@@ -13,7 +13,8 @@ var app = angular.module('app')
                 "adIntervel":0,
                 "lastDisplayed":0,
                 "showticker":true
-                }, {
+                }, 
+                {
                     "adId": "QORQL_AD_1",
                     "adPriority": "LOW",
                     "adName": "QORQL_AD_1",
