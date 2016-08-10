@@ -14,15 +14,7 @@ var app = angular.module('app')
                 "lastDisplayed":0,
                 "showticker":true
                 }, 
-                {
-                    "adId": "QORQL_AD_1",
-                    "adPriority": "LOW",
-                    "adName": "QORQL_AD_1",
-                    "adUrl": "images/ad-01.png",
-                    "adMimeType": "image/png",
-                    "adTime": "5",
-                    "adCount": Infinity
-                },
+
                 {
                     "adId":"QORQL_AD_1",
                     "adPriority":"LOW",
@@ -59,6 +51,7 @@ var app = angular.module('app')
             $scope.flashBus={};
             $scope.flashQueue=[];
             $scope.insideflash=false;
+
             //Google cast callback
             $scope.callback = function(data) {
                 switch (data.dataType) {
@@ -175,6 +168,11 @@ var app = angular.module('app')
                 $scope.flashVisible=false;
                 $scope.advVisible=true;
             }
+            
+
+
+
+            
             
             function pushIfNotPresent(received_flash_msg){
                 var already_present=false;
