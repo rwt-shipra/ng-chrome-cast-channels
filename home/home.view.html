@@ -10,7 +10,7 @@
     <div  ng-show="flashVisible" ng-animate="fade" >
                
  <div class=" container" style="width:50% !important; margin-left:24%;margin-top:10%"  >
-
+             
 <p class="text-center" style="color:white; font-size:45px; padding-top:3%; padding-bottom: 3%; background-color:#cc0000; border-radius:30px; box-shadow:5px 5px 5px #888888;font-weight:bold;">
                                             !!! ATTENTION !!! 
 </p>
@@ -24,9 +24,13 @@
 </p>
 
 <p class="text-center" style="color:#0092cb; font-size:55px !important;margin-top:10%">
+      
                         Dr.{{flashBus.header.doctorName}}
 </p>
+
+<div id="audio"></div>
 </div>
+
          
         
     </div>
@@ -50,25 +54,31 @@
                 </li>
 
             </ul>
-                 <div  ng-if="doctor.body.queue.length!=0" style="margin-top:0";>
-                    <div class="row col-md-12 custyle">
-                        <table class="table table-striped custab" border="1" style="border:1px solid #000000;">
+
+                 <div  ng-if="doctor.body.queue.length!=0">
+                    
+                        <div class="table-responsive container " >          
+            
+                       <table   class=" table table-bordered table-hover" style="font-size:28px;border:1px solid #000000;">
+                   
                             <thead >
                            
-                                <tr style="background-color:#2e81b5">
-                                    <th>Sr.No</th>
-                                    <th>Token No.</th>
-                                    <th>Name</th>
-                                    <th class="text-center">Time Of Entry</th>
-                                    <th class="text-center">Type of Entry</th>
-                                    
+                                <tr>
+                                    <th style="text-align:center">S.No.</th>
+                                    <th style="text-align:center">Name</th>
+                                    <th style="text-align:center">Token No.</th>
+                                    <th style="text-align:center">Appt-Time</th>
+                                   
+                                    <th style="text-align:center">Type</th>
                                 </tr>
+                             
                             </thead>
                                 <tr ng-repeat="appointment in doctor.body.queue">
-                                    <td>{{$index + 1}}</td>
-                                    <td>{{appointment.token}}</td>
-                                    <td>{{appointment.patientName}}</td>
-                                    <td class="text-center">{{appointment.timeOfEntry| date:'shortTime'}}</td>
+                                    <td align="center">{{$index + 1}}</td>
+                                    <td align="center">{{appointment.patientName}}</td>
+                                    <td align="center">{{appointment.token}}</td>
+                                    
+                                    <td align="center">{{appointment.timeOfEntry| date:'shortTime'}}</td>
                                     <td ng-if="appointment.typeOfEntry === 132432">
                                         <img class="img-thumbnail text-center" src="./images/appointment.png" />
                                     </td>
