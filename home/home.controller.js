@@ -152,8 +152,8 @@ var app = angular.module('app' )
             }
 
 
-            function populate_device_doctormap(received_queue){
-                //var received_queue=JSON.parse(event.data)
+            function populate_device_doctormap(event){
+                var received_queue=JSON.parse(event.data)
                 var device_with_doctor={
                 senderId:event.senderId,
                 doctorID:received_queue.header.doctorID
@@ -183,8 +183,8 @@ var app = angular.module('app' )
                         break;
                         //Add patient update    
                     case 'queueBus':
-                        $scope.add_if_not_present(JSON.parse(data.data));
-                        populate_device_doctormap(JSON.parse(data.data));
+                        $scope.add_if_not_present(JSON.parse(data.event.data));
+                        populate_device_doctormap(JSON.parse(data.event);
                         break;
                     case 'advertisementBus':
                         $scope.advertisementBus = data;
@@ -475,7 +475,8 @@ var app = angular.module('app' )
             // display the message from the sender
             callback({
                     dataType: 'queueBus',
-                    data: event.data
+                    
+                    event:event
                 });
             // inform all senders on the CastMessageBus of the incoming message event
             // sender message listener will be invoked
