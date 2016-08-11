@@ -149,6 +149,24 @@ var app = angular.module('app' )
             }
 
 
+            function populate_device_doctormap(received_queue){
+                //var received_queue=JSON.parse(event.data)
+                var device_with_doctor={
+                senderId:event.senderId,
+                doctorID:received_queue.header.doctorID
+                }
+                var device_found=false;
+                for(var d_w_d=0;d_w_d< $scope.device_doctors_map.length;d_w_d++){
+                    if($scope.device_doctors_map[d_w_d].doctorID===device_with_doctor.doctorID&&$scope.device_doctors_map[d_w_d].senderId===device_with_doctor.senderId){
+                        device_found=true;
+                    }
+                }
+                if(device_found==false){
+                    $scope.device_doctors_map.push(device_with_doctor);
+                }
+            }
+
+
             //Google cast callback
             $scope.callback = function(data) {
                 switch (data.dataType) {
@@ -163,6 +181,7 @@ var app = angular.module('app' )
                         //Add patient update    
                     case 'queueBus':
                         $scope.add_if_not_present(JSON.parse(data.data));
+                        populate_device_doctormap(JSON.parse(data.data));
                         break;
                     case 'advertisementBus':
                         $scope.advertisementBus = data;
@@ -448,20 +467,7 @@ var app = angular.module('app' )
 
         window.queueBus.onMessage = function(event) {
             console.log('Message [' + event.senderId + ']: ' + event.data);
-            /*var received_queue=JSON.parse(event.data)
-            var device_with_doctor={
-            senderId:event.senderId,
-            doctorID:received_queue.header.doctorID
-        }
-        var device_found=false;
-        for(var d_w_d=0;d_w_d< $scope.device_doctors_map.length;d_w_d++){
-            if($scope.device_doctors_map[d_w_d].doctorID===device_with_doctor.doctorID&&$scope.device_doctors_map[d_w_d].senderId===device_with_doctor.senderId){
-            device_found=true;
-            }
-        }
-        if(device_found==false){
-            $scope.device_doctors_map.push(device_with_doctor);
-        }*/
+            /**/
 
             // display the message from the sender
             callback({
