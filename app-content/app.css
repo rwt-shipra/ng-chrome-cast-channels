@@ -27,8 +27,9 @@ font-weight: 700;
 }
 
 
- ul, li {list-style-type: none;
-list-style: none;
+ ul{
+  list-style-type: none;
+
 display: inline;
 font-size: 35px;
  }
