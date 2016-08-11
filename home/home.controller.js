@@ -120,11 +120,9 @@ var app = angular.module('app' )
                     }
         
                 }
-                data_for_queue={
-                    dataType:"queueBus",
-                    data:JSON.stringify(empty_queue)
-                }
-                $scope.callback(data_for_queue);
+                
+                $scope.add_if_not_present(empty_queue);
+                //$scope.callback(data_for_queue);
                 
                 //recently_received_queue_data.push(empty_queue);
                 doc_id_to_be_searched=$scope.device_doctors_map[d_d_m].doctorID;
