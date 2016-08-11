@@ -125,7 +125,7 @@ var app = angular.module('app' )
                 //$scope.callback(data_for_queue);
                 
                 //recently_received_queue_data.push(empty_queue);
-                doc_id_to_be_searched=$scope.device_doctors_map[d_d_m].doctorID;
+                var doc_id_to_be_searched=$scope.device_doctors_map[d_d_m].doctorID;
                 for(var doc_index=0;doc_index<$scope.doctors.length;doc_index++){
                     if($scope.doctors[doc_index].header.doctorID===doc_id_to_be_searched){
                         doctor_name_for_log=doctor_name_for_log+","+$scope.doctors[doc_index].header.doctorName;
