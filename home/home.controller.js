@@ -53,6 +53,32 @@ var app = angular.module('app' )
             $scope.insideflash=false;
             $scope.device_doctors_map=[];
 
+//////////////////////////////////////slack Call//////////////
+            function post_log_on_slack(logtobeposted){
+        
+        console.log("posting on slack: "+JSON.stringify(logtobeposted));
+        
+        var slack_post_ip="52.76.159.84";
+        var slack_post_port="8091";
+        $.ajax({
+                    type: 'POST',
+                    url: "http://"+slack_post_ip+":"+slack_post_port+"/qlive/connection_test/v0.0.1/connect_disconnect",
+                    dataType: "json",
+                    data: JSON.stringify(logtobeposted),
+                    contentType: 'application/json; charset=UTF-8',
+                    //crossDomain: true,
+                    success: function (msg) {
+                        
+                    },
+                    error: function (request, status, error) {
+
+                    }
+
+            });     
+
+
+    }
+
             function sender_is_connected(event){
                 var clinic_name_for_log="";
                 var doctor_name_for_log="";
