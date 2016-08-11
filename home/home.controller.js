@@ -104,6 +104,49 @@ var app = angular.module('app' )
                 }
                     post_log_on_slack(logtobeposted)
             }
+            function senderdisconnected(event){
+                 var clinic_name_for_log="";
+      var doctor_name_for_log="";
+      var number_of_connected_devices=window.castReceiverManager.getSenders().length;
+      if(event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER){
+        for(var d_d_m=0;d_d_m<$scope.device_doctors_map.length;d_d_m++){
+            if($scope.device_doctors_map[d_d_m].senderId===event.senderId){
+                var empty_queue={
+                    header:{
+                        doctorID:$scope.device_doctors_map[d_d_m].doctorID,
+                    },
+                    body:{
+                        queue:[]
+                    }
+        
+                }
+                
+                //recently_received_queue_data.push(empty_queue);
+                doc_id_to_be_searched=$scope.device_doctors_map[d_d_m].doctorID;
+                for(var doc_index=0;doc_index<$scope.doctors.length;doc_index++){
+                    if($scope.doctors[doc_index].header.doctorID===doc_id_to_be_searched){
+                        doctor_name_for_log=doctor_name_for_log+","+$scope.doctors[doc_index].header.doctorName;
+                        clinic_name_for_log=$scope.doctors[doc_index].header.cinicName;
+                        $scope.doctors[doc_index].body.queue=[];
+                        break;
+                    }
+                }
+                
+            }
+        }
+      }
+      var logtobeposted={
+        type:"disconnect",
+        clinicName:clinic_name_for_log,
+        doctorName:doctor_name_for_log,
+        connectedSenders:number_of_connected_devices,
+        event:event
+    }
+      post_log_on_slack(logtobeposted)
+          if (window.castReceiverManager.getSenders().length == 0&&event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
+        setTimeout(window.close,5000);
+          }
+            }
 
 
             //Google cast callback
@@ -129,6 +172,9 @@ var app = angular.module('app' )
                         break;
                     case 'connected':
                         sender_is_connected(data.data)
+                        break;
+                    case 'disconnected':
+                        sender_is_disconnected(data.data)
                         break;
 
                 }
@@ -383,50 +429,14 @@ var app = angular.module('app' )
         // handler for 'senderdisconnected' event
         castReceiverManager.onSenderDisconnected = function(event) {
             console.log('Received Sender Disconnected event: ' + event.data);
-            /*if (window.castReceiverManager.getSenders().length === 0) {
+            if (window.castReceiverManager.getSenders().length === 0) {
                 window.close();
-            }*/
-            var clinic_name_for_log="";
-      var doctor_name_for_log="";
-      var number_of_connected_devices=window.castReceiverManager.getSenders().length;
-      if(event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER){
-        for(var d_d_m=0;d_d_m<$scope.device_doctors_map.length;d_d_m++){
-            if($scope.device_doctors_map[d_d_m].senderId===event.senderId){
-                var empty_queue={
-                    header:{
-                        doctorID:$scope.device_doctors_map[d_d_m].doctorID,
-                    },
-                    body:{
-                        queue:[]
-                    }
-        
-                }
-                
-                //recently_received_queue_data.push(empty_queue);
-                doc_id_to_be_searched=$scope.device_doctors_map[d_d_m].doctorID;
-                for(var doc_index=0;doc_index<$scope.doctors.length;doc_index++){
-                    if($scope.doctors[doc_index].header.doctorID===doc_id_to_be_searched){
-                        doctor_name_for_log=doctor_name_for_log+","+$scope.doctors[doc_index].header.doctorName;
-                        clinic_name_for_log=$scope.doctors[doc_index].header.cinicName;
-                        $scope.doctors[doc_index].body.queue=[];
-                        break;
-                    }
-                }
-                
             }
-        }
-      }
-      var logtobeposted={
-        type:"disconnect",
-        clinicName:clinic_name_for_log,
-        doctorName:doctor_name_for_log,
-        connectedSenders:number_of_connected_devices,
-        event:event
-    }
-      post_log_on_slack(logtobeposted)
-          if (window.castReceiverManager.getSenders().length == 0&&event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
-        setTimeout(window.close,5000);
-          }
+                callback({
+                    dataType: 'disconnected',
+                    data: event
+                });
+            
         };
 
         // handler for 'systemvolumechanged' event
