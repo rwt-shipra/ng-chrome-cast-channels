@@ -429,9 +429,7 @@ var app = angular.module('app' )
         // handler for 'senderdisconnected' event
         castReceiverManager.onSenderDisconnected = function(event) {
             console.log('Received Sender Disconnected event: ' + event.data);
-            if (window.castReceiverManager.getSenders().length === 0) {
-                window.close();
-            }
+            
                 callback({
                     dataType: 'disconnected',
                     data: event
