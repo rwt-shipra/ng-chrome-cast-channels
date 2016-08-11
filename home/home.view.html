@@ -3,7 +3,7 @@
     <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
     <div ng-show="advVisible" ng-animate="fade">
-        <img class="img-responsive img-rounded" ng-src="{{advertisement.adUrl}}" style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;" />
+        <img class="img-responsive img-rounded" preload-image ng-src="{{advertisement.adUrl}}" default-image="{{advertisement.adUrl}}" fallback-image="{{advertisement.adUrl}}" style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;" />
     </div>
 
 

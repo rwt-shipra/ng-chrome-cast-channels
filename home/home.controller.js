@@ -182,13 +182,13 @@ var app = angular.module('app')
                 break;
             }
         
-        }
-        if(!already_present){
-            $scope.flashQueue.push(received_flash_msg);
-        }
-                
-            }
-            
+                }
+                if(!already_present){
+                    $scope.flashQueue.push(received_flash_msg);
+                }
+                        
+                    }
+                    
             
             
             function showFlash(flashindex)
