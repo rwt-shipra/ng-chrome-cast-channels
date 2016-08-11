@@ -122,7 +122,7 @@ var app = angular.module('app' )
                 }
                 data_for_queue={
                     dataType:"queueBus",
-                    data:JSON.stringify(empty_queue);
+                    data:JSON.stringify(empty_queue)
                 }
                 $scope.callback(data_for_queue);
                 
