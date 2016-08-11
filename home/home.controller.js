@@ -53,6 +53,33 @@ var app = angular.module('app' )
             $scope.insideflash=false;
             $scope.device_doctors_map=[];
 
+            function sender_is_connected(event){
+                var clinic_name_for_log="";
+                var doctor_name_for_log="";
+                var number_of_connected_devices=window.castReceiverManager.getSenders().length;
+                  for(var d_d_m=0;d_d_m<$scope.device_doctors_map.length;d_d_m++){
+                    if($scope.device_doctors_map[d_d_m].senderId===event.senderId){
+                        var doc_id_to_be_searched=$scope.device_doctors_map[d_d_m].doctorID;
+                        for(var doc_index=0;doc_index<$scope.doctors.length;doc_index++){
+                            if($scope.doctors[doc_index].header.doctorID===doc_id_to_be_searched){
+                                doctor_name_for_log=doctor_name_for_log+","+$scope.doctors[doc_index].header.doctorName;
+                                clinic_name_for_log=$scope.doctors[doc_index].header.cinicName;
+                                //break;
+                            }
+                        }
+                    }
+                    }
+                  var logtobeposted={
+                    type:"connection",
+                    clinicName:clinic_name_for_log,
+                    doctorName:doctor_name_for_log,
+                    connectedSenders:number_of_connected_devices,
+                    event:event
+                }
+                    post_log_on_slack(logtobeposted)
+            }
+            
+
             //Google cast callback
             $scope.callback = function(data) {
                 switch (data.dataType) {
@@ -74,6 +101,10 @@ var app = angular.module('app' )
                     case 'controlBus':
                         $scope.controlBus = data;
                         break;
+                    case 'connected':
+                        sender_is_connected(data.event)
+                        break;
+
                 }
                 $scope.$apply();
             };
@@ -316,29 +347,7 @@ var app = angular.module('app' )
         castReceiverManager.onSenderConnected = function(event) {
             console.log('Received Sender Connected event 22: ' + event.data);
             console.log(window.castReceiverManager.getSender(event.data).userAgent);
-            var clinic_name_for_log="";
-      var doctor_name_for_log="";
-      var number_of_connected_devices=window.castReceiverManager.getSenders().length;
-      for(var d_d_m=0;d_d_m<$scope.device_doctors_map.length;d_d_m++){
-            if($scope.device_doctors_map[d_d_m].senderId===event.senderId){
-                var doc_id_to_be_searched=$scope.device_doctors_map[d_d_m].doctorID;
-                for(var doc_index=0;doc_index<$scope.doctors.length;doc_index++){
-                    if($scope.doctors[doc_index].header.doctorID===doc_id_to_be_searched){
-                        doctor_name_for_log=doctor_name_for_log+","+$scope.doctors[doc_index].header.doctorName;
-                        clinic_name_for_log=$scope.doctors[doc_index].header.cinicName;
-                        //break;
-                    }
-                }
-            }
-        }
-      var logtobeposted={
-        type:"connection",
-        clinicName:clinic_name_for_log,
-        doctorName:doctor_name_for_log,
-        connectedSenders:number_of_connected_devices,
-        event:event
-    }
-      post_log_on_slack(logtobeposted)
+            
         };
 
         // handler for 'senderdisconnected' event
