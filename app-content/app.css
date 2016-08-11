@@ -29,14 +29,10 @@ font-weight: 700;
 
  ul, li {list-style-type: none;
 list-style: none;
+display: inline;
+font-size: 35px;
  }
 
-li {
-  padding-left: 2em; 
-  text-indent: -2em;
-  display:inline !important ;
-
-}
 
 
 
