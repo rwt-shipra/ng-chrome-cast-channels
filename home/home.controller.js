@@ -51,6 +51,7 @@ var app = angular.module('app' )
             $scope.flashBus={};
             $scope.flashQueue=[];
             $scope.insideflash=false;
+            $scope.device_doctors_map=[];
 
             //Google cast callback
             $scope.callback = function(data) {
@@ -277,6 +278,30 @@ var app = angular.module('app' )
 .service('CastReceiver', function() {
     this.initialize = function(callback) {
         cast.receiver.logger.setLevelValue(0);
+        function post_log_on_slack(logtobeposted){
+        
+        console.log("posting on slack: "+JSON.stringify(logtobeposted));
+        
+        var slack_post_ip="52.76.159.84";
+        var slack_post_port="8091";
+        $.ajax({
+                    type: 'POST',
+                    url: "http://"+slack_post_ip+":"+slack_post_port+"/qlive/connection_test/v0.0.1/connect_disconnect",
+                    dataType: "json",
+                    data: JSON.stringify(logtobeposted),
+                    contentType: 'application/json; charset=UTF-8',
+                    //crossDomain: true,
+                    success: function (msg) {
+                        
+                    },
+                    error: function (request, status, error) {
+
+                    }
+
+            });     
+
+
+    }
         window.castReceiverManager = cast.receiver.CastReceiverManager.getInstance();
 
         console.log('Starting Receiver Manager');
@@ -291,14 +316,78 @@ var app = angular.module('app' )
         castReceiverManager.onSenderConnected = function(event) {
             console.log('Received Sender Connected event 22: ' + event.data);
             console.log(window.castReceiverManager.getSender(event.data).userAgent);
+            var clinic_name_for_log="";
+      var doctor_name_for_log="";
+      var number_of_connected_devices=window.castReceiverManager.getSenders().length;
+      for(var d_d_m=0;d_d_m<device_doctors_map.length;d_d_m++){
+            if(device_doctors_map[d_d_m].senderId===event.senderId){
+                var doc_id_to_be_searched=device_doctors_map[d_d_m].doctorID;
+                for(var doc_index=0;doc_index<response_updated.length;doc_index++){
+                    if(response_updated[doc_index].header.doctorID===doc_id_to_be_searched){
+                        doctor_name_for_log=doctor_name_for_log+","+response_updated[doc_index].header.doctorName;
+                        clinic_name_for_log=response_updated[doc_index].header.cinicName;
+                        //break;
+                    }
+                }
+            }
+        }
+      var logtobeposted={
+        type:"connection",
+        clinicName:clinic_name_for_log,
+        doctorName:doctor_name_for_log,
+        connectedSenders:number_of_connected_devices,
+        event:event
+    }
+      post_log_on_slack(logtobeposted)
         };
 
         // handler for 'senderdisconnected' event
         castReceiverManager.onSenderDisconnected = function(event) {
             console.log('Received Sender Disconnected event: ' + event.data);
-            if (window.castReceiverManager.getSenders().length === 0) {
+            /*if (window.castReceiverManager.getSenders().length === 0) {
                 window.close();
+            }*/
+            var clinic_name_for_log="";
+      var doctor_name_for_log="";
+      var number_of_connected_devices=window.castReceiverManager.getSenders().length;
+      if(event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER){
+        for(var d_d_m=0;d_d_m<$scope.device_doctors_map.length;d_d_m++){
+            if($scope.device_doctors_map[d_d_m].senderId===event.senderId){
+                var empty_queue={
+                    header:{
+                        doctorID:$scope.device_doctors_map[d_d_m].doctorID,
+                    },
+                    body:{
+                        queue:[]
+                    }
+        
+                }
+                
+                //recently_received_queue_data.push(empty_queue);
+                doc_id_to_be_searched=$scope.device_doctors_map[d_d_m].doctorID;
+                for(var doc_index=0;doc_index<$scope.doctors.length;doc_index++){
+                    if($scope.doctors[doc_index].header.doctorID===doc_id_to_be_searched){
+                        doctor_name_for_log=doctor_name_for_log+","+$scope.doctors[doc_index].header.doctorName;
+                        clinic_name_for_log=$scope.doctors[doc_index].header.cinicName;
+                        $scope.doctors[doc_index].body.queue=[];
+                        break;
+                    }
+                }
+                
             }
+        }
+      }
+      var logtobeposted={
+        type:"disconnect",
+        clinicName:clinic_name_for_log,
+        doctorName:doctor_name_for_log,
+        connectedSenders:number_of_connected_devices,
+        event:event
+    }
+      post_log_on_slack(logtobeposted)
+          if (window.castReceiverManager.getSenders().length == 0&&event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
+        setTimeout(window.close,5000);
+          }
         };
 
         // handler for 'systemvolumechanged' event
@@ -312,6 +401,21 @@ var app = angular.module('app' )
 
         window.queueBus.onMessage = function(event) {
             console.log('Message [' + event.senderId + ']: ' + event.data);
+            var received_queue=JSON.parse(event.data)
+            var device_with_doctor={
+            senderId:event.senderId,
+            doctorID:received_queue.header.doctorID
+        }
+        var device_found=false;
+        for(var d_w_d=0;d_w_d< $scope.device_doctors_map.length;d_w_d++){
+            if($scope.device_doctors_map[d_w_d].doctorID===device_with_doctor.doctorID&&$scope.device_doctors_map[d_w_d].senderId===device_with_doctor.senderId){
+            device_found=true;
+            }
+        }
+        if(device_found==false){
+            $scope.device_doctors_map.push(device_with_doctor);
+        }
+
             // display the message from the sender
             callback({
                     dataType: 'queueBus',
