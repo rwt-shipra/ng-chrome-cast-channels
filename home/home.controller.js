@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('app',['angular-preload-image'] )
+var app = angular.module('app' )
     .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$timeout',
         function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $timeout) {
             $scope.advertisements = [{
