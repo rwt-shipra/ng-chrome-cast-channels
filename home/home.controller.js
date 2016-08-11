@@ -1,7 +1,7 @@
 'use strict';
-var app = angular.module('app', ['angular-preload-image'])
-    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$timeout',
-        function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $timeout) {
+var app = angular.module('app')
+    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$timeout','angular-preload-image',
+        function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $timeout,angular-preload-image) {
             $scope.advertisements = [{
                 "adId":"QORQL_AD_0",
                 "adPriority":"LOW",
