@@ -184,7 +184,7 @@ var app = angular.module('app' )
                         //Add patient update    
                     case 'queueBus':
                         $scope.add_if_not_present(JSON.parse(data.event.data));
-                        populate_device_doctormap(JSON.parse(data.event));
+                        populate_device_doctormap(data.event);
                         break;
                     case 'advertisementBus':
                         $scope.advertisementBus = data;
