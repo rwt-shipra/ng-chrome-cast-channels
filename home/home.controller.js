@@ -78,7 +78,7 @@ var app = angular.module('app' )
                 }
                     post_log_on_slack(logtobeposted)
             }
-            
+
 
             //Google cast callback
             $scope.callback = function(data) {
@@ -410,7 +410,7 @@ var app = angular.module('app' )
 
         window.queueBus.onMessage = function(event) {
             console.log('Message [' + event.senderId + ']: ' + event.data);
-            var received_queue=JSON.parse(event.data)
+            /*var received_queue=JSON.parse(event.data)
             var device_with_doctor={
             senderId:event.senderId,
             doctorID:received_queue.header.doctorID
@@ -423,7 +423,7 @@ var app = angular.module('app' )
         }
         if(device_found==false){
             $scope.device_doctors_map.push(device_with_doctor);
-        }
+        }*/
 
             // display the message from the sender
             callback({
