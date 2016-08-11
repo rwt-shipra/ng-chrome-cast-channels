@@ -319,13 +319,13 @@ var app = angular.module('app' )
             var clinic_name_for_log="";
       var doctor_name_for_log="";
       var number_of_connected_devices=window.castReceiverManager.getSenders().length;
-      for(var d_d_m=0;d_d_m<device_doctors_map.length;d_d_m++){
-            if(device_doctors_map[d_d_m].senderId===event.senderId){
-                var doc_id_to_be_searched=device_doctors_map[d_d_m].doctorID;
-                for(var doc_index=0;doc_index<response_updated.length;doc_index++){
-                    if(response_updated[doc_index].header.doctorID===doc_id_to_be_searched){
-                        doctor_name_for_log=doctor_name_for_log+","+response_updated[doc_index].header.doctorName;
-                        clinic_name_for_log=response_updated[doc_index].header.cinicName;
+      for(var d_d_m=0;d_d_m<$scope.device_doctors_map.length;d_d_m++){
+            if($scope.device_doctors_map[d_d_m].senderId===event.senderId){
+                var doc_id_to_be_searched=$scope.device_doctors_map[d_d_m].doctorID;
+                for(var doc_index=0;doc_index<$scope.doctors.length;doc_index++){
+                    if($scope.doctors[doc_index].header.doctorID===doc_id_to_be_searched){
+                        doctor_name_for_log=doctor_name_for_log+","+$scope.doctors[doc_index].header.doctorName;
+                        clinic_name_for_log=$scope.doctors[doc_index].header.cinicName;
                         //break;
                     }
                 }
