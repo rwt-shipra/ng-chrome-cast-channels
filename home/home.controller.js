@@ -128,7 +128,7 @@ var app = angular.module('app' )
                         $scope.controlBus = data;
                         break;
                     case 'connected':
-                        sender_is_connected(data.event)
+                        sender_is_connected(data.data)
                         break;
 
                 }
