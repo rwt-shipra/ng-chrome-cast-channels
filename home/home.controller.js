@@ -104,7 +104,7 @@ var app = angular.module('app' )
                 }
                     post_log_on_slack(logtobeposted)
             }
-            function senderdisconnected(event){
+            function sender_is_disconnected(event){
                  var clinic_name_for_log="";
       var doctor_name_for_log="";
       var number_of_connected_devices=window.castReceiverManager.getSenders().length;
