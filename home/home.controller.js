@@ -347,6 +347,10 @@ var app = angular.module('app' )
         castReceiverManager.onSenderConnected = function(event) {
             console.log('Received Sender Connected event 22: ' + event.data);
             console.log(window.castReceiverManager.getSender(event.data).userAgent);
+            callback({
+                    dataType: 'connected',
+                    data: event
+                });
             
         };
 
