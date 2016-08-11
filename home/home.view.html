@@ -35,31 +35,34 @@
         
     </div>
 
-    <div  ng-show="docVisible" ng-animate="fade" >
+ 
+    
+
+            <div class="container" ng-show="docVisible" ng-animate="fade">
        
-
-       <div style="background-color:#151172 ; color:#ffffff;  padding: 0;">
-            <ul class="row container" style="display:inline; margin:0; padding-right:2%">
-                <li class="col-sm-3">
-                    <img class="img-thumbnail" src="images/DrAjay.jpg" style="float:left;"/>
-
-                     <h2 class="text-center"> {{doctor.header.doctorName}}</h2>
+            
+            <ul class="list-inline row " style="color:#ffffff;  padding-top: 1% !important;" id="doctor_header">
+                <li href="#" style="color:#ffffff !important;"><img src="images/DrAjay.jpg" >
+                            {{doctor.header.doctorName}}    </a>
                 </li>
-                <li class="col-sm-6">
-                     <h2 class="text-center">Queue Status</h2>
+               
+                <li class="col-sm-5 text-center">
+                <a style="color:#ffffff !important;"><b>Queue Status</b></a></li>
+                
+                <li class="col-sm-3 text-center  "> 
+                <a  href="#" style="color:#ffffff !important;">
+                    {{doctor.header.cinicName}}
+                    </a>
                 </li>
-                <li class="col-sm-2">
-
-                     <h2 class="text-center">{{doctor.header.cinicName}}</h2>
-                </li>
-
             </ul>
-         </div>  
+        
+
+        
                  <div  ng-if="doctor.body.queue.length!=0">
                     
-                        <div class="table-responsive container " style="margin-top:-5; " >          
+                        <div class="table-responsive container" style="margin-top:1% " >          
             
-                       <table   class=" table table-bordered table-hover" style="font-size:28px;border:1px solid #000000;">
+                       <table   class=" table table-bordered" style="font-size:28px;border:1px solid #000000;">
                    
                             <thead >
                            
