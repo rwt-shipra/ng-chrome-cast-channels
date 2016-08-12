@@ -1,5 +1,5 @@
 
-$scope.config = [
+var config = [
 {
   "advtTime":10,
   "docTime":20,
