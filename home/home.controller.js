@@ -269,7 +269,9 @@ var app = angular.module('app')
             
             /****added for maintaining advertisement pointer****/
             var currentIndexForAd = -1;
+            
             var currentIndexForDoc = -1;
+
             /****added for maintaadvertisement****/
             function nextDoc() {
                currentIndexForDoc=currentIndexForDoc < $scope.doctors.length-1 ?currentIndexForDoc+1:  0;
