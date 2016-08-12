@@ -1,7 +1,7 @@
 'use strict';
 var app = angular.module('app')
-    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$timeout','config',
-        function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $timeout,config) {
+    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$timeout','Default_config',
+        function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $timeout,Default_config) {
             /*$scope.advertisements = [{
                 "adId":"QORQL_AD_0",
                 "adPriority":"LOW",
