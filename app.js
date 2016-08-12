@@ -6,7 +6,7 @@
         .config(config)
         .run(run);
 
-    config.$inject = ['$routeProvider', '$locationProvider'];
+    config.$inject = ['$routeProvider', '$locationProvider','default_config'];
 
     function config($routeProvider, $locationProvider,default_config) {
         $routeProvider
