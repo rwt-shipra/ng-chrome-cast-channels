@@ -41,9 +41,9 @@ var app = angular.module('app')
                   }
 
             ];
-*/          $scope.advert ={};  
-               $scope.advert = config;
-               console.log($scope.advert);
+*/              var advert = {};  
+                advert = config;
+               console.log(advert);
 
 
             $scope.advertisements =[];
