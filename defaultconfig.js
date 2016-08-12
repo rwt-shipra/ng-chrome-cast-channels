@@ -1,5 +1,5 @@
 
-var Default_config = 
+var default_config = 
 {
   "advtTime":10,
   "docTime":20,
