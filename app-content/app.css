@@ -7,7 +7,7 @@ body{
 
 .navbar-centered {
         position: absolute;
-        left: 35%;
+        left: 30%;
         display: block;
         width: 400px;
         text-align: center;
@@ -24,7 +24,7 @@ table, th, td {
 .navbar>.container .navbar-centered, 
 .navbar>.navbar-centered {
       
-      margin-left: 140px;
+      margin-left: 130px;
     }
 
 .custab{
