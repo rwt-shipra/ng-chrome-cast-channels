@@ -8,7 +8,7 @@
 
     config.$inject = ['$routeProvider', '$locationProvider'];
 
-    function config($routeProvider, $locationProvider) {
+    function config($routeProvider, $locationProvider,config) {
         $routeProvider
             .when('/', {
                 controller: 'HomeController',
