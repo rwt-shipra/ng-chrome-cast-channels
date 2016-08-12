@@ -66,9 +66,9 @@
         
                  <div  ng-if="doctor.body.queue.length!=0">
                     
-                        <div class="table-responsive container" style="margin-top:2px;" >          
+                        <div class="table-responsive container" style="margin-top:1px;" >          
             
-                       <table   cellpadding="0" class=" table table-bordered" style="font-size:28px;">
+                       <table   cellpadding="0" class=" table table-bordered" style="font-size:28px;" >
                    
                             <thead >
                            
@@ -82,7 +82,7 @@
                                 </tr>
                              
                             </thead>
-                                <tr ng-repeat="appointment in doctor.body.queue">
+                                <tr ng-repeat="appointment in doctor.body.queue | limitTo:7">
                                     <td align="center"><b>{{$index + 1}}</b></td>
                                     <td align="center"> <b>{{appointment.patientName}}</b></td>
                                     <td align="center"><b>{{appointment.token}}</b></td>
