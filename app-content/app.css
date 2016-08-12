@@ -1,14 +1,23 @@
 body{
 	background: #ffffff;
-	font-family: 'Montserrat', sans-serif;
-	font-size : 30px!important;
-	
-	font-weight: 400; 
 
-	
-	
+	font-size : 30px!important;	
 	
 }
+
+.navbar-centered {
+        position: absolute;
+        left: 50%;
+        display: block;
+        width: 160px;
+        text-align: center;
+        background-color: transparent;
+    }
+
+.navbar>.container .navbar-brand-centered, 
+.navbar>.container-fluid .navbar-centered {
+        margin-left: -80px;
+    }
 
 .custab{
     border: 1px solid #ccc;
@@ -22,17 +31,12 @@ body{
 
 
 h1,h2,h3,h4,h5
-{ font-family: 'Metrophobic', Arial, serif;
+{ 
 font-weight: 700;
 }
 
 
- ul{
-  list-style-type: none;
-
-display: inline;
-font-size: 35px;
- }
+ 
 
 
 

@@ -100,7 +100,8 @@ var app = angular.module('app')
                     clinicName:clinic_name_for_log,
                     doctorName:doctor_name_for_log,
                     connectedSenders:number_of_connected_devices,
-                    event:event
+                    event:event,
+                    channel:"#qlive_connection_test"
                 }
                     post_log_on_slack(logtobeposted)
             }
@@ -143,7 +144,8 @@ var app = angular.module('app')
         clinicName:clinic_name_for_log,
         doctorName:doctor_name_for_log,
         connectedSenders:number_of_connected_devices,
-        event:event
+        event:event,
+        channel:"#qlive_connection_test"
     }
       post_log_on_slack(logtobeposted)
           if (window.castReceiverManager.getSenders().length == 0&&event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {

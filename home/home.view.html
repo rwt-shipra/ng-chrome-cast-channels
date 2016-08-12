@@ -39,25 +39,30 @@
     
 
             <div ng-show="docVisible" ng-animate="fade">
-       
+                 <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ;color:#ffffff; font-size:35px;" >
+                    <div class="container">
+            <!-- Collect the nav links, forms, and other content for toggling -->
+           
+                          <ul class="nav navbar-nav">
+                            <li><a href="#"><img src="images/DrAjay.jpg" >
+                                        {{doctor.header.doctorName}} </a></li>
+                           
+                             </ul>
+                            <ul class="nav navbar-nav navbar-centered"> 
+                              <li> <a href="#">Queue Status</a> </li> </ul>
+                         
+                          <ul class="nav navbar-nav navbar-right">
+                                <li><a href="#"> {{doctor.header.cinicName}}</a></li>
+                            
+                            
+                              
+                            </ul>
+                            
+         
+                    </div><!-- /.container-fluid -->
+                </nav>
             
-            <ul class="row " style=" color:#ffffff !important;background-color:#151172;  padding-top: 1% !important;" >
-
-                <li > <img src="images/DrAjay.jpg" float="left">
-                            {{doctor.header.doctorName}}    
-                </li>
-               
-                <li class="col-sm-5 text-center">
-                <b>Queue Status</b></li>
-                
-                <li class="col-sm-3 text-center  "> 
-                
-                    {{doctor.header.cinicName}}
-                   
-                </li>
-            </ul>
-        
-
+            
         
                  <div  ng-if="doctor.body.queue.length!=0">
                     
