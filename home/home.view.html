@@ -74,8 +74,8 @@
                            
                                 <tr style="background-color:#7EB6FF;">
                                     <th style="text-align:center">S.No.</th>
-                                    <th style="text-align:center">Name</th>
-                                    <th style="text-align:center">Token No.</th>
+                                    <th style="text-align:center"><b>Name</b></th>
+                                    <th style="text-align:center"><b>Token</b> No.</th>
                                     <th style="text-align:center">Appt-Time</th>
                                    
                                     <th style="text-align:center">Type</th>
@@ -84,8 +84,8 @@
                             </thead>
                                 <tr ng-repeat="appointment in doctor.body.queue">
                                     <td align="center">{{$index + 1}}</td>
-                                    <td align="center">{{appointment.patientName}}</td>
-                                    <td align="center">{{appointment.token}}</td>
+                                    <td align="center"> <b>{{appointment.patientName}}</b></td>
+                                    <td align="center"><b>{{appointment.token}}</b></td>
                                     
                                     <td align="center">{{appointment.timeOfEntry| date:'shortTime'}}</td>
                                     <td ng-if="appointment.typeOfEntry === 132432">
