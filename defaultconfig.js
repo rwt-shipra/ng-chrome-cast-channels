@@ -1,5 +1,5 @@
 
-var config = [
+var config = 
 {
   "advtTime":10,
   "docTime":20,
@@ -93,4 +93,3 @@ var config = [
 	}
   ]
 }
-]
