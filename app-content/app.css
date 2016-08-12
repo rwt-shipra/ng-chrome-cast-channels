@@ -7,7 +7,7 @@ body{
 
 .navbar-centered {
         position: absolute;
-        left: 50%;
+        left: 35%;
         display: block;
         width: 400px;
         text-align: center;
@@ -35,11 +35,6 @@ h1,h2,h3,h4,h5
 { 
 font-weight: 700;
 }
-
-
- 
-
-
 
 
 
