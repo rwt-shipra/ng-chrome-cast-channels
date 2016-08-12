@@ -1,7 +1,7 @@
 'use strict';
 var app = angular.module('app')
-    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$timeout',
-        function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $timeout,config) {
+    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$timeout','$scope.config',
+        function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $timeout,$scope.config) {
             /*$scope.advertisements = [{
                 "adId":"QORQL_AD_0",
                 "adPriority":"LOW",
@@ -269,7 +269,7 @@ var app = angular.module('app')
             
             /****added for maintaining advertisement pointer****/
             var currentIndexForAd = -1;
-            
+
             var currentIndexForDoc = -1;
 
             /****added for maintaadvertisement****/

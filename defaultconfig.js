@@ -1,4 +1,5 @@
-var config={
+
+$scope.config={
   "advtTime":10,
   "docTime":20,
   "flashTime":10,
@@ -57,6 +58,7 @@ var config={
   }
   
 ],
+
 "knowndoctors":[
 	{
 		doctorName:"ajay aggarwal",
