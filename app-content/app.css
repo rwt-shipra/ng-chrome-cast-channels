@@ -19,7 +19,7 @@ body{
  }   
 
 table, th, td {
-    border: 1px solid black;
+    border: 1px solid black !important;
 }
 .navbar>.container .navbar-centered, 
 .navbar>.navbar-centered {
