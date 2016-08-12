@@ -1,5 +1,6 @@
 
-$scope.config={
+$scope.config = [
+{
   "advtTime":10,
   "docTime":20,
   "flashTime":10,
@@ -92,3 +93,4 @@ $scope.config={
 	}
   ]
 }
+]

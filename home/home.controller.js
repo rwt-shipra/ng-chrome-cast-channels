@@ -43,7 +43,7 @@ var app = angular.module('app')
             ];
 */
             $scope.advertisements =[];
-            $scope.advertisements =config;
+            $scope.advertisements =$scope.config.defaultads;
 
             
             $scope.advertisement={};
