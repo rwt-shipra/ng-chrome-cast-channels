@@ -7,16 +7,17 @@ body{
 
 .navbar-centered {
         position: absolute;
-        left: 40%;
+        left: 50%;
         display: block;
-        width: 200px;
+        width: 400px;
         text-align: center;
         
     }
+    
 
 .navbar>.container .navbar-brand-centered, 
-.navbar>.container-fluid .navbar-centered {
-        margin-left: -70px;
+.navbar>.navbar-centered {
+     
     }
 
 .custab{
