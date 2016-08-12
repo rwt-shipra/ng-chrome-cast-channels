@@ -18,6 +18,9 @@ body{
   color: #ffffff !important;
  }   
 
+table, th, td {
+    border: 1px solid black;
+}
 .navbar>.container .navbar-centered, 
 .navbar>.navbar-centered {
       
