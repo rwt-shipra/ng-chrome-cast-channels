@@ -13,12 +13,12 @@ body{
         text-align: center;
         
     }
-    
+
  a {
   color: #ffffff !important;
  }   
 
-.navbar>.container .navbar-brand-centered, 
+.navbar>.container .navbar-centered, 
 .navbar>.navbar-centered {
       
       margin-left: 140px;
