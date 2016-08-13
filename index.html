@@ -19,7 +19,7 @@
         
         <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message">
         </div>
-        <div ng-view></div>
+        <div ng-view class="ng-scope"></div>
     
         
         <script src="https://code.jquery.com/jquery-2.0.3.min.js"></script>

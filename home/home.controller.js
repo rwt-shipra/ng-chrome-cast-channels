@@ -44,15 +44,17 @@ var app = angular.module('app')
             $http.get('phones/phones.json').success(function(data) {
    $scope.phones = data;
 });
-          */          
-                     $scope.advert = [];
-                 $http.get('/defaultconfig.json').success(function(data) {
+          */         
+//chalao local pey li ab chal jayega
+                $scope.advert = [];
+                 $http.get('../defaultconfig.json').success(function(data) {
                     $scope.advert = data;
+                    //when you get success reset the advertisement
+                    $scope.advertisements = $scope.advert.defaultads;
                     });
-
+                    console.log($scope.advert);
                  
-                     $scope.advertisements =[];
-            $scope.advertisements = $scope.advert.defaultads;
+            $scope.advertisements =[];
             $scope.advertisement={};
             $scope.doctors = [];
             $scope.doctor={};
