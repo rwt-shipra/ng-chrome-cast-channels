@@ -1,7 +1,7 @@
 'use strict';
-var app = angular.module('app',["default_config"])
-    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$timeout','default_config',
-        function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $timeout,default_config) {
+var app = angular.module('app')
+    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http','$timeout',
+        function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope,$http, $timeout) {
             /*$scope.advertisements = [{
                 "adId":"QORQL_AD_0",
                 "adPriority":"LOW",
@@ -41,17 +41,18 @@ var app = angular.module('app',["default_config"])
                   }
 
             ];
-*/               $scope.advert = []; 
 
-                $scope.advert = default_config.defaultads;
+               
 
-               console.log("$scope.advert");
+*/          
+                     $scope.advert = [];
+                 $http.get('defaultconfig.js').success(function(data) {
+                    $scope.advert = data;
+                    });
 
-
-            $scope.advertisements =[];
-            
-
-            
+                 
+                     $scope.advertisements =[];
+            $scope.advertisements = $scope.advert.defaultads;
             $scope.advertisement={};
             $scope.doctors = [];
             $scope.doctor={};

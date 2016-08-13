@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['ngRoute', 'ngCookies','ngAnimate','angular-preload-image','default_config'])
+        .module('app', ['ngRoute', 'ngCookies','ngAnimate','angular-preload-image'])
         .config(config)
         .run(run);
 
