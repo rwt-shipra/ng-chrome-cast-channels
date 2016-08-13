@@ -1,5 +1,6 @@
 <div>
 
+
     <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
     <div ng-show="advVisible" ng-animate="fade">
@@ -82,7 +83,8 @@
                                 </tr>
                              
                             </thead>
-                                <tr ng-repeat="appointment in doctor.body.queue | limitTo:7">
+
+                                <tr ng-repeat="appointment in doctor.body.queue|itemsPerPage:5">
                                     <td align="center"><b>{{$index + 1}}</b></td>
                                     <td align="center"> <b>{{appointment.patientName}}</b></td>
                                     <td align="center"><b>{{appointment.token}}</b></td>
