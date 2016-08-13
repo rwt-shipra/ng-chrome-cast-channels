@@ -306,17 +306,17 @@ var app = angular.module('app')
                 $scope.advertisement= $scope.advertisements[currentIndexForAd];
                 var curr_date = new Date();
                 var curr_time_millis = curr_date.getTime(); 
-                if((curr_time_millis-$scope.advertisement.lastDisplayed)<($scope.advertisement.adIntervel*1000)){
-                    nextAd();
-                    showAdv();
+                // if((curr_time_millis-$scope.advertisement.lastDisplayed)<($scope.advertisement.adIntervel*1000)){
+                //     nextAd();
+                //     showAdv();
                     
-                }else{
+                // }else{
 
                     $scope.docVisible=false;
                     $scope.flashVisible=false;
                     $scope.advVisible=true;
-                    $scope.advertisements[currentIndexForAd].lastDisplayed=curr_time_millis
-                }
+                    //$scope.advertisements[currentIndexForAd].lastDisplayed=curr_time_millis
+                //}
 
 
                 
