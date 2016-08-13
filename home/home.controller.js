@@ -307,12 +307,14 @@ var app = angular.module('app')
                 $scope.advertisement= $scope.advertisements[currentIndexForAd];
                 var curr_date = new Date();
                 var curr_time_millis = curr_date.getTime(); 
-                console.log("showing advertisement"+JSON.stringify($scope.advertisement));
-                console.log("las dispayed was"+$scope.advertisement.lastDisplayed);
-                if($scope.advertisement===undefined){
+               if($scope.advertisement===undefined){
+                    console.log('config file not loaded');
                     return;
 
-                }
+                } 
+                console.log("showing advertisement"+JSON.stringify($scope.advertisement));
+                console.log("las dispayed was"+$scope.advertisement.lastDisplayed);
+
                  if((curr_time_millis-$scope.advertisement.lastDisplayed)<($scope.advertisement.adIntervel*1000)){
                      nextAd();
                     showAdv();
