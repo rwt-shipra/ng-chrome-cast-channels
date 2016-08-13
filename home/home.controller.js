@@ -52,7 +52,7 @@ var app = angular.module('app')
                     //when you get success reset the advertisement
                     $scope.advertisements = $scope.advert.defaultads;
                     });
-                    console.log($scope.advert);
+                  
                  
             $scope.advertisements =[];
             $scope.advertisement={};
@@ -159,7 +159,7 @@ var app = angular.module('app')
     }
       post_log_on_slack(logtobeposted)
           if (window.castReceiverManager.getSenders().length == 0&&event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
-        setTimeout(window.close,5000);
+        //setTimeout(window.close,5000);
           }
             }
 
@@ -304,9 +304,22 @@ var app = angular.module('app')
             function showAdv(){
                 $scope.advertisement={};
                 $scope.advertisement= $scope.advertisements[currentIndexForAd];
-                $scope.docVisible=false;
-                $scope.flashVisible=false;
-                $scope.advVisible=true;
+                var curr_date = new Date();
+                var curr_time_millis = curr_date.getTime(); 
+                if((curr_time_millis-$scope.advertisement.lastDisplayed)<($scope.advertisement.adIntervel*1000)){
+                    nextAd();
+                    showAdv();
+                    
+                }else{
+
+                    $scope.docVisible=false;
+                    $scope.flashVisible=false;
+                    $scope.advVisible=true;
+                    $scope.advertisements[currentIndexForAd].lastDisplayed=curr_time_millis
+                }
+
+
+                
             }
             
 
