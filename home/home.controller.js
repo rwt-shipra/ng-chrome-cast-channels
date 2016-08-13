@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('app')
+var app = angular.module('app',['angularUtils.directives.dirPagination'])
     .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http','$timeout',
         function(CastReceiver, UserService, AuthenticationService, $rootScope, $scope,$http, $timeout) {
             /*$scope.advertisements = [{
