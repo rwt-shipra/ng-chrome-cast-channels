@@ -41,10 +41,7 @@ var app = angular.module('app')
                   }
 
             ];
-
-               
-
-*/          
+          */          
                      $scope.advert = [];
                  $http.get('defaultconfig.js').success(function(data) {
                     $scope.advert = data;
