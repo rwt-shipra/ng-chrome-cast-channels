@@ -47,6 +47,7 @@ var app = angular.module('app')
           */         
 //chalao local pey li ab chal jayega
                 $scope.advert = [];
+                $scope.advertisements =[];
                  $http.get('../defaultconfig.json').success(function(data) {
                     $scope.advert = data;
                     //when you get success reset the advertisement
@@ -54,7 +55,7 @@ var app = angular.module('app')
                     });
                   
                  
-            $scope.advertisements =[];
+            
             $scope.advertisement={};
             $scope.doctors = [];
             $scope.doctor={};
@@ -308,17 +309,19 @@ var app = angular.module('app')
                 var curr_time_millis = curr_date.getTime(); 
                 console.log("showing advertisement"+JSON.stringify($scope.advertisement));
                 console.log("las dispayed was"+$scope.advertisement.lastDisplayed);
-                // if((curr_time_millis-$scope.advertisement.lastDisplayed)<($scope.advertisement.adIntervel*1000)){
-                //     nextAd();
-                //     showAdv();
+                 if((curr_time_millis-$scope.advertisement.lastDisplayed)<($scope.advertisement.adIntervel*1000)){
+                     nextAd();
+                  showAdv();
                     
-                // }else{
+                }
+                else
+                {
 
                     $scope.docVisible=false;
                     $scope.flashVisible=false;
                     $scope.advVisible=true;
-                    //$scope.advertisements[currentIndexForAd].lastDisplayed=curr_time_millis
-                //}
+                    $scope.advertisements[currentIndexForAd].lastDisplayed=curr_time_millis;
+                }
 
 
                 
