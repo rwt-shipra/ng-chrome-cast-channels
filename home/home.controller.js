@@ -52,7 +52,7 @@ var app = angular.module('app')
 
                  
                      $scope.advertisements =[];
-            $scope.advertisements = $scope.advert.default_config.defaultads;
+            $scope.advertisements = $scope.advert.defaultads;
             $scope.advertisement={};
             $scope.doctors = [];
             $scope.doctor={};
