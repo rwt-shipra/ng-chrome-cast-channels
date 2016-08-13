@@ -41,15 +41,18 @@ var app = angular.module('app')
                   }
 
             ];
+            $http.get('phones/phones.json').success(function(data) {
+   $scope.phones = data;
+});
           */          
                      $scope.advert = [];
-                 $http.get('defaultconfig.js').success(function(data) {
+                 $http.get('/defaultconfig.json').success(function(data) {
                     $scope.advert = data;
                     });
 
                  
                      $scope.advertisements =[];
-            $scope.advertisements = $scope.advert.defaultads;
+            $scope.advertisements = $scope.advert.default_config.defaultads[];
             $scope.advertisement={};
             $scope.doctors = [];
             $scope.doctor={};
