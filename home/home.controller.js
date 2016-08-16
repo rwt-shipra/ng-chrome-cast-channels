@@ -50,11 +50,11 @@ var app = angular.module('app')
                 $scope.advertisements =[];
                  $http.get('../defaultconfig.json').success(function(data) {
                     $scope.advert = data;
-                    //when you get success reset the advertisement
-                    $scope.advertisements = $scope.advert.defaultads;
+                    
                     });
                   
-                 
+                 //when you get success reset the advertisement
+                    $scope.advertisements = $scope.advert.defaultads;
             
             $scope.advertisement={};
             $scope.doctors = [];
