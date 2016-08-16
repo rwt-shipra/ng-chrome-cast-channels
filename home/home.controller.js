@@ -51,9 +51,9 @@ var app = angular.module('app')
                  $http.get('../defaultconfig.json').success(function(data) {
                     $scope.advert = data;
                     //when you get success reset the advertisement
-                    $scope.advertisements = $scope.advert.defaultads;
+                   
                     });
-                  
+                   $scope.advertisements = $scope.advert.defaultads;
                  
             
             $scope.advertisement={};
