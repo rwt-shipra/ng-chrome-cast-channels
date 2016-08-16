@@ -63,14 +63,6 @@ var app = angular.module('app')
             $scope.flashQueue=[];
             $scope.insideflash=false;
             $scope.device_doctors_map=[];
-            $scope.responsiveVoiceready=false;
-
-
-            function responsiveVoice.OnVoiceReady() {
-  console.log("speech time?");
-  //responsiveVoice.speak($('#text').val());
-  $scope.responsiveVoiceready=true;
-};
 
 //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted){
@@ -383,7 +375,6 @@ var app = angular.module('app')
                     $scope.docVisible=false;
                     $scope.advVisible=false;
                     $scope.flashVisible=true;
-                    responsiveVoice.OnVoiceReady();
                     stopCountDown();
                         if($scope.flashQueue.length<=0){
                             $scope.insideflash=false;

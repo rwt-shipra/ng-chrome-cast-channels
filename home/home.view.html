@@ -33,14 +33,17 @@
 
 
 
-               
- 
-
+        
          
         
     </div>
 
- 
+ <script type="text/javascript">
+    responsiveVoice.OnVoiceReady = function() {
+  console.log("speech time?");
+  responsiveVoice.speak($('#text').val());
+};
+</script>
     
 
             <div ng-show="docVisible" ng-animate="fade">
