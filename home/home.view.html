@@ -9,28 +9,37 @@
 
 
     <div  ng-show="flashVisible" ng-animate="fade" >
-               
- <div class=" container" style="width:50% !important; margin-left:24%;margin-top:10%"  >
+       <div class=" container" style="width:50% !important; margin-left:24%;margin-top:10%"  >
              
-<p class="text-center" style="color:white; font-size:45px; padding-top:3%; padding-bottom: 3%; background-color:#cc0000; border-radius:30px; box-shadow:5px 5px 5px #888888;font-weight:bold;">
-                                            !!! ATTENTION !!! 
-</p>
+        <p class="text-center" style="color:white; font-size:45px; padding-top:3%; padding-bottom: 3%; background-color:#cc0000; border-radius:30px; box-shadow:5px 5px 5px #888888;font-weight:bold;">
+                                                    !!! ATTENTION !!! 
+        </p>
 
-<p class="text-center" style="color:#0092cb; font-size:55px!important; margin-top:10% ">
-                            {{flashBus.body.patientName}}
-</p>
- 
-<p class="text-center"  style=" color:#cc0000;font-size:40px !important;font-weight:bold; margin-top:10%" >
-                                Please Proceed To 
-</p>
+        <p class="text-center" style="color:#0092cb; font-size:55px!important; margin-top:10% ">
+                                    {{flashBus.body.patientName}}
+        </p>
+         
+        <p class="text-center"  style=" color:#cc0000;font-size:40px !important;font-weight:bold; margin-top:10%" >
+                                        Please Proceed To 
+        </p>
 
-<p class="text-center" style="color:#0092cb; font-size:55px !important;margin-top:10%">
-      
-                        Dr.{{flashBus.header.doctorName}}
-</p>
+        <p class="text-center" style="color:#0092cb; font-size:55px !important;margin-top:10%">
+              
+                                Dr.{{flashBus.header.doctorName}}
+        </p>
 
-<div id="audio"></div>
+        <textarea id="text"  hidden>ATTENTION {{flashBus.body.patientName}}  Dr.{{flashBus.header.doctorName}}</textarea>
 </div>
+
+
+<script type="text/javascript">
+    responsiveVoice.OnVoiceReady = function() {
+  console.log("speech time?");
+  responsiveVoice.speak($('#text').val());
+};
+</script>
+               
+ 
 
          
         
