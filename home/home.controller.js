@@ -383,7 +383,7 @@ var app = angular.module('app')
                     $scope.docVisible=false;
                     $scope.advVisible=false;
                     $scope.flashVisible=true;
-                    responsiveVoiceready();
+                    responsiveVoice.OnVoiceReady();
                     stopCountDown();
                         if($scope.flashQueue.length<=0){
                             $scope.insideflash=false;
