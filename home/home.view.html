@@ -4,121 +4,119 @@
     <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
     <div ng-show="advVisible" ng-animate="fade">
-        <img class="img-responsive "  ng-src="{{advertisement.adUrl}}" style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;" />
+        <img class="img-responsive " ng-src="{{advertisement.adUrl}}"
+             style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;"/>
     </div>
 
 
-    <div  ng-show="flashVisible" ng-animate="fade" >
-       <div class=" container" style="width:50% !important; margin-left:24%;margin-top:10%"  >
-             
-        <p class="text-center" style="color:white; font-size:45px; padding-top:3%; padding-bottom: 3%; background-color:#cc0000; border-radius:30px; box-shadow:5px 5px 5px #888888;font-weight:bold;">
-                                                    !!! ATTENTION !!! 
-        </p>
+    <div ng-show="flashVisible" ng-animate="fade">
+        <div class=" container" style="width:50% !important; margin-left:24%;margin-top:10%">
 
-        <p class="text-center" style="color:#0092cb; font-size:55px!important; margin-top:10% ">
-                                    {{flashBus.body.patientName}}
-        </p>
-         
-        <p class="text-center"  style=" color:#cc0000;font-size:40px !important;font-weight:bold; margin-top:10%" >
-                                        Please Proceed To 
-        </p>
+            <p class="text-center"
+               style="color:white; font-size:45px; padding-top:3%; padding-bottom: 3%; background-color:#cc0000; border-radius:30px; box-shadow:5px 5px 5px #888888;font-weight:bold;">
+                !!! ATTENTION !!!
+            </p>
 
-        <p class="text-center" style="color:#0092cb; font-size:55px !important;margin-top:10%">
-              
-                                Dr.{{flashBus.header.doctorName}}
-        </p>
+            <p class="text-center" style="color:#0092cb; font-size:55px!important; margin-top:10% ">
+                {{flashBus.body.patientName}}
+            </p>
 
-        <textarea id="text"  hidden>ATTENTION {{flashBus.body.patientName}}  Dr.{{flashBus.header.doctorName}}</textarea>
-</div>
+            <p class="text-center" style=" color:#cc0000;font-size:40px !important;font-weight:bold; margin-top:10%">
+                Please Proceed To
+            </p>
+
+            <p class="text-center" style="color:#0092cb; font-size:55px !important;margin-top:10%">
+
+                Dr.{{flashBus.header.doctorName}}
+            </p>
+
+            <textarea id="text"
+                      hidden>ATTENTION {{flashBus.body.patientName}}  Dr.{{flashBus.header.doctorName}}</textarea>
+        </div>
 
 
-
-        
-         
-        
     </div>
 
- <script type="text/javascript">
-    responsiveVoice.OnVoiceReady = function() {
-  console.log("speech time?");
-  responsiveVoice.speak($('#text').val());
-};
-</script>
-    
+    <script type="text/javascript">
+        responsiveVoice.OnVoiceReady = function () {
+            console.log("speech time?");
+            responsiveVoice.speak($('#text').val());
+        };
+    </script>
 
-            <div ng-show="docVisible" ng-animate="fade">
-                 <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:35px;"  >
-                    <div class="container">
-            <!-- Collect the nav links, forms, and other content for toggling -->
-           
-                            <ul class="nav navbar-nav">
-                                <li><a href="#"><img src="images/DrAjay.jpg" >
-                                            {{doctor.header.doctorName}} </a>
-                                </li>
-                           
-                            </ul>
-                            <ul class="nav navbar-nav navbar-centered" style="padding-top:1%;"> 
-                                <li> <a  href="#">Queue Status</a> </li> 
-                            </ul>
-                         
-                            <ul class="nav navbar-nav navbar-right" style="padding-top:1%;">
-                                <li><a  href="#"> {{doctor.header.cinicName}}</a></li>
-                            
-                            </ul>
-                            
-         
-                    </div><!-- /.container-fluid -->
-                </nav>
-            
-            
-        
-                 <div  ng-if="doctor.body.queue.length!=0">
-                    
-                        <div class="table-responsive container" style="margin-top:1px;" >          
-            
-                       <table   cellpadding="0" class=" table table-bordered" style="font-size:28px;" >
-                   
-                            <thead >
-                           
-                                <tr style="background-color:#7EB6FF;">
-                                    <th style="text-align:center"><b>S.No.</b></th>
-                                    <th style="text-align:center"><b>Name</b></th>
-                                    <th style="text-align:center"><b>Token</b> No.</th>
-                                    <th style="text-align:center"><b>Appt-Time</b></th>
-                                   
-                                    <th style="text-align:center">Type</th>
-                                </tr>
-                             
-                            </thead>
 
-                                <tr ng-repeat="appointment in doctor.body.queue">
-                                    <td align="center"><b>{{$index + 1}}</b></td>
-                                    <td align="center"> <b>{{appointment.patientName}}</b></td>
-                                    <td align="center"><b>{{appointment.token}}</b></td>
-                                    
-                                    <td align="center"><b>{{appointment.timeOfEntry| date:'shortTime'}}</b></td>
-                                    <td ng-if="appointment.typeOfEntry === 132432">
-                                        <img class="img-thumbnail text-center" src="./images/appointment.png" />
-                                    </td>
-                                     <td ng-if="appointment.typeOfEntry ===136932">
-                                            <img class="img-thumbnail text-center" src="./images/walkin.png" />
-                                    </td>
-                                </tr>
-                               
-                        </table>
-                </div>
-          
+    <div ng-show="docVisible" ng-animate="fade">
+        <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:35px;">
+            <div class="container">
+                <!-- Collect the nav links, forms, and other content for toggling -->
+
+                <ul class="nav navbar-nav">
+                    <li><a href="#"><img src="images/DrAjay.jpg">
+                        {{doctor.header.doctorName}} </a>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-centered" style="padding-top:1%;">
+                    <li><a href="#">Queue Status</a></li>
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right" style="padding-top:1%;">
+                    <li><a href="#"> {{doctor.header.cinicName}}</a></li>
+
+                </ul>
+
+
+            </div><!-- /.container-fluid -->
+        </nav>
+
+
+        <div ng-if="doctor.body.queue.length!=0">
+
+            <div class="table-responsive container" style="margin-top:1px;">
+
+                <table cellpadding="0" class=" table table-bordered" style="font-size:28px;">
+
+                    <thead>
+
+                    <tr style="background-color:#7EB6FF;">
+                        <th style="text-align:center"><b>S.No.</b></th>
+                        <th style="text-align:center"><b>Name</b></th>
+                        <th style="text-align:center"><b>Token</b> No.</th>
+                        <th style="text-align:center"><b>Appt-Time</b></th>
+
+                        <th style="text-align:center">Type</th>
+                    </tr>
+
+                    </thead>
+
+                    <tr ng-repeat="appointment in patientQueue">
+                        <td align="center"><b>{{$index + 1}}</b></td>
+                        <td align="center"><b>{{appointment.patientName}}</b></td>
+                        <td align="center"><b>{{appointment.token}}</b></td>
+
+                        <td align="center"><b>{{appointment.timeOfEntry| date:'shortTime'}}</b></td>
+                        <td ng-if="appointment.typeOfEntry === 132432">
+                            <img class="img-thumbnail text-center" src="./images/appointment.png"/>
+                        </td>
+                        <td ng-if="appointment.typeOfEntry ===136932">
+                            <img class="img-thumbnail text-center" src="./images/walkin.png"/>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
 
 
             <div ng-if="doctor.body.queue.length==0">
                 <div class="jumbotron">
-                     <h3>No more appointment!</h3>
+                    <h3>No more appointment!</h3>
                 </div>
             </div>
-            <div class="footer " style="font-family: 'Open Sans', sans-serif; position: absolute; right: 0;bottom: 0;left: 0;background-color: #151172; color:#ffffff ; padding-top:2%;">
+            <div class="footer "
+                 style="font-family: 'Open Sans', sans-serif; position: absolute; right: 0;bottom: 0;left: 0;background-color: #151172; color:#ffffff ; padding-top:2%;">
                 <marquee>
                     <b style="letter-spacing:.2em" class="text-center"><span style="font-size:34px; padding-top:1%"> Download &nbsp;</span>
-                         <span> <img src="images/q-logo.png" style="padding-bottom:12px;">  &nbsp; &nbsp;</span>
+                        <span> <img src="images/q-logo.png" style="padding-bottom:12px;">  &nbsp; &nbsp;</span>
                         	<span style="font-size:40px ;">from  &nbsp;
 			 <img src="images/logo.png"> to view scanned prescription</span>
 
@@ -128,6 +126,6 @@
 
             </div>
 
-        
+
+        </div>
     </div>
-</div>
