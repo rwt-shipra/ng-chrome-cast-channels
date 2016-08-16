@@ -298,6 +298,17 @@ var app = angular.module('app')
             function showDoc(){
                 $scope.doctor={};
                 $scope.doctor= $scope.doctors[currentIndexForDoc];
+
+
+                ////////////////Doc Splice Function ////////////////////////////////
+
+                if($scope.doctor.body.queue.length <= 7)
+                {
+                  $scope.doctor.body.queue.Splice(0,7);
+                    
+                }
+
+
                 $scope.advVisible=false;
                 $scope.flashVisible=false;  
                 $scope.docVisible=true;
@@ -420,7 +431,12 @@ var app = angular.module('app')
                         showAdv();
                     }else if($scope.counter===10){
                         nextDoc(); 
+
+
                         showDoc();
+
+
+
                     }else if($scope.counter===30){
                         $scope.counter=-1;
                     }

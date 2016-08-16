@@ -84,7 +84,7 @@
                              
                             </thead>
 
-                                <tr ng-repeat="appointment in doctor.body.queue|itemsPerPage:5">
+                                <tr ng-repeat="appointment in doctor.body.queue">
                                     <td align="center"><b>{{$index + 1}}</b></td>
                                     <td align="center"> <b>{{appointment.patientName}}</b></td>
                                     <td align="center"><b>{{appointment.token}}</b></td>
