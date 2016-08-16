@@ -299,20 +299,21 @@ var app = angular.module('app')
                 $scope.doctor={};
                 $scope.doctor= $scope.doctors[currentIndexForDoc];
 
-
-                ////////////////Doc Splice Function ////////////////////////////////
-
-                if($scope.doctor.body.queue.length <= 7)
-                {
-                  $scope.doctor.body.queue.Splice(0,7);
-                    
-                }
-
-
+                 ////////////////Doc Splice Function ////////////////////////////////
+                Array.prototype.insert = function (index, item) {
+                this.splice(index, 0, item);
+            };
+            
                 $scope.advVisible=false;
                 $scope.flashVisible=false;  
                 $scope.docVisible=true;
             }
+
+                 
+           
+
+
+
             function showAdv(){
                 $scope.advertisement={};
                 $scope.advertisement= $scope.advertisements[currentIndexForAd];
@@ -429,6 +430,7 @@ var app = angular.module('app')
                     if($scope.counter===0){
                         nextAd(); 
                         showAdv();
+                        
                     }else if($scope.counter===10){
                         nextDoc(); 
 
