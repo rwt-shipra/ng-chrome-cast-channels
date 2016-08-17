@@ -266,11 +266,11 @@ var app = angular.module('app')
 
                 if ($scope.doctor.body.queue && $scope.doctor.body.queue.length > 0) {
                     var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
-                    appointmentLeft = diff > 7 ? 7 : $scope.doctor.body.queue.length;
+                    appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
                     $scope.patientQueue = [];
                     $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, appointmentLeft));
                     prevIndex = appointmentLeft;
-                    if (diff > 7)
+                    if (diff >= 7)
                         showDocExtra();
                 }
 
@@ -335,55 +335,49 @@ var app = angular.module('app')
             }
 
 
-
-            function showFlash(flashindex)
-                {
+            function showFlash(flashindex) {
 
 
-                    $scope.insideflash=true;
-                    $scope.docVisible=false;
-                    $scope.advVisible=false;
-                    $scope.flashVisible=true;
-                    stopCountDown();
-                        if($scope.flashQueue.length<=0){
-                            $scope.insideflash=false;
-                             $timeout(function(){
-                                if($scope.counter<=10)
-                                    showAdv();
+                $scope.insideflash = true;
+                $scope.docVisible = false;
+                $scope.advVisible = false;
+                $scope.flashVisible = true;
+                stopCountDown();
+                if ($scope.flashQueue.length <= 0) {
+                    $scope.insideflash = false;
+                    $timeout(function () {
+                        if ($scope.counter <= 10)
+                            showAdv();
 
-                                else if($scope.counter<=30){
-                                    showDoc();
-                                    }
-                                    countDown();
-                                    },0);
-                            //come out of breaking news
+                        else if ($scope.counter <= 30) {
+                            showDoc();
                         }
-                        else if(flashindex>=$scope.flashQueue.length){
-                            $scope.flashQueue=[];
-                            $scope.insideflash=false;
-                            $timeout(function(){
-                                if($scope.counter<=10)
-                                    showAdv();
+                        countDown();
+                    }, 0);
+                    //come out of breaking news
+                }
+                else if (flashindex >= $scope.flashQueue.length) {
+                    $scope.flashQueue = [];
+                    $scope.insideflash = false;
+                    $timeout(function () {
+                        if ($scope.counter <= 10)
+                            showAdv();
 
-                                else if($scope.counter<=30){
-                                    showDoc();
-                                    }
-                                    countDown();
-                                    },0);
-                            //come out of breaking news
+                        else if ($scope.counter <= 30) {
+                            showDoc();
                         }
-                        else{
-                            $scope.flashBus=$scope.flashQueue[flashindex];
-                            $timeout(function(){
-                                    showFlash(++flashindex)
-                                    },6000);
-                        }
+                        countDown();
+                    }, 0);
+                    //come out of breaking news
+                }
+                else {
+                    $scope.flashBus = $scope.flashQueue[flashindex];
+                    $timeout(function () {
+                        showFlash(++flashindex)
+                    }, 6000);
+                }
 
-                    }
-
-
-
-
+            }
 
 
             // var TIMER_ADV = 10;
