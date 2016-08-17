@@ -264,11 +264,11 @@ var app = angular.module('app')
                 var startIndex = prevIndex;
                 var appointmentLeft = 0;
 
-                if (doctor.body.queue && doctor.body.queue.length > 0) {
+                if ( $scope.doctor.body.queue &&  $scope.doctor.body.queue.length > 0) {
                     if (prevIndex === 0) {
-                        var diff = doctor.body.queue.length - prevIndex + 1;
+                        var diff =  $scope.doctor.body.queue.length - prevIndex + 1;
                         appointmentLeft = diff > 7 ? 7 : diff;
-                        $scope.patientQueue = doctor.body.queue.slice(startIndex, appointmentLeft);
+                        $scope.patientQueue =  $scope.doctor.body.queue.slice(startIndex, appointmentLeft);
                         prevIndex = appointmentLeft - 1;
                         if (diff > 7)
                             showDocExtra();
