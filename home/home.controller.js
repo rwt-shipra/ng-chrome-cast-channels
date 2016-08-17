@@ -253,22 +253,30 @@ var app = angular.module('app')
 
             $scope.patientQueue = [];
 
+            var prevIndex = 0;
+
             function showDoc() {
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
 
                 ////////////////Doc Splice Function ////////////////////////////////
 
-                var startIndex = $scope.patientQueue.length == 0 ? 0 : $scope.patientQueue.length - 1;
-                var numOfAppointment = 7;
-                $scope.patientQueue = doctor.body.queue.slice(startIndex, numOfAppointment);
+                var startIndex = prevIndex;
+                var appointmentLeft = 0;
 
+                if (doctor.body.queue && doctor.body.queue.length > 0) {
+                    if (prevIndex === 0) {
+                        var diff = doctor.body.queue.length - prevIndex + 1;
+                        appointmentLeft = diff > 7 ? 7 : diff;
+                        $scope.patientQueue = doctor.body.queue.slice(startIndex, appointmentLeft);
+                        prevIndex = appointmentLeft - 1;
+                        if (diff > 7)
+                            showDocExtra();
+                    } else {
+                        if (prevIndex >= 7)
+                            showDocExtra()
+                    }
 
-                if (doctor.body.queue.length > numOfAppointment) {
-                    $timeout(function () {
-                        $scope.counter = 20;
-                        showDoc();
-                    }, 18000);
                 }
 
                 $scope.advVisible = false;
@@ -276,6 +284,21 @@ var app = angular.module('app')
                 $scope.docVisible = true;
             }
 
+            var extra = 0;
+            var extraTimeout;
+
+            function showDocExtra() {
+                extraTimeout = $timeout(function () {
+                    if (extra === 18) {
+                        extra = 0;
+                        $scope.counter = 20;
+                        showDoc();
+                    } else {
+                        extra = extra + 1;
+                        showDocExtra();
+                    }
+                }, 1000);
+            }
 
             function showAdv() {
                 $scope.advertisement = {};
@@ -366,6 +389,7 @@ var app = angular.module('app')
 
             function stopCountDown() {
                 $timeout.cancel(stopped);
+                $timeout.cancel(extraTimeout);
             }
 
             function countDown() {
@@ -374,6 +398,7 @@ var app = angular.module('app')
                         nextAd();
                         showAdv();
                     } else if ($scope.counter === 10) {
+                        prevIndex = 0;
                         nextDoc();
                         showDoc();
                     } else if ($scope.counter === 30) {
