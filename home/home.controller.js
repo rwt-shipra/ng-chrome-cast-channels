@@ -335,45 +335,55 @@ var app = angular.module('app')
             }
 
 
-            function showFlash(flashindex) {
-                $scope.insideflash = true;
-                $scope.docVisible = false;
-                $scope.advVisible = false;
-                $scope.flashVisible = true;
-                stopCountDown();
+
+            function showFlash(flashindex)
+                {
 
 
-                if ($scope.flashQueue.length <= 0) {
-                    $scope.insideflash = false;
+                    $scope.insideflash=true;
+                    $scope.docVisible=false;
+                    $scope.advVisible=false;
+                    $scope.flashVisible=true;
+                    stopCountDown();
+                        if($scope.flashQueue.length<=0){
+                            $scope.insideflash=false;
+                             $timeout(function(){
+                                if($scope.counter<=10)
+                                    showAdv();
 
-                    if ($scope.counter <= 10)
-                        showAdv();
-                    else if ($scope.counter <= 30) {
-                        showDoc();
+                                else if($scope.counter<=30){
+                                    showDoc();
+                                    }
+                                    countDown();
+                                    },0);
+                            //come out of breaking news
+                        }
+                        else if(flashindex>=$scope.flashQueue.length){
+                            $scope.flashQueue=[];
+                            $scope.insideflash=false;
+                            $timeout(function(){
+                                if($scope.counter<=10)
+                                    showAdv();
+
+                                else if($scope.counter<=30){
+                                    showDoc();
+                                    }
+                                    countDown();
+                                    },0);
+                            //come out of breaking news
+                        }
+                        else{
+                            $scope.flashBus=$scope.flashQueue[flashindex];
+                            $timeout(function(){
+                                    showFlash(++flashindex)
+                                    },6000);
+                        }
+
                     }
-                    countDown();
-                    //come out of breaking news
-                }
-                else if (flashindex >= $scope.flashQueue.length) {
-                    $scope.flashQueue = [];
-                    $scope.insideflash = false;
-                    if ($scope.counter <= 10)
-                        showAdv();
-                    else if ($scope.counter <= 30) {
-                        showDoc();
-                    }
-                    countDown();
 
-                    //come out of breaking news
-                }
-                else {
-                    $scope.flashBus = $scope.flashQueue[flashindex];
-                    $timeout(function () {
-                        showFlash(++flashindex)
-                    }, 6000);
-                }
 
-            }
+
+
 
 
             // var TIMER_ADV = 10;
