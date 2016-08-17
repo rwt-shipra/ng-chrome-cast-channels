@@ -264,19 +264,14 @@ var app = angular.module('app')
                 var startIndex = prevIndex;
                 var appointmentLeft = 0;
 
-                if ( $scope.doctor.body.queue &&  $scope.doctor.body.queue.length > 0) {
-                    if (prevIndex === 0) {
-                        var diff =  $scope.doctor.body.queue.length - prevIndex + 1;
-                        appointmentLeft = diff > 7 ? 7 : diff;
-                        $scope.patientQueue =  $scope.doctor.body.queue.slice(startIndex, appointmentLeft);
-                        prevIndex = appointmentLeft - 1;
-                        if (diff > 7)
-                            showDocExtra();
-                    } else {
-                        if (prevIndex >= 7)
-                            showDocExtra()
-                    }
-
+                if ($scope.doctor.body.queue && $scope.doctor.body.queue.length > 0) {
+                    var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
+                    appointmentLeft = diff > 7 ? 7 : $scope.doctor.body.queue.length;
+                    $scope.patientQueue = [];
+                    $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, appointmentLeft));
+                    prevIndex = appointmentLeft;
+                    if (diff > 7)
+                        showDocExtra();
                 }
 
                 $scope.advVisible = false;
