@@ -6,10 +6,7 @@ var app = angular.module('app')
             $scope.advertisements = [];
             $scope.advertisement = {};
 
-            $http.get('../defaultconfig.json').success(function (data) {
-                //when you get success reset the advertisement
-                $scope.advertisements = data.defaultads;
-            });
+
 
             $scope.doctors = [];
             $scope.doctor = {};
@@ -408,10 +405,15 @@ var app = angular.module('app')
                 }, 1000);
             }
 
-            nextAd();
-            showAdv();
-            $scope.counter += 1;
-            countDown();
+
+            $http.get('../defaultconfig.json').success(function (data) {
+                //when you get success reset the advertisement
+                $scope.advertisements = data.defaultads;
+                nextAd();
+                showAdv();
+                $scope.counter += 1;
+                countDown();
+            });
 
         }
     ])
