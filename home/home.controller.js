@@ -253,6 +253,8 @@ var app = angular.module('app')
             var prevIndex = 0;
 
             function showDoc() {
+                $scope.advertisements[currentIndexForAd].show=false;
+
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
 
@@ -293,8 +295,8 @@ var app = angular.module('app')
             }
 
             function showAdv() {
-                $scope.advertisement = {};
-                $scope.advertisement = $scope.advertisements[currentIndexForAd];
+                $scope.advertisements[currentIndexForAd].show=true;
+
                 var curr_date = new Date();
                 var curr_time_millis = curr_date.getTime();
                 if ($scope.advertisement === undefined) {
@@ -409,6 +411,11 @@ var app = angular.module('app')
             $http.get('../defaultconfig.json').success(function (data) {
                 //when you get success reset the advertisement
                 $scope.advertisements = data.defaultads;
+                for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
+                    $scope.advertisements[i].show=false;
+                    if(i===0)
+                        $scope.advertisements[i].show=true;
+                }
                 nextAd();
                 showAdv();
                 $scope.counter += 1;
