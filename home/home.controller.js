@@ -361,7 +361,7 @@ var app = angular.module('app')
                         else if ($scope.counter <= 30) {
                             if($scope.is_doctor_connected==true && $scope.doctor.body.queue.length==0)
                             {
-                                $timeout(1000);
+                                $timeout(500);
                             }
                             else
                             {
