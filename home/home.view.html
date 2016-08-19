@@ -30,7 +30,7 @@
                 Dr.{{flashBus.header.doctorName}}
             </p>
             <p style="position:absolute">
-                <audio  autoplay loop><source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
+                <audio   loop><source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
                 </audio>
             </p>
             <!--<textarea id="text"
@@ -48,101 +48,102 @@
     </script>
 
 
-    <div ng-show="docVisible" ng-animate="fade">
-        <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:35px;">
-            <div class="container">
-                <!-- Collect the nav links, forms, and other content for toggling -->
+        <div ng-show="docVisible" ng-animate="fade">
+                <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:35px;">
+                <div class="container">
+                    <!-- Collect the nav links, forms, and other content for toggling -->
 
-                <ul class="nav navbar-nav">
-                    <li><a href="#"><img src="images/DrAjay.jpg">
-                        {{doctor.header.doctorName}} </a>
-                    </li>
+                    <ul class="nav navbar-nav">
+                        <li><a href="#"><img src="images/DrAjay.jpg">
+                            {{doctor.header.doctorName}} </a>
+                        </li>
 
-                </ul>
-                <ul class="nav navbar-nav navbar-centered" style="padding-top:1%;">
-                    <li><a href="#">Queue Status</a></li>
-                </ul>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-centered" style="padding-top:1%;">
+                        <li><a href="#">Queue Status</a></li>
+                    </ul>
 
-                <ul class="nav navbar-nav navbar-right" style="padding-top:1%;">
-
-
-                    <li ng-if="is_doctor_connected==true"><a href="#"> {{doctor.header.cinicName}}</a></li>
-
-                </ul>
-
-                <ul class="nav navbar-nav navbar-right">
-                    <li  ng-if="is_doctor_connected==false">
-
-                        <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
-                        <p style="position:absolute;">
-                            <audio autoplay loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
-                            </audio>
-                        </p>
-                    </li>
-                </ul>
-
-            </div><!-- /.container-fluid -->
-        </nav>
+                    <ul class="nav navbar-nav navbar-right" style="padding-top:1%;">
 
 
-        <div ng-if="doctor.body.queue.length!=0">
+                        <li ng-if="is_doctor_connected==true"><a href="#"> {{doctor.header.cinicName}}</a></li>
 
-            <div class="table-responsive container" style="margin-top:1px;">
+                    </ul>
 
-                <table cellpadding="0" class=" table table-bordered" style="font-size:28px;">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li  ng-if="is_doctor_connected==false">
 
-                    <thead>
+                            <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
+                            <p style="position:absolute;">
+                                <audio loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+                                </audio>
+                            </p>
+                        </li>
+                    </ul>
 
-                    <tr style="background-color:#7EB6FF;">
-                        <th style="text-align:center"><b>S.No.</b></th>
-                        <th style="text-align:center"><b>Name</b></th>
-                        <th style="text-align:center"><b>Token</b> No.</th>
-                        <th style="text-align:center"><b>Appt-Time</b></th>
+                </div><!-- /.container-fluid -->
+            </nav>
 
-                        <th style="text-align:center">Type</th>
-                    </tr>
 
-                    </thead>
+                <div ng-if="doctor.body.queue.length!=0">
 
-                    <tr ng-repeat="appointment in patientQueue">
-                        <td align="center"><b>{{$index + 1}}</b></td>
-                        <td align="center"><b>{{appointment.patientName}}</b></td>
-                        <td align="center"><b>{{appointment.token}}</b></td>
+                <div class="table-responsive container" style="margin-top:1px;">
 
-                        <td align="center"><b>{{appointment.timeOfEntry| date:'shortTime'}}</b></td>
-                        <td ng-if="appointment.typeOfEntry === 132432">
-                            <img class="img-thumbnail text-center" src="./images/appointment.png"/>
-                        </td>
-                        <td ng-if="appointment.typeOfEntry ===136932">
-                            <img class="img-thumbnail text-center" src="./images/walkin.png"/>
-                        </td>
-                    </tr>
+                    <table cellpadding="0" class=" table table-bordered" style="font-size:28px;">
 
-                </table>
-            </div>
-            <div ng-if="(appointment in patientQueue.length==0)&&(is_doctor_connected==true) ">
+                        <thead>
 
-                <div class="jumbotron">
-                    <h3>No more appointment!</h3>
+                        <tr style="background-color:#7EB6FF;">
+                            <th style="text-align:center"><b>S.No.</b></th>
+                            <th style="text-align:center"><b>Name</b></th>
+                            <th style="text-align:center"><b>Token</b> No.</th>
+                            <th style="text-align:center"><b>Appt-Time</b></th>
+
+                            <th style="text-align:center">Type</th>
+                        </tr>
+
+                        </thead>
+
+                        <tr ng-repeat="appointment in patientQueue">
+                            <td align="center"><b>{{$index + 1}}</b></td>
+                            <td align="center"><b>{{appointment.patientName}}</b></td>
+                            <td align="center"><b>{{appointment.token}}</b></td>
+
+                            <td align="center"><b>{{appointment.timeOfEntry| date:'shortTime'}}</b></td>
+                            <td ng-if="appointment.typeOfEntry === 132432">
+                                <img class="img-thumbnail text-center" src="./images/appointment.png"/>
+                            </td>
+                            <td ng-if="appointment.typeOfEntry ===136932">
+                                <img class="img-thumbnail text-center" src="./images/walkin.png"/>
+                            </td>
+                        </tr>
+
+                    </table>
                 </div>
             </div>
+                <div ng-if="(patientQueue.length==0)&&(is_doctor_connected==true) ">
+
+                    <div class="jumbotron">
+                        <h3>No more appointment!</h3>
+                    </div>
+                </div>
 
 
 
-            <div class="footer "
-                 style="font-family: 'Open Sans', sans-serif; position: absolute; right: 0;bottom: 0;left: 0;background-color: #151172; color:#ffffff ; padding-top:2%;">
-                <marquee>
-                    <b style="letter-spacing:.2em" class="text-center"><span style="font-size:34px; padding-top:1%"> Download &nbsp;</span>
-                        <span> <img src="images/q-logo.png" style="padding-bottom:12px;">  &nbsp; &nbsp;</span>
-                        	<span style="font-size:40px ;">from  &nbsp;
-			 <img src="images/logo.png"> to view scanned prescription</span>
+                <div class="footer "
+                     style="font-family: 'Open Sans', sans-serif; position: absolute; right: 0;bottom: 0;left: 0;background-color: #151172; color:#ffffff ; padding-top:2%;">
+                    <marquee>
+                        <b style="letter-spacing:.2em" class="text-center"><span style="font-size:34px; padding-top:1%"> Download &nbsp;</span>
+                            <span> <img src="images/q-logo.png" style="padding-bottom:12px;">  &nbsp; &nbsp;</span>
+                                <span style="font-size:40px ;">from  &nbsp;
+                 <img src="images/logo.png"> to view scanned prescription</span>
 
-                    </b>
-                </marquee>
+                        </b>
+                    </marquee>
 
 
-            </div>
+                </div>
 
 
         </div>
-    </div>
+</div>
