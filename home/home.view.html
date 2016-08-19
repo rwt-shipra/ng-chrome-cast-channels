@@ -30,7 +30,7 @@
                 Dr.{{flashBus.header.doctorName}}
             </p>
             <p style="position:absolute">
-                <audio  style="visibility:hidden" controls  autoplay><source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
+                <audio  autoplay loop><source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
                 </audio>
             </p>
             <!--<textarea id="text"
@@ -75,7 +75,7 @@
 
                         <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
                         <p style="position:absolute;">
-                            <audio autoplay><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+                            <audio autoplay loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
                             </audio>
                         </p>
                     </li>
@@ -120,7 +120,7 @@
 
                 </table>
             </div>
-            <div ng-if="is_doctor_connected==true && doctor.body.queue.length==0 ">
+            <div ng-if="(doctor.body.queue.length==0 )&&(is_doctor_connected==true) ">
                 <div class="jumbotron">
                     <h3>No more appointment!</h3>
                 </div>
