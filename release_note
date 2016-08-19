@@ -1,22 +1,15 @@
 
-Release No/Name: release 1.0.1
+Release No/Name: release 1.0
 
 Release Description:
 
-Date Of Release: 05.08.2016
-
-
-System Requirement:
-	1. http server(e.g. Apache)
-
+Date Of Release: 19.08.2016
 Third party Frameworks -
 	1. aws-sdk-2.1.28.js
 	2. jquery
 	3. boostarp
 	4. angularJs
-
-Server Build compatibility- release_0.6.5
-
+	5.Deployed on Heroku
 Release Content -
  Included Features:
 
