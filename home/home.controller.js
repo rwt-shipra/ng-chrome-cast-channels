@@ -292,10 +292,7 @@ var app = angular.module('app')
                         $scope.counter = 20;
                         showDoc();
                     }
-                    else if($scope.is_doctor_connected==true && $scope.doctor.body.queue.length==0){
-                        extra = extra ;
-                        showDocExtra();
-                    }
+
                     else {
 
                         extra = extra + 1;
@@ -365,14 +362,14 @@ var app = angular.module('app')
                         if ($scope.counter <= 10)
                             showAdv();
 
+
+
                         else if ($scope.counter <= 30) {
 
                                 showDoc();
 
-
-
-
                         }
+                        
                         countDown();
                     }, 0);
                     //come out of breaking news
@@ -387,6 +384,7 @@ var app = angular.module('app')
                         else if ($scope.counter <= 30) {
                             showDoc();
                         }
+
                         countDown();
                     }, 0);
                     //come out of breaking news
