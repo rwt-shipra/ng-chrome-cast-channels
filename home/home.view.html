@@ -29,9 +29,12 @@
 
                 Dr.{{flashBus.header.doctorName}}
             </p>
-
-            <textarea id="text"
-                      hidden>ATTENTION {{flashBus.body.patientName}}  Dr.{{flashBus.header.doctorName}}</textarea>
+            <p style="position:absolute">
+                <audio  style="visibility:hidden" controls loop><source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
+                </audio>
+            </p>
+            <!--<textarea id="text"
+                      hidden>ATTENTION {{flashBus.body.patientName}}  Dr.{{flashBus.header.doctorName}}</textarea>-->
         </div>
 
 
@@ -67,9 +70,14 @@
 
                 </ul>
 
-                <ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li  ng-if="is_doctor_connected==false">
+
                         <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
+                        <p style="position:absolute">
+                            <audio id="disconnection_player" style="visibility:hidden" controls loop><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+                            </audio>
+                        </p>
                     </li>
                 </ul>
 
