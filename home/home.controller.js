@@ -291,10 +291,17 @@ var app = angular.module('app')
                         extra = 0;
                         $scope.counter = 20;
                         showDoc();
-                    } else {
+                    }
+                    else if($scope.is_doctor_connected==true && $scope.doctor.body.queue.length==0){
+                        extra = extra ;
+                        showDocExtra();
+                    }
+                    else {
+
                         extra = extra + 1;
                         showDocExtra();
                     }
+
                 }, 1000);
             }
 
@@ -359,14 +366,9 @@ var app = angular.module('app')
                             showAdv();
 
                         else if ($scope.counter <= 30) {
-                            if($scope.is_doctor_connected==true && $scope.doctor.body.queue.length==0)
-                            {
-                                $timeout(function(){},5000);
-                            }
-                            else
-                            {
+
                                 showDoc();
-                            }
+
 
 
 
