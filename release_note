@@ -1,0 +1,36 @@
+
+Release No/Name: release 1.0.1
+
+Release Description:
+
+Date Of Release: 05.08.2016
+
+
+System Requirement:
+	1. http server(e.g. Apache)
+
+Third party Frameworks -
+	1. aws-sdk-2.1.28.js
+	2. jquery
+	3. boostarp
+	4. angularJs
+
+Server Build compatibility- release_0.6.5
+
+Release Content -
+ Included Features:
+
+1 :Support multi Doctors and multi Device Both
+
+2 :Addvertisment Display According to their Time iNterval
+
+3 :Breaking News without audio .
+
+4 :Doctor Disable Feature when Doctor is Disconnected
+
+Known Issues :
+   1: Audio Is not properly working on Disconnetion nor  on breaking News
+
+   2:  Advertisement Stats Not iNcluded
+
+   3: when doc is connected and Doc Queue Is empty it is Show Nothing blank Doc queue .
