@@ -120,7 +120,8 @@
 
                 </table>
             </div>
-            <div ng-if="(doctor.body.queue.length==0 )&&(is_doctor_connected==true) ">
+            <div ng-if="(appointment in patientQueue.length==0)&&(is_doctor_connected==true) ">
+
                 <div class="jumbotron">
                     <h3>No more appointment!</h3>
                 </div>

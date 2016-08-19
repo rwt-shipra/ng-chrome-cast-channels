@@ -1,15 +1,14 @@
-
 Release No/Name: release 1.0
 
 Release Description:
 
 Date Of Release: 19.08.2016
 Third party Frameworks -
-	1. aws-sdk-2.1.28.js
+	1.Deployed on Heroku
 	2. jquery
 	3. boostarp
 	4. angularJs
-	5.Deployed on Heroku
+
 Release Content -
  Included Features:
 
@@ -22,7 +21,7 @@ Release Content -
 4 :Doctor Disable Feature when Doctor is Disconnected
 
 Known Issues :
-   1: Audio Is not properly working on Disconnetion nor  on breaking News
+   1: Audio Is not properly working on Disconnetion  of device nor  on breaking News
 
    2:  Advertisement Stats Not iNcluded
 
