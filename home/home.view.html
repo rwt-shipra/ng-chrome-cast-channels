@@ -121,10 +121,10 @@
                     </table>
                 </div>
             </div>
-            <div ng-if="is_doctor_connected==true" >
+            <div ng-if="is_doctor_connected==true && doctor.body.queue.length==0" >
 
-                <div class="jumbotron">
-                    <h3>No more appointment!</h3>
+                <div class="container">
+                    <h2 class="text-center">!!!!!!!!!!No more appointment!!!!!!!</h2>
                 </div>
             </div>
 

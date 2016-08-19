@@ -338,6 +338,9 @@ var app = angular.module('app')
             }
 
 
+
+
+
             function showFlash(flashindex) {
 
 
@@ -347,13 +350,26 @@ var app = angular.module('app')
                 $scope.flashVisible = true;
                 stopCountDown();
                 if ($scope.flashQueue.length <= 0) {
+
                     $scope.insideflash = false;
                     $timeout(function () {
+
+
                         if ($scope.counter <= 10)
                             showAdv();
 
                         else if ($scope.counter <= 30) {
-                            showDoc();
+                            if($scope.is_doctor_connected==true && $scope.doctor.body.queue.length==0)
+                            {
+                                $timeout(1000);
+                            }
+                            else
+                            {
+                                showDoc();
+                            }
+
+
+
                         }
                         countDown();
                     }, 0);
