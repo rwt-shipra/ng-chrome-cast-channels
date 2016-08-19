@@ -61,10 +61,17 @@
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right" style="padding-top:1%;">
-                    <li><a href="#"> {{doctor.header.cinicName}}</a></li>
+
+
+                    <li ng-if="doctor_connected"><a href="#"> {{doctor.header.cinicName}}</a></li>
 
                 </ul>
 
+                <ul>
+                    <li ng-if="doctor_disconnected">
+                        <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
+                    </li>
+                    </ul>
 
             </div><!-- /.container-fluid -->
         </nav>
@@ -107,11 +114,7 @@
             </div>
 
 
-            <div ng-if="doctor.body.queue.length==0">
-                <div class="jumbotron">
-                    <h3>No more appointment!</h3>
-                </div>
-            </div>
+
             <div class="footer "
                  style="font-family: 'Open Sans', sans-serif; position: absolute; right: 0;bottom: 0;left: 0;background-color: #151172; color:#ffffff ; padding-top:2%;">
                 <marquee>

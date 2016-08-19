@@ -16,6 +16,8 @@ var app = angular.module('app')
 
             $scope.insideflash = false;
             $scope.device_doctors_map = [];
+            $scope.doctor_disconnected={};
+            $scope.doctor_connected={};
 
             //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted) {
@@ -159,9 +161,11 @@ var app = angular.module('app')
                         break;
                     case 'connected':
                         sender_is_connected(data.data)
+                        $scope.doctor_connected=sender_is_connected(data.data)
                         break;
                     case 'disconnected':
                         sender_is_disconnected(data.data)
+                        $scope.doctor_disconnected=sender_is_disconnected(data.data);
                         break;
 
                 }

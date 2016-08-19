@@ -44,6 +44,19 @@
       "showticker": false
     },
     {
+      "adId": "MUSKAN_COKING_AD_1",
+      "adPriority": "LOW",
+      "adName": "MUSKAN_COKING_AD_1",
+      "adUrl": "images/cooking-ad.gif",
+      "adMimeType": "image/gif",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 3600,
+      "lastDisplayed": 0,
+      "showticker": false
+    }
+    ,
+    {
       "adId": "QORQL_AD_2",
       "adPriority": "LOW",
       "adName": "QORQL_AD_2",
