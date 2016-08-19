@@ -368,8 +368,9 @@ var app = angular.module('app')
 
                                 showDoc();
 
+                            console.log("You rae in doc")
                         }
-                        
+
                         countDown();
                     }, 0);
                     //come out of breaking news
