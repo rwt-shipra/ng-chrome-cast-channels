@@ -63,15 +63,15 @@
                 <ul class="nav navbar-nav navbar-right" style="padding-top:1%;">
 
 
-                    <li ng-if="doctor_connected"><a href="#"> {{doctor.header.cinicName}}</a></li>
+                    <li ng-if="is_doctor_connected==true"><a href="#"> {{doctor.header.cinicName}}</a></li>
 
                 </ul>
 
                 <ul>
-                    <li ng-if="doctor_disconnected">
+                    <li  ng-if="is_doctor_connected==false">
                         <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
                     </li>
-                    </ul>
+                </ul>
 
             </div><!-- /.container-fluid -->
         </nav>
