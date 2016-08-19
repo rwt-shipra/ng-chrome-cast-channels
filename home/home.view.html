@@ -75,7 +75,7 @@
 
                         <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
                         <p style="position:absolute">
-                            <audio id="disconnection_player" style="visibility:hidden" controls autoplay><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+                            <audio autoplay><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
                             </audio>
                         </p>
                     </li>
@@ -119,6 +119,11 @@
                     </tr>
 
                 </table>
+            </div>
+            <div ng-if="is_doctor_connected==true && doctor.body.queue.length==0 ">
+                <div class="jumbotron">
+                    <h3>No more appointment!</h3>
+                </div>
             </div>
 
 
