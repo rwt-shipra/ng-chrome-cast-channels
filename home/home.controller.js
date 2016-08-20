@@ -24,13 +24,13 @@ var app = angular.module('app')
             //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted) {
 
-                console.log("posting on slack: " + JSON.stringify(logtobeposted));
+                console.log("posting on slack: "+JSON.stringify(logtobeposted));
 
-                var slack_post_ip = "52.76.159.84";
-                var slack_post_port = "8091";
+                var slack_post_ip=$scope.defconfig.ip_for_logs;
+                var slack_post_port=$scope.defconfig.port_for_logs;
                 $.ajax({
                     type: 'POST',
-                    url: "http://" + slack_post_ip + ":" + slack_post_port + "/qlive/connection_test/v0.0.1/connect_disconnect",
+                    url: "http://"+slack_post_ip+":"+slack_post_port+"/qlive/connection_test/v0.0.1/connect_disconnect",
                     dataType: "json",
                     data: JSON.stringify(logtobeposted),
                     contentType: 'application/json; charset=UTF-8',
@@ -64,13 +64,15 @@ var app = angular.module('app')
                         }
                     }
                 }
-                var logtobeposted = {
-                    type: "connection",
-                    clinicName: clinic_name_for_log,
-                    doctorName: doctor_name_for_log,
-                    connectedSenders: number_of_connected_devices,
-                    event: event,
-                    channel: "#qlive_connection_test"
+                var logtobeposted={
+                    type:"connection",
+                    time:curr_time_millis,
+                    clinicName:clinic_name_for_log,
+                    doctorName:doctor_name_for_log,
+                    connectedSenders:number_of_connected_devices,
+                    event:event,
+                    channel:"#qlive_connection_test",
+                    collection:defaultconfig.connection_issue_collection
                 }
                 post_log_on_slack(logtobeposted)
             }
@@ -119,13 +121,15 @@ var app = angular.module('app')
                         }
                     }
                 //}
-                var logtobeposted = {
-                    type: "disconnect",
-                    clinicName: clinic_name_for_log,
-                    doctorName: doctor_name_for_log,
-                    connectedSenders: number_of_connected_devices,
-                    event: event,
-                    channel: "#qlive_connection_test"
+                var logtobeposted={
+                    type:"disconnect",
+                    time:curr_time_millis,
+                    clinicName:clinic_name_for_log,
+                    doctorName:doctor_name_for_log,
+                    connectedSenders:number_of_connected_devices,
+                    event:event,
+                    channel:"#qlive_connection_test",
+                    collection:defaultconfig.connection_issue_collection
                 }
                 post_log_on_slack(logtobeposted)
                 if (window.castReceiverManager.getSenders().length == 0 && event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
@@ -149,6 +153,30 @@ var app = angular.module('app')
                     $scope.device_doctors_map.push(device_with_doctor);
                 }
             }
+
+
+            function post_ad_display_count(ad_data){
+
+                var ad_post_ip=$scope.defconfig.ip_for_logs;
+                var ad_post_port=$scope.defconfig.defaultconfig.port_for_logs;
+                $.ajax({
+                    type: 'POST',
+                    url: "http://"+ad_post_ip+":"+ad_post_port+"/qlive/connection_test/v0.0.1/count_ad",
+                    dataType: "json",
+                    data: JSON.stringify(ad_data),
+                    contentType: 'application/json; charset=UTF-8',
+                    //crossDomain: true,
+                    success: function (msg) {
+
+                    },
+                    error: function (request, status, error) {
+
+                    }
+
+                });
+
+            }
+
 
 
             //Google cast callback
@@ -343,6 +371,7 @@ var app = angular.module('app')
                 if ((curr_time_millis - $scope.advertisement.lastDisplayed) < ($scope.advertisement.adIntervel * 1000)) {
                     nextAd();
                     showAdv();
+                    return;
                 }
                 else {
                     $scope.docVisible = false;
@@ -350,6 +379,63 @@ var app = angular.module('app')
                     $scope.advVisible = true;
                     $scope.advertisements[currentIndexForAd].lastDisplayed = curr_time_millis;
                 }
+                var clinicsforpost=[];
+                var doctorsforpost=[];
+                var patientsforpost=[];
+                for (var doc in $scope.doctors){
+                    var clinic_already_exists=false;
+                    for (var clinic in clinicsforpost){
+                        if(clinicsforpost[clinic].clinicID===response_updated[doc].header.clinicID){
+                            clinic_already_exists=true;
+                        }
+                    }
+                    if(!clinic_already_exists){
+
+                        var clinic_obj={
+                            clinicID:$scope.doctors[doc].header.clinicID,
+                            clinicName:$scope.doctors[doc].header.cinicName
+                        }
+                        clinicsforpost.push(clinic_obj)
+                    }
+                    var doctor_already_exists=false;
+                    for (var doctor in doctorsforpost){
+                        if(doctorsforpost[doctor].doctorID===$scope.doctors[doc].header.doctorID){
+                            doctor_already_exists=true;
+                        }
+                    }
+                    if(!doctor_already_exists){
+                        var doctor_obj={
+                            doctorID:$scope.doctors[doc].header.doctorID,
+                            doctorName:$scope.doctors[doc].header.doctorName
+                        }
+                        doctorsforpost.push(doctor_obj)
+                    }
+                    var queuedata=$scope.doctors[doc].body.queue;
+                    for(var queueenty in queuedata){
+                        if(queuedata[queueenty].typeOfQueue==QUEUE_TYPE_DOCTOR||queuedata[queueenty].typeOfQueue==QUEUE_TYPE_ASSIST){
+                            var patient_obj={
+                                patientid:queuedata[queueenty].patientid,
+                                patientName:queuedata[queueenty].patientName
+                            }
+                            patientsforpost.push(patient_obj);
+                        }
+
+                    }
+
+                }
+                var ad_details_for_posting={
+                    adId:current_ad_to_be_displayed.adId,
+                    adName:current_ad_to_be_displayed.adName,
+                    adStartTime:curr_time_millis,
+                    clinics:clinicsforpost,
+                    doctors:doctorsforpost,
+                    patients:patientsforpost,
+                    collection:$scope.defconfig.ad_count_collection
+
+
+                }
+                post_ad_display_count(ad_details_for_posting);
+
             }
 
 
@@ -454,6 +540,7 @@ var app = angular.module('app')
 
             $http.get('../defaultconfig.json').success(function (data) {
                 //when you get success reset the advertisement
+                $scope.defconfig=data;
                 $scope.advertisements = data.defaultads;
                 for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
                     $scope.advertisements[i].show=false;

@@ -125,5 +125,9 @@
       "heading_background_color": "#0000ff",
       "flash_color": "#151172"
     }
-  ]
+  ],
+  "connection_issue_collection":"test_qliveconnection",
+  "ad_count_collection":"test_qliveadcount",
+  "ip_for_logs":"52.76.159.84",
+  "port_for_logs":8091
 }
