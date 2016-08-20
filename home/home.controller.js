@@ -19,6 +19,8 @@ var app = angular.module('app')
 
             $scope.is_doctor_connected=false;
 
+
+
             //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted) {
 
@@ -54,6 +56,7 @@ var app = angular.module('app')
                         var doc_id_to_be_searched = $scope.device_doctors_map[d_d_m].doctorID;
                         for (var doc_index = 0; doc_index < $scope.doctors.length; doc_index++) {
                             if ($scope.doctors[doc_index].header.doctorID === doc_id_to_be_searched) {
+                                $scope.doctors[doc_index].body.is_disconnected=false;
                                 doctor_name_for_log = doctor_name_for_log + "," + $scope.doctors[doc_index].header.doctorName;
                                 clinic_name_for_log = $scope.doctors[doc_index].header.cinicName;
                                 //break;
@@ -71,12 +74,21 @@ var app = angular.module('app')
                 }
                 post_log_on_slack(logtobeposted)
             }
-
+            function stopdisconnectionsound(){
+                console.log("stopped playing disconnection sound");
+                $('#disconnection_player').get(0).pause();
+                $('#disconnection_player').get(0).currentTime=0;
+            }
+            function playdisconnectionsound(){
+                console.log("playing disconnection sound");
+                $('#disconnection_player').get(0).play();
+                setTimeout(stopdisconnectionsound,2000);
+            }
             function sender_is_disconnected(event) {
                 var clinic_name_for_log = "";
                 var doctor_name_for_log = "";
                 var number_of_connected_devices = window.castReceiverManager.getSenders().length;
-                if (event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
+                //if (event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
                     for (var d_d_m = 0; d_d_m < $scope.device_doctors_map.length; d_d_m++) {
                         if ($scope.device_doctors_map[d_d_m].senderId === event.senderId) {
                             var empty_queue = {
@@ -84,7 +96,9 @@ var app = angular.module('app')
                                     doctorID: $scope.device_doctors_map[d_d_m].doctorID,
                                 },
                                 body: {
-                                    queue: []
+                                    queue: [],
+                                    is_disconnected:true
+
                                 }
                             };
 
@@ -104,7 +118,7 @@ var app = angular.module('app')
 
                         }
                     }
-                }
+                //}
                 var logtobeposted = {
                     type: "disconnect",
                     clinicName: clinic_name_for_log,
@@ -278,7 +292,7 @@ var app = angular.module('app')
                         if (diff >= 7)
                             showDocExtra();
                     }else{
-                        
+
                         $scope.counter=24;
                     }
                 }
@@ -287,6 +301,9 @@ var app = angular.module('app')
                 $scope.advVisible = false;
                 $scope.flashVisible = false;
                 $scope.docVisible = true;
+                if($scope.doctor.is_disconnected==true){
+                    playdisconnectionsound();
+                }
             }
 
             var extra = 0;

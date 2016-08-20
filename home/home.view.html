@@ -29,7 +29,10 @@
 
                 Dr.{{flashBus.header.doctorName}}
             </p>
-
+            <p style="position:absolute">
+                <audio   loop><source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
+                </audio>
+            </p>
             <!--<textarea id="text"
                       hidden>ATTENTION {{flashBus.body.patientName}}  Dr.{{flashBus.header.doctorName}}</textarea>-->
         </div>
@@ -37,12 +40,7 @@
 
     </div>
 
-    <script type="text/javascript">
-        responsiveVoice.OnVoiceReady = function () {
-            console.log("speech time?");
-            responsiveVoice.speak($('#text').val());
-        };
-    </script>
+
 
 
         <div ng-show="docVisible" ng-animate="fade">
@@ -63,16 +61,16 @@
                     <ul class="nav navbar-nav navbar-right" style="padding-top:1%;">
 
 
-                        <li ng-if="is_doctor_connected==true"><a href="#"> {{doctor.header.cinicName}}</a></li>
+                        <li ng-if="doctor.body.is_disconnected==undefined || doctor.body.is_disconnected==false"><a href="#"> {{doctor.header.cinicName}}</a></li>
 
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li  ng-if="is_doctor_connected==false">
+                        <li  ng-if="doctor.body.is_disconnected!=undefined ||doctor.body.is_disconnected==true">
 
                             <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
-                            <p>
-                                <audio loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+                            <p style="position:absolute;">
+                                <audio id="disconnection_player" loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
                                 </audio>
                             </p>
                         </li>
