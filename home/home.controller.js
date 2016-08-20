@@ -267,14 +267,20 @@ var app = angular.module('app')
                 var startIndex = prevIndex;
                 var appointmentLeft = 0;
 
-                if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue && $scope.doctor.body.queue.length > 0) {
-                    var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
-                    appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
-                    $scope.patientQueue = [];
-                    $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, appointmentLeft));
-                    prevIndex = appointmentLeft;
-                    if (diff >= 7)
-                        showDocExtra();
+                if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue) {
+
+                    if($scope.doctor.body.queue.length > 0) {
+                        var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
+                        appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
+                        $scope.patientQueue = [];
+                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, appointmentLeft));
+                        prevIndex = appointmentLeft;
+                        if (diff >= 7)
+                            showDocExtra();
+                    }else{
+                        
+                        $scope.counter=24;
+                    }
                 }
 
 
@@ -347,7 +353,7 @@ var app = angular.module('app')
 
 
             function showFlash(flashindex) {
-
+                $scope.advertisements[currentIndexForAd].show=false;
 
                 $scope.insideflash = true;
                 $scope.docVisible = false;
@@ -360,16 +366,15 @@ var app = angular.module('app')
                     $timeout(function () {
 
 
-                        if ($scope.counter <= 10)
+                        if ($scope.counter <= 10) {
                             showAdv();
-
+                        }
 
 
                         else if ($scope.counter <= 30) {
 
                                 showDoc();
 
-                            console.log("You rae in doc")
                         }
 
                         countDown();
@@ -386,7 +391,6 @@ var app = angular.module('app')
                         else if ($scope.counter <= 30) {
                             showDoc();
                         }
-
                         countDown();
                     }, 0);
                     //come out of breaking news
