@@ -46,12 +46,12 @@
         <div ng-show="docVisible" ng-animate="fade">
                 <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:35px;">
                 <div class="container">
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
                     <p style="position:absolute;">
-                        <audio id="disconnection_player"  controls loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+                        <audio id="disconnection_player" style="visibility: hidden" controls loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
                         </audio>
                     </p>
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-
                     <ul class="nav navbar-nav">
                         <li><a href="#"><img src="images/DrAjay.jpg">
                             {{doctor.header.doctorName}} </a>
@@ -73,6 +73,7 @@
                         <li  ng-if="doctor.body.is_disconnected!=undefined ||doctor.body.is_disconnected==true">
 
                             <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
+
 
                         </li>
 
