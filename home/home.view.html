@@ -46,6 +46,10 @@
         <div ng-show="docVisible" ng-animate="fade">
                 <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:35px;">
                 <div class="container">
+                    <p style="position:absolute;">
+                        <audio id="disconnection_player"  controls loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+                        </audio>
+                    </p>
                     <!-- Collect the nav links, forms, and other content for toggling -->
 
                     <ul class="nav navbar-nav">
@@ -71,10 +75,7 @@
                             <span  class="glyphicon glyphicon-remove" style="font-size: 1em;color:red" aria-hidden="true"></span>
 
                         </li>
-                        <p style="position:absolute;">
-                            <audio id="disconnection_player"   controls loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
-                            </audio>
-                        </p>
+
                     </ul>
 
                 </div><!-- /.container-fluid -->
