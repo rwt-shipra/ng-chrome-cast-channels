@@ -277,6 +277,7 @@ var app = angular.module('app')
                         showDocExtra();
                 }
 
+
                 $scope.advVisible = false;
                 $scope.flashVisible = false;
                 $scope.docVisible = true;
