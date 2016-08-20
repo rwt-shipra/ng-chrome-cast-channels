@@ -81,8 +81,8 @@ var app = angular.module('app')
             }
             function playdisconnectionsound(){
                 console.log("playing disconnection sound");
-                $('#disconnection_player').get(0).play();
-                setTimeout(stopdisconnectionsound,2000);
+                $('#disconnection_player').get(0).play().then(function (){setTimeout(stopdisconnectionsound,2000)});
+
             }
             function sender_is_disconnected(event) {
                 var clinic_name_for_log = "";

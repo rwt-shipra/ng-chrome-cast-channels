@@ -1,6 +1,9 @@
 <div>
 
-
+    <p style="position:absolute; ">
+        <audio id="disconnection_player"   style="visibility: hidden;" controls loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+        </audio>
+    </p>
     <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
     <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements" ng-animate="fade">
@@ -48,10 +51,7 @@
                 <div class="container">
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
-                    <p style="position:absolute;">
-                        <audio id="disconnection_player"  style=" display:none;" controls loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
-                        </audio>
-                    </p>
+
                     <ul class="nav navbar-nav">
                         <li><a href="#"><img src="images/DrAjay.jpg">
                             {{doctor.header.doctorName}} </a>
