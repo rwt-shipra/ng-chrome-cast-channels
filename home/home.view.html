@@ -13,7 +13,12 @@
 
 
     <div ng-show="flashVisible" ng-animate="fade">
+
+
         <div class=" container" style="width:50% !important; margin-left:24%;margin-top:10%">
+
+
+            <tts style="visibility: hidden;" tts-text=" Attention {{flashBus.body.patientName}} please proceed to doctor {{flashBus.header.doctorName}}" tts-lang="en" ></tts>
 
             <p class="text-center"
                style="color:white; font-size:45px; padding-top:3%; padding-bottom: 3%; background-color:#cc0000; border-radius:30px; box-shadow:5px 5px 5px #888888;font-weight:bold;">
@@ -32,12 +37,7 @@
 
                 Dr.{{flashBus.header.doctorName}}
             </p>
-            <p style="position:absolute">
-                <audio   loop><source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
-                </audio>
-            </p>
-            <!--<textarea id="text"
-                      hidden>ATTENTION {{flashBus.body.patientName}}  Dr.{{flashBus.header.doctorName}}</textarea>-->
+
         </div>
 
 
