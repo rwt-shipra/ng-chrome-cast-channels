@@ -162,7 +162,7 @@ var app = angular.module('app')
             function post_ad_display_count(ad_data){
 
                 var ad_post_ip=$scope.defconfig.ip_for_logs;
-                var ad_post_port=$scope.defconfig.defaultconfig.port_for_logs;
+                var ad_post_port=$scope.defconfig.port_for_logs;
                 $.ajax({
                     type: 'POST',
                     url: "http://"+ad_post_ip+":"+ad_post_port+"/qlive/connection_test/v0.0.1/count_ad",
