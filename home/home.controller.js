@@ -95,16 +95,15 @@ var app = angular.module('app')
 
             /////////////Breakingnews player ////////////////////////////////
 
-            function stopbreakingnewssound(){
-                console.log("stopped playing braking news sound");
-                $('#breakingnew_player').get(0).pause();
-                $('#breakingnew_player').get(0).currentTime=0;
-            }
-
-           // <!--function playbreakingnewssound(){
-             //   console.log("playing dbraking news sound");
-            //    $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
-
+           // function stopbreakingnewssound(){
+            //    console.log("stopped playing braking news sound");
+             //   $('#breakingnew_player').get(0).pause();
+             ///   $('#breakingnew_player').get(0).currentTime=0;
+          //  }
+          //  function playbreakingnewssound(){
+           //     console.log("playing dbraking news sound");
+           //     $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
+//
            // }
 
             /////////////Breakingnews player End ////////////////////////////////
