@@ -102,7 +102,7 @@ var app = angular.module('app')
             }
             function playbreakingnewssound(){
                 console.log("playing dbraking news sound");
-                $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
+                $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,5000)});
 
             }
 
@@ -482,13 +482,15 @@ var app = angular.module('app')
 
 
             function showFlash(flashindex) {
+
+                playbreakingnewssound();
                 $scope.advertisements[currentIndexForAd].show=false;
 
                 $scope.insideflash = true;
                 $scope.docVisible = false;
                 $scope.advVisible = false;
                 $scope.flashVisible = true;
-                playbreakingnewssound();
+
                 stopCountDown();
                 if ($scope.flashQueue.length <= 0) {
 
