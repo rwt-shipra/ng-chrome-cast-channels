@@ -19,7 +19,16 @@
         
         <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message">
         </div>
-        <div ng-view class="ng-scope" ></div>
+        <div ng-view class="ng-scope" >
+            <p style="position:absolute; ">
+                <audio id="disconnection_player"   style="visibility: hidden;" controls loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+                </audio>
+            </p>
+            <p style="position:absolute">
+                <audio  id="#breakingnew_player" controls  loop><source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
+                </audio>
+            </p>
+        </div>
        
         
 
