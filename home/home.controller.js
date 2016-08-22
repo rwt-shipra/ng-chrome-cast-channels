@@ -488,7 +488,7 @@ var app = angular.module('app')
                 $scope.docVisible = false;
                 $scope.advVisible = false;
                 $scope.flashVisible = true;
-                playbreakingnewssound();
+                //playbreakingnewssound();
                 stopCountDown();
                 if ($scope.flashQueue.length <= 0) {
 
