@@ -385,7 +385,7 @@ var app = angular.module('app')
                 for (var doc in $scope.doctors){
                     var clinic_already_exists=false;
                     for (var clinic in clinicsforpost){
-                        if(clinicsforpost[clinic].clinicID===response_updated[doc].header.clinicID){
+                        if(clinicsforpost[clinic].clinicID===$scope.doctors[doc].header.clinicID){
                             clinic_already_exists=true;
                         }
                     }
