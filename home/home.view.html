@@ -61,7 +61,7 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
 
                     <ul class="nav navbar-nav">
-                        <li><a href="#"><img ng-src="images/{{doctor.header.doctorImageUrl}}">
+                        <li><a href="#"><img ng-src="images/{{doctor.header.doctorImageUrl?doctor.header.doctorImageUrl:'default.png'}}">
                             {{doctor.header.doctorName}} </a>
                         </li>
 
