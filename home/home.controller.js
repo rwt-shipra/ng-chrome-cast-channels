@@ -78,6 +78,8 @@ var app = angular.module('app')
                 }
                 post_log_on_slack(logtobeposted)
             }
+
+            /////////////Disconection player ////////////////////////////////
             function stopdisconnectionsound(){
                 console.log("stopped playing disconnection sound");
                 $('#disconnection_player').get(0).pause();
@@ -88,6 +90,25 @@ var app = angular.module('app')
                 $('#disconnection_player').get(0).play().then(function (){setTimeout(stopdisconnectionsound,2000)});
 
             }
+            /////////////Disconection player End////////////////////////////////
+
+
+            /////////////Breakingnews player ////////////////////////////////
+
+            function stopbreakingnewssound(){
+                console.log("stopped playing disconnection sound");
+                $('#breakingnew_player').get(0).pause();
+                $('#breakingnew_player').get(0).currentTime=0;
+            }
+            function playbreakingnewssound(){
+                console.log("playing disconnection sound");
+                $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
+
+            }
+
+            /////////////Breakingnews player End ////////////////////////////////
+
+
             function sender_is_disconnected(event) {
                 var clinic_name_for_log = "";
                 var doctor_name_for_log = "";
@@ -467,6 +488,7 @@ var app = angular.module('app')
                 $scope.docVisible = false;
                 $scope.advVisible = false;
                 $scope.flashVisible = true;
+                playbreakingnewssound();
                 stopCountDown();
                 if ($scope.flashQueue.length <= 0) {
 
