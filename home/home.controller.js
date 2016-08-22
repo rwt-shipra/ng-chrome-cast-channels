@@ -100,11 +100,12 @@ var app = angular.module('app')
                 $('#breakingnew_player').get(0).pause();
                 $('#breakingnew_player').get(0).currentTime=0;
             }
-            function playbreakingnewssound(){
-                console.log("playing dbraking news sound");
-                $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
 
-            }
+           // <!--function playbreakingnewssound(){
+             //   console.log("playing dbraking news sound");
+            //    $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
+
+           // }
 
             /////////////Breakingnews player End ////////////////////////////////
 
@@ -488,7 +489,7 @@ var app = angular.module('app')
                 $scope.docVisible = false;
                 $scope.advVisible = false;
                 $scope.flashVisible = true;
-                playbreakingnewssound();
+                //playbreakingnewssound();
                 stopCountDown();
                 if ($scope.flashQueue.length <= 0) {
 
