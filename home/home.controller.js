@@ -1,33 +1,7 @@
 'use strict';
 var app = angular.module('app')
-    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',' $log', 'TTSConfig', 'TTSAudio', 'TTS_EVENTS',
-        function (CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout, $log, TTSConfig, TTSAudio, TTS_EVENTS){
-
-            ///////////////////////////////Implement text to speech end/////////////////////////////
-            TTSConfig.url = 'http://tts.dev/tts-backend/index.php';
-            var tts = new TTSAudio();
-            tts.speak({
-                text:'',
-                lang : 'en'
-                // you can add additional params which will send to server
-            });
-
-            // triggered after speaking
-            $scope.$on(TTS_EVENTS.SUCCESS, function(){
-                $log.info('Successfully done!')
-            });
-
-            // triggered in case error
-            $scope.$on(TTS_EVENTS.ERROR, function(){
-                $log.info('An unexpected error has occurred');
-            });
-
-            // before loading and speaking
-            $scope.$on(TTS_EVENTS.PENDING, function(text){
-                $log.info('Speaking: ' + text);
-            });
-
-            ///////////////////////////////Implement text to speech end/////////////////////////////
+    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
+        function (CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
 
             $scope.advertisements = [];
             $scope.advertisement = {};
