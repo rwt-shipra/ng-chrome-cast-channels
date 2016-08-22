@@ -5,14 +5,16 @@
 <div>
 
     <p style="position:absolute; ">
-        <audio id="disconnection_player"   style="visibility: hidden;" controls loop ><source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
+        <audio id="disconnection_player"   style="visibility: hidden;" controls loop >
+            <source src="sounds/alert_asterisk_1.mp3" type="audio/mpeg">
         </audio>
+
+
+      <!--  <audio  id="#breakingnew_player" style="visibility: hidden;" controls  loop>
+            <source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
+        </audio>-->
     </p>
-   <!-- <p style="position:absolute">
-        <audio  id="#breakingnew_player" style="visibility: hidden;" controls  loop><source src="sounds/Railway_Tone.mp3" type="audio/mpeg">
-        </audio>
-    </p>
--->
+-
     <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
     <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements" ng-animate="fade">
@@ -59,7 +61,7 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
 
                     <ul class="nav navbar-nav">
-                        <li><a href="#"><img src="images/DrAjay.jpg">
+                        <li><a href="#"><img ng-src="images/{{doctor.header.doctorImageUrl}}">
                             {{doctor.header.doctorName}} </a>
                         </li>
 
