@@ -64,6 +64,8 @@ var app = angular.module('app')
                         }
                     }
                 }
+                var curr_date = new Date();
+                var curr_time_millis = curr_date.getTime();
                 var logtobeposted={
                     type:"connection",
                     time:curr_time_millis,
@@ -72,7 +74,7 @@ var app = angular.module('app')
                     connectedSenders:number_of_connected_devices,
                     event:event,
                     channel:"#qlive_connection_test",
-                    collection:defaultconfig.connection_issue_collection
+                    collection:$scope.defconfig.connection_issue_collection
                 }
                 post_log_on_slack(logtobeposted)
             }
@@ -121,6 +123,8 @@ var app = angular.module('app')
                         }
                     }
                 //}
+                var curr_date = new Date();
+                var curr_time_millis = curr_date.getTime();
                 var logtobeposted={
                     type:"disconnect",
                     time:curr_time_millis,
@@ -129,7 +133,7 @@ var app = angular.module('app')
                     connectedSenders:number_of_connected_devices,
                     event:event,
                     channel:"#qlive_connection_test",
-                    collection:defaultconfig.connection_issue_collection
+                    collection:$scope.defconfig.connection_issue_collection
                 }
                 post_log_on_slack(logtobeposted)
                 if (window.castReceiverManager.getSenders().length == 0 && event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
@@ -424,8 +428,8 @@ var app = angular.module('app')
 
                 }
                 var ad_details_for_posting={
-                    adId:current_ad_to_be_displayed.adId,
-                    adName:current_ad_to_be_displayed.adName,
+                    adId:$scope.advertisement.adId,
+                    adName:$scope.advertisement.adName,
                     adStartTime:curr_time_millis,
                     clinics:clinicsforpost,
                     doctors:doctorsforpost,
