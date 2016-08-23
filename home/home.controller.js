@@ -323,6 +323,7 @@ var app = angular.module('app')
             $scope.patientQueue = [];
 
             var prevIndex = 0;
+            var prevIndex_backup=0;
 
             function showDoc() {
                 $scope.advertisements[currentIndexForAd].show=false;
@@ -343,6 +344,7 @@ var app = angular.module('app')
                         $scope.patientQueue = [];
                         console.log("start index is "+startIndex+"appointment left"+appointmentLeft);
                         $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, appointmentLeft));
+                        prevIndex_backup=prevIndex;
 
                         prevIndex = appointmentLeft;
                         if (diff >= 7)
@@ -506,7 +508,7 @@ var app = angular.module('app')
 
 
                         else if ($scope.counter <= 30) {
-
+                                prevIndex=prevIndex_backup;
                                 showDoc();
 
                         }
@@ -523,6 +525,7 @@ var app = angular.module('app')
                             showAdv();
 
                         else if ($scope.counter <= 30) {
+                            prevIndex=prevIndex_backup;
                             showDoc();
                         }
                         countDown();
