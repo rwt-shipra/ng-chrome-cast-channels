@@ -480,7 +480,7 @@ var app = angular.module('app')
             }
 
 
-
+            $scope.docVisible = false;
 
 
             function showFlash(flashindex) {
