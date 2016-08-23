@@ -9,7 +9,7 @@ var app = angular.module('app')
 
 
             $scope.doctors = [];
-            $scope.doctor = {};
+            $scope.doctor = [];
             $scope.docVisible = false;
 
             $scope.flashQueue = [];
@@ -327,7 +327,7 @@ var app = angular.module('app')
             function showDoc() {
                 $scope.advertisements[currentIndexForAd].show=false;
 
-                $scope.doctor = {};
+
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
 
                 ////////////////Doc Splice Function ////////////////////////////////
