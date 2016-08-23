@@ -58,18 +58,18 @@
 
                     <ul class="nav navbar-nav">
                         <li><a href="#"><img ng-src="./images/{{doctor.header.doctorImageUrl?doctor.header.doctorImageUrl:'default.png'}}">
-                            {{doctor.header.doctorName}} </a>
+                           <b> {{doctor.header.doctorName}}</b> </a>
                         </li>
 
                     </ul>
                     <ul class="nav navbar-nav navbar-centered" style="padding-top:1%;">
-                        <li><a href="#">Queue Status</a></li>
+                        <li><a href="#"><b>Queue Status</b></a></li>
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right" style="padding-top:1%;">
 
 
-                        <li ng-if="doctor.body.is_disconnected==undefined || doctor.body.is_disconnected==false"><a href="#" > {{doctor.header.cinicName}}</a></li>
+                        <li ng-if="doctor.body.is_disconnected==undefined || doctor.body.is_disconnected==false"><a href="#" ><b> {{doctor.header.cinicName}}</b></a></li>
 
                     </ul>
 
