@@ -108,10 +108,10 @@
 
                         <tr ng-repeat="appointment in patientQueue">
                             <td align="center"><b>{{$index + 1}}</b></td>
-                            <td align="center"><b ng-cloak="appointment.patientName"></b></td>
-                            <td align="center"><b ng-cloak="appointment.token"></b></td>
+                            <td align="center"><b>{{appointment.patientName}}</b></td>
+                            <td align="center"><b>{{appointment.token}}</b></td>
 
-                            <td align="center"><b ng-cloak="appointment.timeOfEntry| date:'shortTime'"></b></td>
+                            <td align="center"><b>{{appointment.timeOfEntry| date:'shortTime'}}</b></td>
                             <td ng-if="appointment.typeOfEntry === 132432">
                                 <img class="img-thumbnail text-center" src="./images/appointment.png"/>
                             </td>
