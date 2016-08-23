@@ -9,7 +9,7 @@ var app = angular.module('app')
 
 
             $scope.doctors = [];
-            $scope.doctor = [];
+            $scope.doctor = {};
             $scope.docVisible = false;
 
             $scope.flashQueue = [];
@@ -272,7 +272,7 @@ var app = angular.module('app')
                 for (var i = 0; i < $scope.doctors.length; i++) {
                     if (data.header.doctorID === $scope.doctors[i].header.doctorID) {
                         already_present = true;
-                        $scope.doctors[i].body = data.body;
+                        $scope.doctors[i].body.queue = data.body.queue;
                         break;
                     }
 
@@ -327,7 +327,7 @@ var app = angular.module('app')
             function showDoc() {
                 $scope.advertisements[currentIndexForAd].show=false;
 
-
+                $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
 
                 ////////////////Doc Splice Function ////////////////////////////////
@@ -340,7 +340,10 @@ var app = angular.module('app')
                     if($scope.doctor.body.queue.length > 0) {
                         var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
                         appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
-                        $scope.patientQueue = $scope.doctor.body.queue.slice(startIndex, appointmentLeft);
+                        $scope.patientQueue = [];
+                        console.log("start index is "+startIndex+"appointment left"+appointmentLeft);
+                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, appointmentLeft));
+
                         prevIndex = appointmentLeft;
                         if (diff >= 7)
                             showDocExtra();
@@ -350,10 +353,10 @@ var app = angular.module('app')
                     }
                 }
 
-                $scope.docVisible = true;
+
                 $scope.advVisible = false;
                 $scope.flashVisible = false;
-
+                $scope.docVisible = true;
                 if($scope.doctor){
                     console.log("doctor disconnected "+$scope.doctor.is_disconnected);
                     if($scope.doctor.body.is_disconnected==true){
