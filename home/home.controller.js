@@ -351,10 +351,10 @@ var app = angular.module('app')
                     }
                 }
 
-
+                $scope.docVisible = true;
                 $scope.advVisible = false;
                 $scope.flashVisible = false;
-                $scope.docVisible = true;
+
                 if($scope.doctor){
                     console.log("doctor disconnected "+$scope.doctor.is_disconnected);
                     if($scope.doctor.body.is_disconnected==true){

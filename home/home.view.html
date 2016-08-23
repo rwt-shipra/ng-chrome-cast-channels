@@ -13,13 +13,13 @@
        </audio>-->
     <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
-    <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements" ng-animate="fade">
+    <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements" >
         <img class="img-responsive " ng-src="{{advertisement.adUrl}}"
              style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;"/>
     </div>
 
 
-    <div ng-show="flashVisible" ng-animate="fade">
+    <div ng-show="flashVisible" >
         <div class=" container" style="width:50% !important; margin-left:24%;margin-top:10%">
 
             <p class="text-center"
@@ -50,14 +50,14 @@
 
 
 
-        <div ng-show="docVisible" ng-animate="fade">
+        <div ng-show="docVisible" >
                 <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:35px;">
                 <div class="container">
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
 
                     <ul class="nav navbar-nav">
-                        <li><a href="#"><img ng-src="images/{{doctor.header.doctorImageUrl?doctor.header.doctorImageUrl:'default.png'}}">
+                        <li><a href="#"><img ng-src="./images/{{doctor.header.doctorImageUrl?doctor.header.doctorImageUrl:'default.png'}}">
                             {{doctor.header.doctorName}} </a>
                         </li>
 
