@@ -10,6 +10,7 @@ var app = angular.module('app')
 
             $scope.doctors = [];
             $scope.doctor = {};
+            $scope.docVisible = false;
 
             $scope.flashQueue = [];
             $scope.flashBus = {};
@@ -480,7 +481,6 @@ var app = angular.module('app')
             }
 
 
-            $scope.docVisible = false;
 
 
             function showFlash(flashindex) {
