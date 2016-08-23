@@ -354,9 +354,11 @@ var app = angular.module('app')
                 $scope.advVisible = false;
                 $scope.flashVisible = false;
                 $scope.docVisible = true;
-                console.log("doctor disconnected "+$scope.doctor.is_disconnected);
-                if($scope.doctor.body.is_disconnected==true){
-                    playdisconnectionsound();
+                if($scope.doctor){
+                    console.log("doctor disconnected "+$scope.doctor.is_disconnected);
+                    if($scope.doctor.body.is_disconnected==true){
+                        playdisconnectionsound();
+                    }
                 }
             }
 
