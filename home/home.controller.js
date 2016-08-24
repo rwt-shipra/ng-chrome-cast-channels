@@ -372,18 +372,17 @@ var app = angular.module('app')
 
             function showDocExtra() {
 
-
                 extraTimeout = $timeout(function () {
                     if (extra === 18) {
                         extra = 0;
                         $scope.counter = 20;
-                        showDocExtra();
+                        showDoc();
                     }
 
                     else {
 
                         extra = extra + 1;
-                        showDoc();
+                        showDocExtra();
                     }
 
                 }, 1000);
