@@ -335,6 +335,7 @@ var app = angular.module('app')
 
                 var startIndex = prevIndex;
                 var appointmentLeft = 0;
+                var diff=0;
 
                 if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue) {
 
