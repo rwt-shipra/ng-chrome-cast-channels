@@ -377,7 +377,7 @@ var app = angular.module('app')
                     if (extra === 18) {
                         extra = 0;
                         $scope.counter = 20;
-                        showDoc();
+                        showDocExtra();
                     }
 
                     else {
