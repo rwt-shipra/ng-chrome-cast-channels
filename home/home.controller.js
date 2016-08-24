@@ -371,20 +371,28 @@ var app = angular.module('app')
             var extraTimeout;
 
             function showDocExtra() {
-                extraTimeout = $timeout(function () {
-                    if (extra === 18) {
-                        extra = 0;
-                        $scope.counter = 20;
-                        showDoc();
-                    }
 
-                    else {
+                if(diff >= 7)
+                {
+                    showDoc()
+                }
 
-                        extra = extra + 1;
-                        showDocExtra();
-                    }
+               else {
+                    extraTimeout = $timeout(function () {
+                        if (extra === 18) {
+                            extra = 0;
+                            $scope.counter = 20;
+                            showDoc();
+                        }
 
-                }, 1000);
+                        else {
+
+                            extra = extra + 1;
+                            showDocExtra();
+                        }
+
+                    }, 1000);
+                }
             }
 
             function showAdv() {
