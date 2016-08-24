@@ -335,7 +335,6 @@ var app = angular.module('app')
 
                 var startIndex = prevIndex;
                 var appointmentLeft = 0;
-                var diff=0;
 
                 if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue) {
 
@@ -373,27 +372,21 @@ var app = angular.module('app')
 
             function showDocExtra() {
 
-                if(diff >= 7)
-                {
-                    showDoc()
-                }
 
-               else {
-                    extraTimeout = $timeout(function () {
-                        if (extra === 18) {
-                            extra = 0;
-                            $scope.counter = 20;
-                            showDoc();
-                        }
+                extraTimeout = $timeout(function () {
+                    if (extra === 18) {
+                        extra = 0;
+                        $scope.counter = 20;
+                        showDoc();
+                    }
 
-                        else {
+                    else {
 
-                            extra = extra + 1;
-                            showDocExtra();
-                        }
+                        extra = extra + 1;
+                        showDoc();
+                    }
 
-                    }, 1000);
-                }
+                }, 1000);
             }
 
             function showAdv() {
