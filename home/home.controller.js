@@ -397,7 +397,7 @@ var app = angular.module('app')
                 console.log("showing advertisement " + JSON.stringify($scope.advertisement));
                 console.log("las displayed was " + $scope.advertisement.lastDisplayed);
 
-                if(!$scope.advertisement.show_ad){
+                if($scope.advertisement.show_ad===false){
                     nextAd();
                     showAdv();
                     return;
