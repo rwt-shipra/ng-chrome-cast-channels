@@ -397,6 +397,13 @@ var app = angular.module('app')
                 console.log("showing advertisement " + JSON.stringify($scope.advertisement));
                 console.log("las displayed was " + $scope.advertisement.lastDisplayed);
 
+                if(!$scope.advertisement.show_ad){
+                    nextAd();
+                    showAdv();
+                    return;
+
+                }
+
                 if ((curr_time_millis - $scope.advertisement.lastDisplayed) < ($scope.advertisement.adIntervel * 1000)) {
                     nextAd();
                     showAdv();
@@ -572,9 +579,8 @@ var app = angular.module('app')
                 $scope.advertisements = data.defaultads;
                 for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
                     $scope.advertisements[i].show = false;
-                    if (i === 0 && $scope.advertisements[i].show_ad==true )
+                    if (i === 0)
                         $scope.advertisements[i].show = true;
-
                 }
                 nextAd();
                 showAdv();
