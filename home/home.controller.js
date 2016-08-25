@@ -349,7 +349,7 @@ var app = angular.module('app')
                         prevIndex = appointmentLeft;
 
                         if (diff >= 7)
-                            showDocExtra(10);
+                            showDocExtra();
                     } else {
                         $scope.counter = 24;
                     }
@@ -370,11 +370,11 @@ var app = angular.module('app')
             var extra = 0;
             var extraTimeout;
 
-            function showDocExtra(count) {
+            function showDocExtra() {
                 extraTimeout = $timeout(function () {
                     if (extra === 18) {
                         extra = 0;
-                        $scope.counter = count;
+                        $scope.counter = 10;
                         showDoc();
                     }
                     else {
