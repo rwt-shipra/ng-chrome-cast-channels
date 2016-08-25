@@ -386,6 +386,7 @@ var app = angular.module('app')
 
             function showAdv() {
                 $scope.advertisements[currentIndexForAd].show = true;
+                $scope.advertisement=$$scope.advertisements[currentIndexForAd];
 
                 var curr_date = new Date();
                 var curr_time_millis = curr_date.getTime();
