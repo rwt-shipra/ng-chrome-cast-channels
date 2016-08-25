@@ -408,6 +408,8 @@ var app = angular.module('app')
                     $scope.advVisible = true;
                     $scope.advertisements[currentIndexForAd].lastDisplayed = curr_time_millis;
                 }
+
+
                 var clinicsforpost = [];
                 var doctorsforpost = [];
                 var patientsforpost = [];

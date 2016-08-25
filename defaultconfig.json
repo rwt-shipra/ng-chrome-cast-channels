@@ -17,6 +17,7 @@
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
+      "show":true,
       "showticker": true
     },
     {
@@ -29,6 +30,7 @@
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
+      "show":true,
       "showticker": true
     },
     {
@@ -41,22 +43,22 @@
       "adCount": "Infinity",
       "adIntervel": 900,
       "lastDisplayed": 0,
+      "show":true,
       "showticker": false
     },
     {
-
-      "adId":"MUSKAN_COOKING_CLASSES_AD_1",
-      "adPriority":"LOW",
-      "adName":"MUSKAN_COOKING_CLASSES_AD_1",
-      "adUrl":"images/cooking-ad.gif",
-      "adMimeType":"image/gif",
-      "adTime":"10",
-      "adCount":"Infinity",
-      "adIntervel":3600,
-      "lastDisplayed":0,
-      "showticker":false
-    }
-    ,
+      "adId": "MUSKAN_COOKING_CLASSES_AD_1",
+      "adPriority": "LOW",
+      "adName": "MUSKAN_COOKING_CLASSES_AD_1",
+      "adUrl": "images/cooking-ad.gif",
+      "adMimeType": "image/gif",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 3600,
+      "lastDisplayed": 0,
+      "show":true,
+      "showticker": false
+    },
     {
       "adId": "QORQL_AD_2",
       "adPriority": "LOW",
@@ -67,6 +69,7 @@
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
+      "show":true,
       "showticker": false
     },
     {
@@ -79,6 +82,7 @@
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
+      "show":true,
       "showticker": false
     },
     {
@@ -91,6 +95,7 @@
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
+      "show":true,
       "showticker": false
     }
   ],
@@ -126,8 +131,8 @@
       "flash_color": "#151172"
     }
   ],
-  "connection_issue_collection":"test_qliveconnection",
-  "ad_count_collection":"test_qliveadcount",
-  "ip_for_logs":"52.76.159.84",
-  "port_for_logs":8091
+  "connection_issue_collection": "test_qliveconnection",
+  "ad_count_collection": "test_qliveadcount",
+  "ip_for_logs": "52.76.159.84",
+  "port_for_logs": 8091
 }
