@@ -74,7 +74,7 @@ var app = angular.module('app')
                     event: event,
                     channel: "#qlive_connection_test",
                     collection: $scope.defconfig.connection_issue_collection
-                }
+                };
                 post_log_on_slack(logtobeposted)
             }
 
@@ -109,7 +109,7 @@ var app = angular.module('app')
 //
             // }
 
-            /////////////Breakingnews player End ////////////////////////////////
+            /////////////Breaking news player End ////////////////////////////////
 
 
             function sender_is_disconnected(event) {
@@ -121,18 +121,16 @@ var app = angular.module('app')
                     if ($scope.device_doctors_map[d_d_m].senderId === event.senderId) {
                         var empty_queue = {
                             header: {
-                                doctorID: $scope.device_doctors_map[d_d_m].doctorID,
+                                doctorID: $scope.device_doctors_map[d_d_m].doctorID
                             },
                             body: {
                                 queue: [],
                                 is_disconnected: true
-
                             }
                         };
 
                         $scope.add_if_not_present(empty_queue);
                         //$scope.callback(data_for_queue);
-
                         //recently_received_queue_data.push(empty_queue);
                         var doc_id_to_be_searched = $scope.device_doctors_map[d_d_m].doctorID;
                         for (var doc_index = 0; doc_index < $scope.doctors.length; doc_index++) {
@@ -158,7 +156,7 @@ var app = angular.module('app')
                     event: event,
                     channel: "#qlive_connection_test",
                     collection: $scope.defconfig.connection_issue_collection
-                }
+                };
                 post_log_on_slack(logtobeposted)
                 if (window.castReceiverManager.getSenders().length == 0 && event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
                     //setTimeout(window.close,5000);
@@ -229,11 +227,11 @@ var app = angular.module('app')
                         $scope.controlBus = data;
                         break;
                     case 'connected':
-                        sender_is_connected(data.data)
+                        sender_is_connected(data.data);
                         $scope.is_doctor_connected = true;
                         break;
                     case 'disconnected':
-                        sender_is_disconnected(data.data)
+                        sender_is_disconnected(data.data);
                         $scope.is_doctor_connected = false;
                         break;
 
@@ -273,7 +271,7 @@ var app = angular.module('app')
                 for (var i = 0; i < $scope.doctors.length; i++) {
                     if (data.header.doctorID === $scope.doctors[i].header.doctorID) {
                         already_present = true;
-                        $scope.doctors[i].body.queue = data.body.queue;
+                        $scope.doctors[i].body= data.body;
                         break;
                     }
 
@@ -344,11 +342,11 @@ var app = angular.module('app')
                         appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
                         $scope.patientQueue = [];
                         console.log("start index is " + startIndex + "appointment left" + appointmentLeft);
-                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, startIndex+7));
+                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, startIndex + 7));
                         prevIndex_backup = prevIndex;
                         prevIndex = prevIndex + appointmentLeft;
 
-                        if (diff >= 7){
+                        if (diff >= 7) {
                             showDocExtra();
                         }
                     } else {
