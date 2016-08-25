@@ -572,11 +572,9 @@ var app = angular.module('app')
                 $scope.advertisements = data.defaultads;
                 for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
                     $scope.advertisements[i].show = false;
-                    if (i === 0)
+                    if (i === 0 && $scope.advertisements[i].show_ad==true )
                         $scope.advertisements[i].show = true;
-                    else {
-                        $scope.advertisements[i+1]
-                    }
+
                 }
                 nextAd();
                 showAdv();

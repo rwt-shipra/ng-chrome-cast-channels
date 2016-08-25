@@ -30,7 +30,7 @@
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
-      "show":true,
+      "show_ad":true,
       "showticker": true
     },
     {
@@ -43,7 +43,7 @@
       "adCount": "Infinity",
       "adIntervel": 900,
       "lastDisplayed": 0,
-      "show":false,
+      "show_ad":false,
       "showticker": false
     },
     {
@@ -56,7 +56,7 @@
       "adCount": "Infinity",
       "adIntervel": 3600,
       "lastDisplayed": 0,
-      "show":true,
+      "show_ad":true,
       "showticker": false
     },
     {
@@ -69,7 +69,7 @@
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
-      "show":true,
+      "show_ad":true,
       "showticker": false
     },
     {
@@ -82,7 +82,7 @@
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
-      "show":true,
+      "show_ad":true,
       "showticker": false
     },
     {
@@ -95,7 +95,7 @@
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
-      "show":true,
+      "show_ad":true,
       "showticker": false
     }
   ],
