@@ -7,7 +7,6 @@ var app = angular.module('app')
             $scope.advertisement = {};
 
 
-
             $scope.doctors = [];
             $scope.doctor = {};
             $scope.docVisible = false;
@@ -18,20 +17,19 @@ var app = angular.module('app')
             $scope.insideflash = false;
             $scope.device_doctors_map = [];
 
-            $scope.is_doctor_connected=false;
-
+            $scope.is_doctor_connected = false;
 
 
             //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted) {
 
-                console.log("posting on slack: "+JSON.stringify(logtobeposted));
+                console.log("posting on slack: " + JSON.stringify(logtobeposted));
 
-                var slack_post_ip=$scope.defconfig.ip_for_logs;
-                var slack_post_port=$scope.defconfig.port_for_logs;
+                var slack_post_ip = $scope.defconfig.ip_for_logs;
+                var slack_post_port = $scope.defconfig.port_for_logs;
                 $.ajax({
                     type: 'POST',
-                    url: "http://"+slack_post_ip+":"+slack_post_port+"/qlive/connection_test/v0.0.1/connect_disconnect",
+                    url: "http://" + slack_post_ip + ":" + slack_post_port + "/qlive/connection_test/v0.0.1/connect_disconnect",
                     dataType: "json",
                     data: JSON.stringify(logtobeposted),
                     contentType: 'application/json; charset=UTF-8',
@@ -57,7 +55,7 @@ var app = angular.module('app')
                         var doc_id_to_be_searched = $scope.device_doctors_map[d_d_m].doctorID;
                         for (var doc_index = 0; doc_index < $scope.doctors.length; doc_index++) {
                             if ($scope.doctors[doc_index].header.doctorID === doc_id_to_be_searched) {
-                                $scope.doctors[doc_index].body.is_disconnected=false;
+                                $scope.doctors[doc_index].body.is_disconnected = false;
                                 doctor_name_for_log = doctor_name_for_log + "," + $scope.doctors[doc_index].header.doctorName;
                                 clinic_name_for_log = $scope.doctors[doc_index].header.cinicName;
                                 //break;
@@ -67,45 +65,49 @@ var app = angular.module('app')
                 }
                 var curr_date = new Date();
                 var curr_time_millis = curr_date.getTime();
-                var logtobeposted={
-                    type:"connection",
-                    time:curr_time_millis,
-                    clinicName:clinic_name_for_log,
-                    doctorName:doctor_name_for_log,
-                    connectedSenders:number_of_connected_devices,
-                    event:event,
-                    channel:"#qlive_connection_test",
-                    collection:$scope.defconfig.connection_issue_collection
+                var logtobeposted = {
+                    type: "connection",
+                    time: curr_time_millis,
+                    clinicName: clinic_name_for_log,
+                    doctorName: doctor_name_for_log,
+                    connectedSenders: number_of_connected_devices,
+                    event: event,
+                    channel: "#qlive_connection_test",
+                    collection: $scope.defconfig.connection_issue_collection
                 }
                 post_log_on_slack(logtobeposted)
             }
 
             /////////////Disconection player ////////////////////////////////
-            function stopdisconnectionsound(){
+            function stopdisconnectionsound() {
                 console.log("stopped playing disconnection sound");
                 $('#disconnection_player').get(0).pause();
-                $('#disconnection_player').get(0).currentTime=0;
+                $('#disconnection_player').get(0).currentTime = 0;
             }
-            function playdisconnectionsound(){
+
+            function playdisconnectionsound() {
                 console.log("playing disconnection sound");
-                $('#disconnection_player').get(0).play().then(function (){setTimeout(stopdisconnectionsound,2000)});
+                $('#disconnection_player').get(0).play().then(function () {
+                    setTimeout(stopdisconnectionsound, 2000)
+                });
 
             }
+
             /////////////Disconection player End////////////////////////////////
 
 
             /////////////Breakingnews player ////////////////////////////////
 
-           // function stopbreakingnewssound(){
+            // function stopbreakingnewssound(){
             //    console.log("stopped playing braking news sound");
-             //   $('#breakingnew_player').get(0).pause();
-             ///   $('#breakingnew_player').get(0).currentTime=0;
-          //  }
-          //  function playbreakingnewssound(){
-           //     console.log("playing dbraking news sound");
-           //     $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
+            //   $('#breakingnew_player').get(0).pause();
+            ///   $('#breakingnew_player').get(0).currentTime=0;
+            //  }
+            //  function playbreakingnewssound(){
+            //     console.log("playing dbraking news sound");
+            //     $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
 //
-           // }
+            // }
 
             /////////////Breakingnews player End ////////////////////////////////
 
@@ -115,47 +117,47 @@ var app = angular.module('app')
                 var doctor_name_for_log = "";
                 var number_of_connected_devices = window.castReceiverManager.getSenders().length;
                 //if (event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
-                    for (var d_d_m = 0; d_d_m < $scope.device_doctors_map.length; d_d_m++) {
-                        if ($scope.device_doctors_map[d_d_m].senderId === event.senderId) {
-                            var empty_queue = {
-                                header: {
-                                    doctorID: $scope.device_doctors_map[d_d_m].doctorID,
-                                },
-                                body: {
-                                    queue: [],
-                                    is_disconnected:true
+                for (var d_d_m = 0; d_d_m < $scope.device_doctors_map.length; d_d_m++) {
+                    if ($scope.device_doctors_map[d_d_m].senderId === event.senderId) {
+                        var empty_queue = {
+                            header: {
+                                doctorID: $scope.device_doctors_map[d_d_m].doctorID,
+                            },
+                            body: {
+                                queue: [],
+                                is_disconnected: true
 
-                                }
-                            };
-
-                            $scope.add_if_not_present(empty_queue);
-                            //$scope.callback(data_for_queue);
-
-                            //recently_received_queue_data.push(empty_queue);
-                            var doc_id_to_be_searched = $scope.device_doctors_map[d_d_m].doctorID;
-                            for (var doc_index = 0; doc_index < $scope.doctors.length; doc_index++) {
-                                if ($scope.doctors[doc_index].header.doctorID === doc_id_to_be_searched) {
-                                    doctor_name_for_log = doctor_name_for_log + "," + $scope.doctors[doc_index].header.doctorName;
-                                    clinic_name_for_log = $scope.doctors[doc_index].header.cinicName;
-                                    $scope.doctors[doc_index].body.queue = [];
-                                    break;
-                                }
                             }
+                        };
 
+                        $scope.add_if_not_present(empty_queue);
+                        //$scope.callback(data_for_queue);
+
+                        //recently_received_queue_data.push(empty_queue);
+                        var doc_id_to_be_searched = $scope.device_doctors_map[d_d_m].doctorID;
+                        for (var doc_index = 0; doc_index < $scope.doctors.length; doc_index++) {
+                            if ($scope.doctors[doc_index].header.doctorID === doc_id_to_be_searched) {
+                                doctor_name_for_log = doctor_name_for_log + "," + $scope.doctors[doc_index].header.doctorName;
+                                clinic_name_for_log = $scope.doctors[doc_index].header.cinicName;
+                                $scope.doctors[doc_index].body.queue = [];
+                                break;
+                            }
                         }
+
                     }
+                }
                 //}
                 var curr_date = new Date();
                 var curr_time_millis = curr_date.getTime();
-                var logtobeposted={
-                    type:"disconnect",
-                    time:curr_time_millis,
-                    clinicName:clinic_name_for_log,
-                    doctorName:doctor_name_for_log,
-                    connectedSenders:number_of_connected_devices,
-                    event:event,
-                    channel:"#qlive_connection_test",
-                    collection:$scope.defconfig.connection_issue_collection
+                var logtobeposted = {
+                    type: "disconnect",
+                    time: curr_time_millis,
+                    clinicName: clinic_name_for_log,
+                    doctorName: doctor_name_for_log,
+                    connectedSenders: number_of_connected_devices,
+                    event: event,
+                    channel: "#qlive_connection_test",
+                    collection: $scope.defconfig.connection_issue_collection
                 }
                 post_log_on_slack(logtobeposted)
                 if (window.castReceiverManager.getSenders().length == 0 && event.reason == cast.receiver.system.DisconnectReason.REQUESTED_BY_SENDER) {
@@ -181,13 +183,13 @@ var app = angular.module('app')
             }
 
 
-            function post_ad_display_count(ad_data){
+            function post_ad_display_count(ad_data) {
 
-                var ad_post_ip=$scope.defconfig.ip_for_logs;
-                var ad_post_port=$scope.defconfig.port_for_logs;
+                var ad_post_ip = $scope.defconfig.ip_for_logs;
+                var ad_post_port = $scope.defconfig.port_for_logs;
                 $.ajax({
                     type: 'POST',
-                    url: "http://"+ad_post_ip+":"+ad_post_port+"/qlive/connection_test/v0.0.1/count_ad",
+                    url: "http://" + ad_post_ip + ":" + ad_post_port + "/qlive/connection_test/v0.0.1/count_ad",
                     dataType: "json",
                     data: JSON.stringify(ad_data),
                     contentType: 'application/json; charset=UTF-8',
@@ -202,7 +204,6 @@ var app = angular.module('app')
                 });
 
             }
-
 
 
             //Google cast callback
@@ -229,11 +230,11 @@ var app = angular.module('app')
                         break;
                     case 'connected':
                         sender_is_connected(data.data)
-                        $scope.is_doctor_connected=true;
+                        $scope.is_doctor_connected = true;
                         break;
                     case 'disconnected':
                         sender_is_disconnected(data.data)
-                        $scope.is_doctor_connected=false;
+                        $scope.is_doctor_connected = false;
                         break;
 
                 }
@@ -323,10 +324,10 @@ var app = angular.module('app')
             $scope.patientQueue = [];
 
             var prevIndex = 0;
-            var prevIndex_backup=0;
+            var prevIndex_backup = 0;
 
             function showDoc() {
-                $scope.advertisements[currentIndexForAd].show=false;
+                $scope.advertisements[currentIndexForAd].show = false;
 
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
@@ -338,20 +339,19 @@ var app = angular.module('app')
 
                 if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue) {
 
-                    if($scope.doctor.body.queue.length > 0) {
+                    if ($scope.doctor.body.queue.length > 0) {
                         var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
                         appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
                         $scope.patientQueue = [];
-                        console.log("start index is "+startIndex+"appointment left"+appointmentLeft);
+                        console.log("start index is " + startIndex + "appointment left" + appointmentLeft);
                         $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, appointmentLeft));
-                        prevIndex_backup=prevIndex;
-
+                        prevIndex_backup = prevIndex;
                         prevIndex = appointmentLeft;
-                        if (diff >= 7)
-                            showDocExtra();
-                    }else{
 
-                        $scope.counter=24;
+                        if (diff >= 7)
+                            showDocExtra(10);
+                    } else {
+                        $scope.counter = 24;
                     }
                 }
 
@@ -359,9 +359,9 @@ var app = angular.module('app')
                 $scope.advVisible = false;
                 $scope.flashVisible = false;
                 $scope.docVisible = true;
-                if($scope.doctor){
-                    console.log("doctor disconnected "+$scope.doctor.is_disconnected);
-                    if($scope.doctor.body.is_disconnected==true){
+                if ($scope.doctor) {
+                    console.log("doctor disconnected " + $scope.doctor.is_disconnected);
+                    if ($scope.doctor.body.is_disconnected == true) {
                         playdisconnectionsound();
                     }
                 }
@@ -370,17 +370,14 @@ var app = angular.module('app')
             var extra = 0;
             var extraTimeout;
 
-            function showDocExtra() {
-
+            function showDocExtra(count) {
                 extraTimeout = $timeout(function () {
                     if (extra === 18) {
                         extra = 0;
-                        $scope.counter = 20;
+                        $scope.counter = count;
                         showDoc();
                     }
-
                     else {
-
                         extra = extra + 1;
                         showDocExtra();
                     }
@@ -389,7 +386,7 @@ var app = angular.module('app')
             }
 
             function showAdv() {
-                $scope.advertisements[currentIndexForAd].show=true;
+                $scope.advertisements[currentIndexForAd].show = true;
 
                 var curr_date = new Date();
                 var curr_time_millis = curr_date.getTime();
@@ -412,43 +409,43 @@ var app = angular.module('app')
                     $scope.advVisible = true;
                     $scope.advertisements[currentIndexForAd].lastDisplayed = curr_time_millis;
                 }
-                var clinicsforpost=[];
-                var doctorsforpost=[];
-                var patientsforpost=[];
-                for (var doc in $scope.doctors){
-                    var clinic_already_exists=false;
-                    for (var clinic in clinicsforpost){
-                        if(clinicsforpost[clinic].clinicID===$scope.doctors[doc].header.clinicID){
-                            clinic_already_exists=true;
+                var clinicsforpost = [];
+                var doctorsforpost = [];
+                var patientsforpost = [];
+                for (var doc in $scope.doctors) {
+                    var clinic_already_exists = false;
+                    for (var clinic in clinicsforpost) {
+                        if (clinicsforpost[clinic].clinicID === $scope.doctors[doc].header.clinicID) {
+                            clinic_already_exists = true;
                         }
                     }
-                    if(!clinic_already_exists){
+                    if (!clinic_already_exists) {
 
-                        var clinic_obj={
-                            clinicID:$scope.doctors[doc].header.clinicID,
-                            clinicName:$scope.doctors[doc].header.cinicName
+                        var clinic_obj = {
+                            clinicID: $scope.doctors[doc].header.clinicID,
+                            clinicName: $scope.doctors[doc].header.cinicName
                         }
                         clinicsforpost.push(clinic_obj)
                     }
-                    var doctor_already_exists=false;
-                    for (var doctor in doctorsforpost){
-                        if(doctorsforpost[doctor].doctorID===$scope.doctors[doc].header.doctorID){
-                            doctor_already_exists=true;
+                    var doctor_already_exists = false;
+                    for (var doctor in doctorsforpost) {
+                        if (doctorsforpost[doctor].doctorID === $scope.doctors[doc].header.doctorID) {
+                            doctor_already_exists = true;
                         }
                     }
-                    if(!doctor_already_exists){
-                        var doctor_obj={
-                            doctorID:$scope.doctors[doc].header.doctorID,
-                            doctorName:$scope.doctors[doc].header.doctorName
+                    if (!doctor_already_exists) {
+                        var doctor_obj = {
+                            doctorID: $scope.doctors[doc].header.doctorID,
+                            doctorName: $scope.doctors[doc].header.doctorName
                         }
                         doctorsforpost.push(doctor_obj)
                     }
-                    var queuedata=$scope.doctors[doc].body.queue;
-                    for(var queueenty in queuedata){
-                        if(queuedata[queueenty].typeOfQueue==QUEUE_TYPE_DOCTOR||queuedata[queueenty].typeOfQueue==QUEUE_TYPE_ASSIST){
-                            var patient_obj={
-                                patientid:queuedata[queueenty].patientid,
-                                patientName:queuedata[queueenty].patientName
+                    var queuedata = $scope.doctors[doc].body.queue;
+                    for (var queueenty in queuedata) {
+                        if (queuedata[queueenty].typeOfQueue == QUEUE_TYPE_DOCTOR || queuedata[queueenty].typeOfQueue == QUEUE_TYPE_ASSIST) {
+                            var patient_obj = {
+                                patientid: queuedata[queueenty].patientid,
+                                patientName: queuedata[queueenty].patientName
                             }
                             patientsforpost.push(patient_obj);
                         }
@@ -456,17 +453,17 @@ var app = angular.module('app')
                     }
 
                 }
-                var ad_details_for_posting={
-                    adId:$scope.advertisement.adId,
-                    adName:$scope.advertisement.adName,
-                    adStartTime:curr_time_millis,
-                    clinics:clinicsforpost,
-                    doctors:doctorsforpost,
-                    patients:patientsforpost,
-                    collection:$scope.defconfig.ad_count_collection
+                var ad_details_for_posting = {
+                    adId: $scope.advertisement.adId,
+                    adName: $scope.advertisement.adName,
+                    adStartTime: curr_time_millis,
+                    clinics: clinicsforpost,
+                    doctors: doctorsforpost,
+                    patients: patientsforpost,
+                    collection: $scope.defconfig.ad_count_collection
 
 
-                }
+                };
                 post_ad_display_count(ad_details_for_posting);
 
             }
@@ -486,10 +483,8 @@ var app = angular.module('app')
             }
 
 
-
-
             function showFlash(flashindex) {
-                $scope.advertisements[currentIndexForAd].show=false;
+                $scope.advertisements[currentIndexForAd].show = false;
 
                 $scope.insideflash = true;
                 $scope.docVisible = false;
@@ -506,11 +501,9 @@ var app = angular.module('app')
                         if ($scope.counter <= 10) {
                             showAdv();
                         }
-
-
                         else if ($scope.counter <= 30) {
-                                prevIndex=prevIndex_backup;
-                                showDoc();
+                            prevIndex = prevIndex_backup;
+                            showDoc();
 
                         }
 
@@ -526,7 +519,7 @@ var app = angular.module('app')
                             showAdv();
 
                         else if ($scope.counter <= 30) {
-                            prevIndex=prevIndex_backup;
+                            prevIndex = prevIndex_backup;
                             showDoc();
                         }
                         countDown();
@@ -574,12 +567,12 @@ var app = angular.module('app')
 
             $http.get('../defaultconfig.json').success(function (data) {
                 //when you get success reset the advertisement
-                $scope.defconfig=data;
+                $scope.defconfig = data;
                 $scope.advertisements = data.defaultads;
                 for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
-                    $scope.advertisements[i].show=false;
-                    if(i===0)
-                        $scope.advertisements[i].show=true;
+                    $scope.advertisements[i].show = false;
+                    if (i === 0)
+                        $scope.advertisements[i].show = true;
                 }
                 nextAd();
                 showAdv();
