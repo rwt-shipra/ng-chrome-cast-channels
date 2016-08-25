@@ -385,7 +385,7 @@ var app = angular.module('app')
             }
 
             function showAdv() {
-                $scope.advertisements[currentIndexForAd].show = true;
+
                 $scope.advertisement=$scope.advertisements[currentIndexForAd];
 
                 var curr_date = new Date();
@@ -414,6 +414,7 @@ var app = angular.module('app')
                     $scope.docVisible = false;
                     $scope.flashVisible = false;
                     $scope.advVisible = true;
+                    $scope.advertisements[currentIndexForAd].show = true;
                     $scope.advertisements[currentIndexForAd].lastDisplayed = curr_time_millis;
                 }
 
