@@ -1,23 +1,8 @@
 'use strict';
 var app = angular.module('app')
 
-    .factory('Speech', function (TTSConfig, TTSAudio) {
-        function speak(text) {
-            TTSConfig.url = '/speech.php';
-            var tts = new TTSAudio();
-            tts.speak({
-                text: text,
-                lang: 'en'
-                // you can add additional params which will send to server
-            });
-        }
-
-        return {
-            sayText: speak
-        };
-    })
-    .controller('HomeController', ['Speech', 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
-        function (Speech, CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
+    .controller('HomeController', [ 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
+        function (CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
 
             $scope.advertisements = [];
             $scope.advertisement = {};
@@ -553,7 +538,7 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                    Speech.sayText("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
+                    //Speech.sayText("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
                     $timeout(function () {
                         showFlash(++flashindex)
                     }, 6000);
