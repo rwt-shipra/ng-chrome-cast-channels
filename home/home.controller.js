@@ -570,7 +570,9 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                    Speech.sayText("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
+                    if(window.speechSynthesis) {
+                        Speech.sayText("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
+                    }
                     $timeout(function () {
                         showFlash(++flashindex)
                     }, 6000);
@@ -622,14 +624,6 @@ var app = angular.module('app')
                 $scope.counter += 1;
                 countDown();
             });
-
-            if(window.speechSynthesis) {
-                $scope.support = true;
-
-                $timeout(function () {
-                    $scope.voices = Speech.getVoices();
-                }, 500);
-            }
 
         }
     ])
