@@ -1,8 +1,8 @@
 'use strict';
 var app = angular.module('app')
 
-    .controller('HomeController', [ 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
-        function (CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
+    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
+        function ( CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
 
             $scope.advertisements = [];
             $scope.advertisement = {};
@@ -326,11 +326,10 @@ var app = angular.module('app')
 
             function showDoc() {
                 $scope.advertisements[currentIndexForAd].show = false;
-
-                responsiveVoice.speak("Hello sir how r y",  "UK English Male");
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
-
+                responsiveVoice.speak("Hello sir. how are you doing?",  "UK English Male");
+                $('#player').get(0).play();
                 ////////////////Doc Splice Function ////////////////////////////////
 
                 var startIndex = prevIndex;
@@ -435,7 +434,7 @@ var app = angular.module('app')
                         var clinic_obj = {
                             clinicID: $scope.doctors[doc].header.clinicID,
                             clinicName: $scope.doctors[doc].header.cinicName
-                        }
+                        };
                         clinicsforpost.push(clinic_obj)
                     }
                     var doctor_already_exists = false;
@@ -448,7 +447,7 @@ var app = angular.module('app')
                         var doctor_obj = {
                             doctorID: $scope.doctors[doc].header.doctorID,
                             doctorName: $scope.doctors[doc].header.doctorName
-                        }
+                        };
                         doctorsforpost.push(doctor_obj)
                     }
                     var queuedata = $scope.doctors[doc].body.queue;
@@ -539,7 +538,7 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                    //Speech.sayText("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
+                    //Speech.play("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
                     $timeout(function () {
                         showFlash(++flashindex)
                     }, 6000);
