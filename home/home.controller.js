@@ -329,7 +329,7 @@ var app = angular.module('app')
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
                 responsiveVoice.speak("Hello sir. how are you doing?",  "UK English Male");
-                $('#player').get(0).play();
+                $('#disconnection_player').get(0).play();
                 ////////////////Doc Splice Function ////////////////////////////////
 
                 var startIndex = prevIndex;
