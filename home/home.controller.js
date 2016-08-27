@@ -1,5 +1,37 @@
 'use strict';
 var app = angular.module('app')
+
+    .factory('Speech', function () {
+        if (window.speechSynthesis) {
+            var msg = new SpeechSynthesisUtterance();
+        }
+
+        function getVoices() {
+            window.speechSynthesis.getVoices();
+            return window.speechSynthesis.getVoices();
+        }
+
+        function sayIt(text) {
+            var voices = getVoices();
+
+            //choose voice. Fallback to default
+            msg.voice = voices[0];
+            msg.volume = 1;
+            msg.rate = 1;
+            msg.pitch = 1;
+
+            //message for speech
+            msg.text = text;
+
+            speechSynthesis.speak(msg);
+        }
+
+
+        return {
+            sayText: sayIt,
+            getVoices: getVoices
+        };
+    })
     .controller('HomeController', ['Speech', 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
         function (Speech, CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
 
@@ -538,7 +570,7 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                    Speech.sayIt("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
+                    Speech.sayText("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
                     $timeout(function () {
                         showFlash(++flashindex)
                     }, 6000);
@@ -729,35 +761,5 @@ var app = angular.module('app')
             });
             console.log('Receiver Manager started');
         }
-    }).service('Speech', function () {
-        if (window.speechSynthesis) {
-            var msg = new SpeechSynthesisUtterance();
-        }
-
-        function getVoices() {
-            window.speechSynthesis.getVoices();
-            return window.speechSynthesis.getVoices();
-        }
-
-        function sayIt(text) {
-            var voices = getVoices();
-
-            //choose voice. Fallback to default
-            msg.voice = voices[0];
-            msg.volume = 1;
-            msg.rate = 1;
-            msg.pitch = 1;
-
-            //message for speech
-            msg.text = text;
-
-            speechSynthesis.speak(msg);
-        }
-
-
-        return {
-            sayText: sayIt,
-            getVoices: getVoices
-        };
     });
 
