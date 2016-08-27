@@ -1,7 +1,7 @@
 'use strict';
-var app = angular.module('app',['pjTts'])
+var app = angular.module('app')
 
-    .factory('Speech', ['TTSConfig', 'TTSAudio', 'TTS_EVENTS', function (TTSConfig, TTSAudio, TTS_EVENTS) {
+    .factory('Speech', function (TTSConfig, TTSAudio) {
         function speak(text) {
             TTSConfig.url = 'http://tts.dev/tts-backend/index.php';
             var tts = new TTSAudio();
@@ -15,7 +15,7 @@ var app = angular.module('app',['pjTts'])
         return {
             sayText: speak
         };
-    }])
+    })
     .controller('HomeController', ['Speech', 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
         function (Speech, CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
 
