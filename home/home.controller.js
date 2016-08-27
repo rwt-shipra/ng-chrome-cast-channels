@@ -1,7 +1,7 @@
 'use strict';
 var app = angular.module('app')
-    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
-        function (CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
+    .controller('HomeController', ['Speech', 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
+        function (Speech, CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
 
             $scope.advertisements = [];
             $scope.advertisement = {};
@@ -271,7 +271,7 @@ var app = angular.module('app')
                 for (var i = 0; i < $scope.doctors.length; i++) {
                     if (data.header.doctorID === $scope.doctors[i].header.doctorID) {
                         already_present = true;
-                        $scope.doctors[i].body= data.body;
+                        $scope.doctors[i].body = data.body;
                         break;
                     }
 
@@ -386,7 +386,7 @@ var app = angular.module('app')
 
             function showAdv() {
 
-                $scope.advertisement=$scope.advertisements[currentIndexForAd];
+                $scope.advertisement = $scope.advertisements[currentIndexForAd];
 
                 var curr_date = new Date();
                 var curr_time_millis = curr_date.getTime();
@@ -398,7 +398,7 @@ var app = angular.module('app')
                 console.log("showing advertisement " + JSON.stringify($scope.advertisement));
                 console.log("las displayed was " + $scope.advertisement.lastDisplayed);
 
-                if($scope.advertisement.show_ad===false){
+                if ($scope.advertisement.show_ad === false) {
                     nextAd();
                     showAdv();
                     return;
@@ -538,6 +538,7 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
+                    Speech.speak("Attention Patients! Patient " + flashBus.body.patientName + " please proceed to the doctor " + flashBus.header.doctorName);
                     $timeout(function () {
                         showFlash(++flashindex)
                     }, 6000);
@@ -728,4 +729,35 @@ var app = angular.module('app')
             });
             console.log('Receiver Manager started');
         }
+    }).service('Speech', function () {
+        if (window.speechSynthesis) {
+            var msg = new SpeechSynthesisUtterance();
+        }
+
+        function getVoices() {
+            window.speechSynthesis.getVoices();
+            return window.speechSynthesis.getVoices();
+        }
+
+        function sayIt(text) {
+            var voices = getVoices();
+
+            //choose voice. Fallback to default
+            msg.voice = voices[0];
+            msg.volume = 1;
+            msg.rate = 1;
+            msg.pitch = 1;
+
+            //message for speech
+            msg.text = text;
+
+            speechSynthesis.speak(msg);
+        }
+
+
+        return {
+            sayText: sayIt,
+            getVoices: getVoices
+        };
     });
+
