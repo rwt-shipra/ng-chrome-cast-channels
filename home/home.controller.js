@@ -623,6 +623,14 @@ var app = angular.module('app')
                 countDown();
             });
 
+            if(window.speechSynthesis) {
+                $scope.support = true;
+
+                $timeout(function () {
+                    $scope.voices = Speech.getVoices();
+                }, 500);
+            }
+
         }
     ])
 
