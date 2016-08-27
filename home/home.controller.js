@@ -3,7 +3,7 @@ var app = angular.module('app')
 
     .factory('Speech', function (TTSConfig, TTSAudio) {
         function speak(text) {
-            TTSConfig.url = 'http://tts.dev/tts-backend/index.php';
+            TTSConfig.url = '/speech.php';
             var tts = new TTSAudio();
             tts.speak({
                 text: text,
@@ -21,7 +21,6 @@ var app = angular.module('app')
 
             $scope.advertisements = [];
             $scope.advertisement = {};
-
 
             $scope.doctors = [];
             $scope.doctor = {};
