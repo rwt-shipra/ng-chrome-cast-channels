@@ -327,6 +327,7 @@ var app = angular.module('app')
             function showDoc() {
                 $scope.advertisements[currentIndexForAd].show = false;
 
+                responsiveVoice.speak("Hello sir how r y",  "UK English Male");
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
 
