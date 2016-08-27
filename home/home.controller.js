@@ -1,5 +1,5 @@
 'use strict';
-var app = angular.module('app')
+var app = angular.module('app',['pjTts'])
 
     .factory('Speech', ['TTSConfig', 'TTSAudio', 'TTS_EVENTS', function (TTSConfig, TTSAudio, TTS_EVENTS) {
         function speak(text) {
