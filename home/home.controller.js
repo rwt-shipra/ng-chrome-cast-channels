@@ -538,7 +538,7 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                    Speech.speak("Attention Patients! Patient " + flashBus.body.patientName + " please proceed to the doctor " + flashBus.header.doctorName);
+                    Speech.speak("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
                     $timeout(function () {
                         showFlash(++flashindex)
                     }, 6000);
