@@ -112,10 +112,10 @@ var app = angular.module('app')
             }
 
 
-            function playSound() {
+
+            function playSound(text) {
                 console.log("playing disconnection sound");
-                responsiveVoice.speak("hello sir how are you?");
-                audio.play("sounds/alert_asterisk_1.mp3"); // returns NgAudioObject
+                responsiveVoice.speak(text);
             }
 
             /////////////Disconnection player End////////////////////////////////
@@ -350,7 +350,7 @@ var app = angular.module('app')
             var prevIndex_backup = 0;
 
             function showDoc() {
-                playSound();
+                playSound("Attention Patients! Patient ramu please proceed to the doctor kaamu");
                 $scope.advertisements[currentIndexForAd].show = false;
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
@@ -562,7 +562,8 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                    //Speech.play("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
+                    playSound("Attention Patients! Patient " + $scope.flashBus.body.patientName + " please proceed to the doctor " + $scope.flashBus.header.doctorName);
+
                     $timeout(function () {
                         showFlash(++flashindex)
                     }, 6000);
