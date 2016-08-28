@@ -116,6 +116,7 @@ var app = angular.module('app')
             function playSound(text) {
                 console.log("playing disconnection sound");
                 responsiveVoice.speak(text);
+                audio.play("sound")
             }
 
             /////////////Disconnection player End////////////////////////////////
@@ -350,7 +351,7 @@ var app = angular.module('app')
             var prevIndex_backup = 0;
 
             function showDoc() {
-                playSound("Attention Patients! Patient ramu please proceed to the doctor kaamu");
+
                 $scope.advertisements[currentIndexForAd].show = false;
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
