@@ -103,11 +103,8 @@ var app = angular.module('app')
 
             function playDisconnectionSound() {
                 console.log("playing disconnection sound");
-                audio.stop();
-                audio.playInLoop("sounds/alert_asterisk_1.mp3"); // returns NgAudioObject
-                $timeout(function (){
-                    audio.stop();
-                },4000);
+                responsiveVoice.speak("disconnected");
+                audio.play("sound")
             }
 
 
