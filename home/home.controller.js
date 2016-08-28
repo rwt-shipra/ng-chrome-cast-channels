@@ -1,8 +1,31 @@
 'use strict';
 var app = angular.module('app')
 
-    .controller('HomeController', ['CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
-        function ( CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
+    .factory('audio', function ($document) {
+        var audioElement = $document[0].getElementById('disconnection_player'); // <-- Magic trick here
+
+        return {
+            audioElement: audioElement,
+
+            play: function (filename) {
+                audioElement.src = filename;
+                audioElement.play();     //  <-- That's all you need
+            },
+            playInLoop: function (filename) {
+
+                audioElement.loop = true;
+                audioElement.src = filename;
+                audioElement.play();
+            },
+            stop: function () {
+                audioElement.pause();
+                audioElement.src = audioElement.currentSrc;
+                /** http://stackoverflow.com/a/16978083/1015046 **/
+            }
+        }
+    })
+    .controller('HomeController', ['audio', 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
+        function (audio, CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
 
             $scope.advertisements = [];
             $scope.advertisement = {};
@@ -78,25 +101,27 @@ var app = angular.module('app')
                 post_log_on_slack(logtobeposted)
             }
 
-            /////////////Disconection player ////////////////////////////////
-            function stopdisconnectionsound() {
-                console.log("stopped playing disconnection sound");
-                $('#disconnection_player').get(0).pause();
-                $('#disconnection_player').get(0).currentTime = 0;
-            }
 
-            function playdisconnectionsound() {
+            function playDisconnectionSound() {
                 console.log("playing disconnection sound");
-                $('#disconnection_player').get(0).play().then(function () {
-                    setTimeout(stopdisconnectionsound, 2000)
-                });
-
+                audio.stop();
+                audio.playInLoop("sounds/alert_asterisk_1.mp3"); // returns NgAudioObject
+                $timeout(function (){
+                    audio.stop();
+                },4000);
             }
 
-            /////////////Disconection player End////////////////////////////////
+
+            function playSound() {
+                console.log("playing disconnection sound");
+                responsiveVoice.speak("hello sir how are you?");
+                audio.play("sounds/alert_asterisk_1.mp3"); // returns NgAudioObject
+            }
+
+            /////////////Disconnection player End////////////////////////////////
 
 
-            /////////////Breakingnews player ////////////////////////////////
+            /////////////Breaking news player ////////////////////////////////
 
             // function stopbreakingnewssound(){
             //    console.log("stopped playing braking news sound");
@@ -325,11 +350,10 @@ var app = angular.module('app')
             var prevIndex_backup = 0;
 
             function showDoc() {
+                playSound();
                 $scope.advertisements[currentIndexForAd].show = false;
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
-                responsiveVoice.speak("Hello sir. how are you doing?",  "UK English Male");
-                $('#disconnection_player').get(0).play();
                 ////////////////Doc Splice Function ////////////////////////////////
 
                 var startIndex = prevIndex;
@@ -361,7 +385,7 @@ var app = angular.module('app')
                 if ($scope.doctor) {
                     console.log("doctor disconnected " + $scope.doctor.is_disconnected);
                     if ($scope.doctor.body.is_disconnected == true) {
-                        playdisconnectionsound();
+                        playDisconnectionSound();
                     }
                 }
             }
