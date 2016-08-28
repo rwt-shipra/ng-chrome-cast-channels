@@ -12,7 +12,6 @@ var app = angular.module('app')
                 audioElement.play();     //  <-- That's all you need
             },
             playInLoop: function (filename) {
-
                 audioElement.loop = true;
                 audioElement.src = filename;
                 audioElement.play();
