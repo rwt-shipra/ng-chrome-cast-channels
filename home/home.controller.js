@@ -103,7 +103,7 @@ var app = angular.module('app')
 
             function playDisconnectionSound() {
                 console.log("playing disconnection sound");
-                responsiveVoice.speak("disconnected");
+                responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
                 audio.play("sound")
             }
 
@@ -111,7 +111,7 @@ var app = angular.module('app')
 
             function playSound(text) {
                 console.log("playing disconnection sound");
-                responsiveVoice.speak(text);
+                responsiveVoice.speak(text,"Hindi Female", {rate: 1.0});
                 audio.play("sound")
             }
 
