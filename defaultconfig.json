@@ -43,7 +43,7 @@
       "adCount": "Infinity",
       "adIntervel": 900,
       "lastDisplayed": 0,
-      "show_ad":false,
+      "show_ad":true,
       "showticker": false
     },
     {
