@@ -390,22 +390,24 @@ var app = angular.module('app')
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
                 ////////////////Doc Splice Function ////////////////////////////////
 
-                var startIndex = prevIndex;
+                $scope.startIndex = prevIndex;
                 var appointmentLeft = 0;
 
 
                 if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue) {
                     if ($scope.doctor.body.queue.length > 0) {
+
                         var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
                         appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
                         $scope.patientQueue = [];
-                        console.log("start index is " + startIndex + "appointment left" + appointmentLeft);
-                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, startIndex + 7));
+                        console.log("start index is " + $scope.startIndex + "appointment left" + appointmentLeft);
+                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice($scope.startIndex, $scope.startIndex + 7));
                         prevIndex_backup = prevIndex;
                         prevIndex = prevIndex + appointmentLeft;
 
                         if (diff >= 7) {
                             showDocExtra();
+
                         }
                     } else {
                         $scope.counter = 24;
