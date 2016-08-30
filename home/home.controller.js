@@ -319,11 +319,11 @@ var app = angular.module('app')
                                     }
                                 }
                                 if(!ad_already_present){
-                                    $scope.advertisements.push(advertisements_newly_added[j]);
+                                    $scope.advertisements.push($scope.advertisements_newly_added[j]);
                                 }
                             }
 
-                            advertisements_newly_added=[];
+                            $scope.advertisements_newly_added=[];
                         }
                         /*for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
                             $scope.advertisements[i].show = false;
