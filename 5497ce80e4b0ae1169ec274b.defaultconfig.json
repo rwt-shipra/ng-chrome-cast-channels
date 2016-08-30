@@ -22,6 +22,32 @@
     },
 
     {
+      "adId": "LOCAL_TRIBE_AD_1",
+      "adPriority": "LOW",
+      "adName": "LOCAL_TRIBE_AD_1",
+      "adUrl": "images/localtribe_ad_1.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 900,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
+    },
+    {
+      "adId": "MUSKAN_COOKING_CLASSES_AD_1",
+      "adPriority": "LOW",
+      "adName": "MUSKAN_COOKING_CLASSES_AD_1",
+      "adUrl": "images/cooking-ad.gif",
+      "adMimeType": "image/gif",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 3600,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
+    },
+    {
       "adId": "QORQL_AD_2",
       "adPriority": "LOW",
       "adName": "QORQL_AD_2",
