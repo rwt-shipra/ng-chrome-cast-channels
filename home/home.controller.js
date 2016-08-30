@@ -306,6 +306,25 @@ var app = angular.module('app')
                         //when you get success reset the advertisement
                         //$scope.defconfig = data;
                         $scope.advertisements_newly_added = data_from_configfile.defaultads;
+                        if($scope.advertisements_newly_added && $scope.advertisements){
+
+                            for(var j=0;j<$scope.advertisements_newly_added.length;j++){
+                                var ad_already_present=false;
+                                for(var i=0;i<$scope.advertisements.length;i++) {
+                                    if($scope.advertisements[i].adId===$scope.advertisements_newly_added[j].adId){
+
+                                        ad_already_present=true;
+                                        break;
+
+                                    }
+                                }
+                                if(!ad_already_present){
+                                    $scope.advertisements.push(advertisements_newly_added[j]);
+                                }
+                            }
+
+                            advertisements_newly_added=[];
+                        }
                         /*for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
                             $scope.advertisements[i].show = false;
                             if (i === 0)
@@ -366,25 +385,7 @@ var app = angular.module('app')
             function showDoc() {
 
                 $scope.advertisements[currentIndexForAd].show = false;
-                if($scope.advertisements_newly_added && $scope.advertisements){
 
-                        for(var j=0;j<$scope.advertisements_newly_added.length;j++){
-                            var ad_already_present=false;
-                            for(var i=0;i<$scope.advertisements.length;i++) {
-                                if($scope.advertisements[i].adId===$scope.advertisements_newly_added[j].adId){
-
-                                        ad_already_present=true;
-                                        break;
-
-                                }
-                            }
-                            if(!ad_already_present){
-                                $scope.advertisements.push(advertisements_newly_added[j]);
-                            }
-                        }
-
-                    advertisements_newly_added=[];
-                }
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
                 ////////////////Doc Splice Function ////////////////////////////////
