@@ -111,11 +111,11 @@ var app = angular.module('app')
 
 
 
-           // function playSound(text) {
-            //    console.log("playing disconnection sound");
-             //   responsiveVoice.speak(text,"Hindi Female", {rate: 0.8});
-              //  audio.play("sound")
-         //   }
+           function playSound(text) {
+               console.log("playing disconnection sound");
+                responsiveVoice.speak(text,"Hindi Female", {rate: 0.8});
+                audio.play("sound")
+          }
 
             /////////////Disconnection player End////////////////////////////////
 
@@ -598,7 +598,7 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                  //  playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . please  proceed to the doctor .  " + $scope.flashBus.header.doctorName);
+                   playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . please  proceed to the doctor .  " + $scope.flashBus.header.doctorName);
 
                     $timeout(function () {
                         showFlash(++flashindex)
