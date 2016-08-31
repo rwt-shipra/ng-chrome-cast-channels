@@ -62,9 +62,8 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
 
                     <ul class="nav navbar-nav">
-                        <img ng-src="{{('assets/img/networkicons/'+network.actual+'.png')}}" onerror="this.src='assets/img/networkicons/default.png'" />
 
-                        <li><a href="#"><img ng-src="./images/{{doctor.header.doctorImageUrl?doctor.header.doctorImageUrl:'default.png'}}" onerror="this.src='assets/img/networkicons/default.png'">
+                        <li><a href="#"><img class=" img-responsive" ng-src="./images/{{doctor.header.doctorImageUrl?doctor.header.doctorImageUrl:'default.png'}}" onerror="this.src='assets/img/networkicons/default.png'">
                            <b> {{doctor.header.doctorName}}</b> </a>
                         </li>
 
