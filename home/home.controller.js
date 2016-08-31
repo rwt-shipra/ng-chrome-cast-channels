@@ -131,7 +131,7 @@ var app = angular.module('app')
 
               function playbreakingnewssound(){
                 console.log("playing dbraking news sound");
-                 $('#disconnection_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
+                 $('#disconnection_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,3000)});
 
              }
 
@@ -612,7 +612,8 @@ var app = angular.module('app')
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
                     hideAllAds();
-                   playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . kripya Dr.  .  " + $scope.flashBus.header.doctorName + " ke pas jayea");
+                    playbreakingnewssound();
+                   //playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . kripya Dr.  .  " + $scope.flashBus.header.doctorName + " ke pas jayea");
 
                     $timeout(function () {
                         showFlash(++flashindex)
