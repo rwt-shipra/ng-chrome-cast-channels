@@ -382,6 +382,12 @@ var app = angular.module('app')
             var prevIndex = 0;
             var prevIndex_backup = 0;
 
+            function hideAllAds(){
+                for(var i=0;i<$scope.advertisements.length;i++){
+                    $scope.advertisements[i].show=false;
+                }
+            }
+
             function showDoc() {
 
                 $scope.advertisements[currentIndexForAd].show = false;
@@ -400,8 +406,10 @@ var app = angular.module('app')
                         var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
                         appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
                         $scope.patientQueue = [];
+                        hideAllAds();
                         console.log("start index is " + $scope.startIndex + "appointment left" + appointmentLeft);
                         $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice($scope.startIndex, $scope.startIndex + 7));
+
                         prevIndex_backup = prevIndex;
                         prevIndex = prevIndex + appointmentLeft;
 
@@ -556,11 +564,13 @@ var app = angular.module('app')
             function showFlash(flashindex) {
                 $scope.advertisements[currentIndexForAd].show = false;
 
-                $scope.insideflash = true;
+
                 $scope.docVisible = false;
                 $scope.advVisible = false;
+                $scope.insideflash = true;
                 $scope.flashVisible = true;
                 //playbreakingnewssound();
+                
                 stopCountDown();
                 if ($scope.flashQueue.length <= 0) {
 
