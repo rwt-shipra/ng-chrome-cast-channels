@@ -105,35 +105,33 @@ var app = angular.module('app')
 
             function playDisconnectionSound() {
                 console.log("playing disconnection sound");
-             //   responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
-             //   audio.play("sound")
+                //   responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
+                //   audio.play("sound")
+                audio.playInLoop("sounds/alert.mp3");
+                $timeout(function () {
+                    audio.stop();
+                }, 3000);
             }
 
 
-
-           function playSound(text) {
-               console.log("playing breaking news sound");
-               playbreakingnewssound();
-               // responsiveVoice.speak(text,"Hindi Female", {rate: 0.8});
-              //  audio.play("sound")
-          }
+            function playSound(text) {
+                console.log("playing breaking news sound");
+                // responsiveVoice.speak(text,"Hindi Female", {rate: 0.8});
+                //  audio.play("sound")
+            }
 
             /////////////Disconnection player End////////////////////////////////
 
 
             /////////////Breaking news player ////////////////////////////////
 
-             function stopbreakingnewssound(){
-                console.log("stopped playing braking news sound");
-               $('#disconnection_player').get(0).pause();
-               $('#disconnection_player').get(0).currentTime=0;
-              }
 
-              function playbreakingnewssound(){
-                console.log("playing dbraking news sound");
-                 $('#disconnection_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,3000)});
-
-             }
+            function playbreakingnewssound() {
+                audio.playInLoop("sounds/rail.mp3");
+                $timeout(function () {
+                    audio.stop();
+                }, 3000);
+            }
 
             /////////////Breaking news player End ////////////////////////////////
 
@@ -304,34 +302,34 @@ var app = angular.module('app')
                 }
                 if (!already_present) {
                     $scope.doctors.push(data);
-                    $http.get('../'+data.header.clinicID+'.defaultconfig.json').success(function (data_from_configfile) {
+                    $http.get('../' + data.header.clinicID + '.defaultconfig.json').success(function (data_from_configfile) {
                         //when you get success reset the advertisement
                         //$scope.defconfig = data;
                         $scope.advertisements_newly_added = data_from_configfile.defaultads;
-                        if($scope.advertisements_newly_added && $scope.advertisements){
+                        if ($scope.advertisements_newly_added && $scope.advertisements) {
 
-                            for(var j=0;j<$scope.advertisements_newly_added.length;j++){
-                                var ad_already_present=false;
-                                for(var i=0;i<$scope.advertisements.length;i++) {
-                                    if($scope.advertisements[i].adId===$scope.advertisements_newly_added[j].adId){
+                            for (var j = 0; j < $scope.advertisements_newly_added.length; j++) {
+                                var ad_already_present = false;
+                                for (var i = 0; i < $scope.advertisements.length; i++) {
+                                    if ($scope.advertisements[i].adId === $scope.advertisements_newly_added[j].adId) {
 
-                                        ad_already_present=true;
+                                        ad_already_present = true;
                                         break;
 
                                     }
                                 }
-                                if(!ad_already_present){
+                                if (!ad_already_present) {
                                     $scope.advertisements.push($scope.advertisements_newly_added[j]);
                                 }
                             }
 
-                            $scope.advertisements_newly_added=[];
+                            $scope.advertisements_newly_added = [];
                         }
                         /*for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
-                            $scope.advertisements[i].show = false;
-                            if (i === 0)
-                                $scope.advertisements[i].show = true;
-                        }*/
+                         $scope.advertisements[i].show = false;
+                         if (i === 0)
+                         $scope.advertisements[i].show = true;
+                         }*/
                         //nextAd();
                         //showAdv();
                         //$scope.counter += 1;
@@ -384,9 +382,9 @@ var app = angular.module('app')
             var prevIndex = 0;
             var prevIndex_backup = 0;
 
-            function hideAllAds(){
-                for(var i=0;i<$scope.advertisements.length;i++){
-                    $scope.advertisements[i].show=false;
+            function hideAllAds() {
+                for (var i = 0; i < $scope.advertisements.length; i++) {
+                    $scope.advertisements[i].show = false;
                 }
             }
 
@@ -613,7 +611,7 @@ var app = angular.module('app')
                     $scope.flashBus = $scope.flashQueue[flashindex];
                     hideAllAds();
                     playbreakingnewssound();
-                   //playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . kripya Dr.  .  " + $scope.flashBus.header.doctorName + " ke pas jayea");
+                    //playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . kripya Dr.  .  " + $scope.flashBus.header.doctorName + " ke pas jayea");
 
                     $timeout(function () {
                         showFlash(++flashindex)
