@@ -570,7 +570,7 @@ var app = angular.module('app')
                 $scope.insideflash = true;
                 $scope.flashVisible = true;
                 //playbreakingnewssound();
-                
+
                 stopCountDown();
                 if ($scope.flashQueue.length <= 0) {
 
@@ -608,6 +608,7 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
+                    hideAllAds();
                    playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . kripya Dr.  .  " + $scope.flashBus.header.doctorName + " ke pas jayea");
 
                     $timeout(function () {
