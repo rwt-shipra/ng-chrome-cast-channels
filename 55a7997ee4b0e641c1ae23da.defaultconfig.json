@@ -110,8 +110,22 @@
         "lastDisplayed": 0,
         "show_ad":true,
         "showticker": false
-    }
-],
+    },
+        {
+            "adId": "QORQL_AD_4",
+            "adPriority": "LOW",
+            "adName": "QORQL_AD_4",
+            "adUrl": "images/qorql-ads-04.png",
+            "adMimeType": "image/png",
+            "adTime": "10",
+            "adCount": "Infinity",
+            "adIntervel": 0,
+            "lastDisplayed": 0,
+            "show_ad":true,
+            "showticker": true
+        }
+
+    ],
     "knowndoctors": [
     {
         "doctorName": "ajay aggarwal",
