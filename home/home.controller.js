@@ -105,8 +105,10 @@ var app = angular.module('app')
 
             function playDisconnectionSound() {
                 console.log("playing disconnection sound");
-                responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
-                audio.play("sound")
+                playbreakingnewssound();
+
+                //responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
+                //audio.play("sound")
             }
 
 
@@ -122,16 +124,17 @@ var app = angular.module('app')
 
             /////////////Breaking news player ////////////////////////////////
 
-            // function stopbreakingnewssound(){
-            //    console.log("stopped playing braking news sound");
-            //   $('#breakingnew_player').get(0).pause();
-            ///   $('#breakingnew_player').get(0).currentTime=0;
-            //  }
-            //  function playbreakingnewssound(){
-            //     console.log("playing dbraking news sound");
-            //     $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
-//
-            // }
+             function stopbreakingnewssound(){
+                console.log("stopped playing braking news sound");
+               $('#disconnection_player').get(0).pause();
+               $('#disconnection_player').get(0).currentTime=0;
+              }
+
+              function playbreakingnewssound(){
+                console.log("playing dbraking news sound");
+                 $('#disconnection_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
+
+             }
 
             /////////////Breaking news player End ////////////////////////////////
 
@@ -478,6 +481,7 @@ var app = angular.module('app')
                     showAdv();
                     return;
                 }
+
                 else {
                     $scope.docVisible = false;
                     $scope.flashVisible = false;
