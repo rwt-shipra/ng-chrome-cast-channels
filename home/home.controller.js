@@ -598,7 +598,7 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                    playSound("Attention .  Token No. "+ $scope.flashBus.body.token +". Patient . "+ $scope.flashBus.body.patientName +  " . please  proceed to the doctor .  " + $scope.flashBus.header.doctorName);
+                    playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . please  proceed to the doctor .  " + $scope.flashBus.header.doctorName);
 
                     $timeout(function () {
                         showFlash(++flashindex)
