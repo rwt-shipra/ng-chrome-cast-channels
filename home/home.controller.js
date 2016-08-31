@@ -105,10 +105,8 @@ var app = angular.module('app')
 
             function playDisconnectionSound() {
                 console.log("playing disconnection sound");
-              //  playbreakingnewssound();
-
-                //responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
-                //audio.play("sound")
+                responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
+                audio.play("sound")
             }
 
 
