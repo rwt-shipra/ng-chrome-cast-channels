@@ -116,11 +116,10 @@
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center"><b>{{appointment.token}}</b></td>
 
-                       <td align="center" ng-if="appointment.typeOfEntry ===136932"><b>{{appointment.Appointment_time |  date:'shortTime' }}</b></td>
+                       <td align="center" ng-if="appointment.typeOfEntry ===136932"><b>{{Appointment_time |  date:'shortTime' }}</b></td>
                         <td align="center" ng-if="appointment.typeOfEntry ===132432"><b>NA</b></td>
 
-                        <td align="center"><b>{{appointment.In_time| date:'shortTime' }}</b></td>
-                        <td ng-if="appointment.typeOfEntry === 132432">
+                        <td align="center"><b>{{In_time| date:'shortTime' }}</b></td>                        <td ng-if="appointment.typeOfEntry === 132432">
                             <img class="img-thumbnail text-center" src="./images/appointment.png"/>
                         </td>
                         <td ng-if="appointment.typeOfEntry ===136932">
