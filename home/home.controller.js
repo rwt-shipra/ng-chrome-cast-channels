@@ -275,8 +275,8 @@ var app = angular.module('app')
             //*********queue types end**********//
 
             //*********type of appointment********//
-            var fromWalkinQ = 136932;
-            var fromChekinQ = 132432;
+             $scope.fromWalkinQ = 136932;
+            $scope.fromChekinQ = 132432;
             //*********type of appointment end********//
 
             //******patient status******//
