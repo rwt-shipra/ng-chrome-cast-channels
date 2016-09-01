@@ -116,7 +116,7 @@
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center"><b>{{appointment.token}}</b></td>
 
-                        <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{appointment.entrySlotTime| date:'shortTime'}}</b></td>
+                        <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{appointment.entrySlotTime * 1000 | date:'shortTime'}}</b></td>
                         <td align="center" ng-if="appointment.typeOfEntry ===fromWalkinQ"><b>NA</b></td>
 
                         <td align="center"><b>{{appointment.timeOfEntry| date:'shortTime'}}</b></td>
