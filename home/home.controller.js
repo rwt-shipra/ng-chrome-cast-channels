@@ -130,7 +130,7 @@ var app = angular.module('app')
                 audio.playInLoop("sounds/rail.mp3");
                 $timeout(function () {
                     audio.stop();
-                }, 3000);
+                }, 5000);
             }
 
             /////////////Breaking news player End ////////////////////////////////
