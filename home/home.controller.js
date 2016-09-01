@@ -42,7 +42,8 @@ var app = angular.module('app')
             $scope.device_doctors_map = [];
 
             $scope.is_doctor_connected = false;
-
+            $scope.Appointment_time = new Date(entrySlotTime * 1000);
+            $scope.In_time = new Date(timeOfEntry );
 
             //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted) {
