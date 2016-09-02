@@ -33,6 +33,19 @@
       "lastDisplayed": 0,
       "show_ad":true,
       "showticker": false
+    },
+    {
+      "adId": "QORQL_AD_5",
+      "adPriority": "LOW",
+      "adName": "QORQL_AD_2",
+      "adUrl": "images/dengu_ad.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
     }
 
   ],
