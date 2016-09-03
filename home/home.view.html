@@ -111,11 +111,11 @@
 
                     </thead>
                        
-                    <tr ng-repeat="appointment in patientQueue">
+                    <tr ng-repeat="appointment in patientQueue" style="color:{{startIndex+$index+1 === 1?'red ':'black'}}">
                         
                         <td align="center" >
 
-                        <b style="color:{{startIndex+$index+1 === 1?'red ':'black'}}">{{startIndex+$index+1}}</b>
+                        <b >{{startIndex+$index+1}}</b>
                         </td>
 
                         <td align="center"><b>{{appointment.patientName}}</b></td>
