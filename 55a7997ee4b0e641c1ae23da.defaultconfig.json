@@ -23,7 +23,7 @@
         {
             "adId": "QORQL_AD_3",
             "adPriority": "LOW",
-            "adName": "QORQL_AD_2",
+            "adName": "QORQL_AD_3",
             "adUrl": "images/qorql-ads-03.png",
             "adMimeType": "image/png",
             "adTime": "10",
@@ -42,6 +42,19 @@
         "adTime": "10",
         "adCount": "Infinity",
         "adIntervel": 0,
+        "lastDisplayed": 0,
+        "show_ad":true,
+        "showticker": true
+    },
+    {
+        "adId": "JAIN_HOBBY_AD_1",
+        "adPriority": "LOW",
+        "adName": "JAIN_HOBBY_AD_1",
+        "adUrl": "images/hobby-ads.gif",
+        "adMimeType": "image/gif",
+        "adTime": "10",
+        "adCount": "Infinity",
+        "adIntervel": 3600,
         "lastDisplayed": 0,
         "show_ad":true,
         "showticker": true
