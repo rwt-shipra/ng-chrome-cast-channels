@@ -113,7 +113,7 @@
                        
                     <tr ng-repeat="appointment in patientQueue">
                         
-                        <td align="center" style="'color':{{ startIndex == 1 ? 'red':'blue'}}">
+                        <td align="center" style="'color':{{ $index == 1 ? 'red':'blue'}}">
 
                         <b>{{startIndex+$index+1}}</b>
                         </td>
