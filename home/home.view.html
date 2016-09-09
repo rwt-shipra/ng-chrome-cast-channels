@@ -8,7 +8,7 @@
     <!--  <audio  id="#breakingnew_player" style="visibility: hidden;" controls  loop>
            <source src="sounds/rail.mp3" type="audio/mpeg">
        </audio>-->
-    <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
+    <!--<button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>-->
 
     <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements">
 
@@ -61,9 +61,9 @@
                 <ul class="nav navbar-nav">
                     <li><a href="#">
                         <img
-                            ng-src="./images/{{doctor.header.doctorImageUrl?doctor.header.doctorImageUrl:'default.png'}}"
-                            onerror="this.src='images/default.png'">
-                        <b> {{doctor.header.doctorName}}</b> </a>
+                                ng-src="./images/{{doctor.header.doctorImageUrl?doctor.header.doctorImageUrl:'default.png'}}"
+                                onerror="this.src='images/default.png'">
+                        <b> Dr.{{doctor.header.doctorName}}</b> </a>
                     </li>
                 </ul>
 
@@ -104,36 +104,34 @@
                         <th style="text-align:center"><b>S.No.</b></th>
                         <th style="text-align:center"><b>Name</b></th>
                         <th style="text-align:center"><b>Token</b> No.</th>
-                         <th style="text-align:center"><b>Appt-Time</b></th>
+                        <th style="text-align:center"><b>Appt-Time</b></th>
                         <th style="text-align:center"><b>In-time</b></th>
                         <th style="text-align:center">Type</th>
                     </tr>
 
                     </thead>
-                       
+
+
+
                     <tr ng-repeat="appointment in patientQueue" style="color:{{startIndex+$index+1 === 1?'red ':'black'}}">
-                        
-                        <td align="center" >
-
-                        <b >{{startIndex+$index+1}}</b>
-                        </td>
-
+                        <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center"><b>{{appointment.token}}</b></td>
 
-                       <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{ appointment.entrySlotTime*1000 |  date:'shortTime':'+0530' }}</b></td>
+                        <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{ appointment.entrySlotTime*1000 |  date:'shortTime':'+0530' }}</b></td>
                         <td align="center" ng-if="appointment.typeOfEntry ===fromWalkinQ "><b>NA</b></td>
 
-                        <td align="center"><b>{{appointment.timeOfEntry | date:'shortTime' :'':'+0530'}}</b></td>                        <td ng-if="appointment.typeOfEntry === fromChekinQ" style="text-align:center !important; 
+                        <td align="center"><b>{{appointment.timeOfEntry | date:'shortTime' :'':'+0530'}}</b></td>
+                        <td ng-if="appointment.typeOfEntry === fromChekinQ" style="text-align:center !important;
     vertical-align:middle !important;">
-                            <img class="img-thumbnail text-center" style="display: block !important;
+                        <img class="img-thumbnail text-center" style="display: block !important;
     margin-left: auto !important;
-    margin-right: auto!important;"    src="./images/appointment.png"/>
-                        </td>
-                        <td ng-if="appointment.typeOfEntry ===fromWalkinQ" style="text-align:center; 
+    margin-right: auto!important;"  src="./images/appointment.png"/>
+                    </td>
+                        <td ng-if="appointment.typeOfEntry ===fromWalkinQ" style="text-align:center;
     vertical-align:middle !important;">
                             <img class="img-thumbnail text-center" style="display: block !important;
-    margin-left: auto !important ;  text-align:center !important; 
+    margin-left: auto !important ;  text-align:center !important;
     vertical-align:middle;
     margin-right: auto!important;" src="./images/walkin.png"/>
                         </td>

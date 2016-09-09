@@ -7,12 +7,27 @@
   "fontSize": 38,
   "flash-color": "#0092cb",
   "defaultads": [
+
+
     {
       "adId": "RAHUL_CLINIC_AD_1",
       "adPriority": "LOW",
       "adName": "RAHUL_CLINIC_AD_1",
       "adUrl": "images/rahul_clinic_ad.png",
       "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": true
+    },
+    {
+      "adId": "RAHUL_CLINIC_AD_2",
+      "adPriority": "LOW",
+      "adName": "RAHUL_CLINIC_AD_2",
+      "adUrl": "images/raul_hospital_ad.gif",
+      "adMimeType": "image/gif",
       "adTime": "10",
       "adCount": "Infinity",
       "adIntervel": 0,
@@ -80,8 +95,8 @@
       "flash_color": "#151172"
     }
   ],
-  "connection_issue_collection": "test_qliveconnection",
-  "ad_count_collection": "test_qliveadcount",
+  "connection_issue_collection": "qliveconnection",
+  "ad_count_collection": "qliveadcount",
   "ip_for_logs": "52.76.159.84",
   "port_for_logs": 8091
 }

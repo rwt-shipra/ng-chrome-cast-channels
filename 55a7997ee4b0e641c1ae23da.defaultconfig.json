@@ -23,7 +23,7 @@
         {
             "adId": "QORQL_AD_3",
             "adPriority": "LOW",
-            "adName": "QORQL_AD_3",
+            "adName": "QORQL_AD_2",
             "adUrl": "images/qorql-ads-03.png",
             "adMimeType": "image/png",
             "adTime": "10",
@@ -46,19 +46,34 @@
         "show_ad":true,
         "showticker": true
     },
-    {
-        "adId": "JAIN_HOBBY_AD_1",
-        "adPriority": "LOW",
-        "adName": "JAIN_HOBBY_AD_1",
-        "adUrl": "images/hobby-ads.gif",
-        "adMimeType": "image/gif",
-        "adTime": "10",
-        "adCount": "Infinity",
-        "adIntervel": 3600,
-        "lastDisplayed": 0,
-        "show_ad":true,
-        "showticker": true
-    },
+         {
+            "adId": "YOG_CLINIC_AD_1",
+            "adPriority": "LOW",
+            "adName": "YOG_CLINIC_AD_1",
+            "adUrl": "images/yoga_ad_01.png",
+            "adMimeType": "image/png",
+            "adTime": "10",
+            "adCount": "Infinity",
+            "adIntervel": 1800,
+            "lastDisplayed": 0,
+            "show_ad":true,
+            "showticker": true
+        },
+
+
+        {
+            "adId": "JAIN_HOBBY_AD_1",
+            "adPriority": "LOW",
+            "adName": "JAIN_HOBBY_AD_1",
+            "adUrl": "images/hobby-ads.gif",
+            "adMimeType": "image/gif",
+            "adTime": "10",
+            "adCount": "Infinity",
+            "adIntervel": 1800,
+            "lastDisplayed": 0,
+            "show_ad":true,
+            "showticker": true
+        },
     {
         "adId": "LOCAL_TRIBE_AD_1",
         "adPriority": "LOW",
@@ -80,10 +95,23 @@
         "adMimeType": "image/gif",
         "adTime": "10",
         "adCount": "Infinity",
-        "adIntervel": 3600,
+        "adIntervel": 1800,
         "lastDisplayed": 0,
         "show_ad":true,
         "showticker": false
+    },
+    {
+      "adId": "QORQL_AD_5",
+      "adPriority": "LOW",
+      "adName": "QORQL_AD_5",
+      "adUrl": "images/dengue_ad.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
     },
     {
         "adId": "QORQL_AD_2",
@@ -136,19 +164,6 @@
             "lastDisplayed": 0,
             "show_ad":true,
             "showticker": true
-        },
-        {
-            "adId": "QORQL_AD_5",
-            "adPriority": "LOW",
-            "adName": "QORQL_AD_5",
-            "adUrl": "images/dengue_ad.png",
-            "adMimeType": "image/png",
-            "adTime": "10",
-            "adCount": "Infinity",
-            "adIntervel": 0,
-            "lastDisplayed": 0,
-            "show_ad":true,
-            "showticker": false
         }
 
     ],
@@ -184,8 +199,8 @@
         "flash_color": "#151172"
     }
 ],
-    "connection_issue_collection": "test_qliveconnection",
-    "ad_count_collection": "test_qliveadcount",
+    "connection_issue_collection": "qliveconnection",
+    "ad_count_collection": "qliveadcount",
     "ip_for_logs": "52.76.159.84",
     "port_for_logs": 8091
 }

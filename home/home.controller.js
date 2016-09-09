@@ -42,8 +42,8 @@ var app = angular.module('app')
             $scope.device_doctors_map = [];
 
             $scope.is_doctor_connected = false;
-          //   $scope.Appointment_time = Date(patientQueue.entrySlotTime * 1000);
-           // $scope.In_time = Date(patientQueue.timeOfEntry );
+            //   $scope.Appointment_time = Date(patientQueue.entrySlotTime * 1000);
+            // $scope.In_time = Date(patientQueue.timeOfEntry );
             //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted) {
 
@@ -275,7 +275,7 @@ var app = angular.module('app')
             //*********queue types end**********//
 
             //*********type of appointment********//
-             $scope.fromWalkinQ = 136932;
+            $scope.fromWalkinQ = 136932;
             $scope.fromChekinQ = 132432;
             //*********type of appointment end********//
 
@@ -579,7 +579,7 @@ var app = angular.module('app')
                     $timeout(function () {
 
 
-                        if ($scope.counter <= $scope.advertisement.show_ad) {
+                        if ($scope.counter <= 10) {
                             showAdv();
                         }
                         else if ($scope.counter <= 30) {
@@ -596,7 +596,7 @@ var app = angular.module('app')
                     $scope.flashQueue = [];
                     $scope.insideflash = false;
                     $timeout(function () {
-                        if ($scope.counter <= $scope.advertisement.show_ad)
+                        if ($scope.counter <= 10)
                             showAdv();
 
                         else if ($scope.counter <= 30) {
@@ -637,7 +637,7 @@ var app = angular.module('app')
                     if ($scope.counter === 0) {
                         nextAd();
                         showAdv();
-                    } else if ($scope.counter === $scope.advertisement.show_ad) {
+                    } else if ($scope.counter === 10) {
                         prevIndex = 0;
                         nextDoc();
                         showDoc();
