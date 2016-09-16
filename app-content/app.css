@@ -5,7 +5,7 @@ body{
 	
 }
 /*blin the First pateint */
-.blink {background: #00ff00;}
+.blink {color: #00ff00;}
 @-webkit-keyframes blink {
     from { color:   #00ff00; }
     to { color: black; }
