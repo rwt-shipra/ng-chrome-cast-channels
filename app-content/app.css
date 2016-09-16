@@ -25,11 +25,11 @@ body{
 @-moz-keyframes blink {
   from {
     opacity: 1;
-    color:  #00ff00
+    color: #00ff00
   }
   
   to {
-    opacity: 0.9;
+    opacity: 0;
     color: black;
   }
 }
@@ -37,11 +37,11 @@ body{
 @-webkit-keyframes blink {
   from {
     opacity: 1;
-    color: #  #00ff00
+    color: #00ff00
   }
   
   to {
-    opacity: 0.9;
+    opacity: 0;
      color: black;
 
   }
@@ -50,11 +50,11 @@ body{
 @keyframes blink {
   from {
     opacity: 1;
-    color: #  #00ff00
+    color: #00ff00
   }
   
   to {
-    opacity: 0.9;
+    opacity: 0;
     color: black;
   }
 }
