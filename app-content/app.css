@@ -6,17 +6,17 @@ body{
 }
 /*blin the First pateint */
 .selected{
-  -moz-animation-duration: 400ms;
+  -moz-animation-duration: 900ms;
   -moz-animation-name: blink;
   -moz-animation-iteration-count: infinite;
   -moz-animation-direction: alternate;
   
-  -webkit-animation-duration: 400ms;
+  -webkit-animation-duration: 900ms;
   -webkit-animation-name: blink;
   -webkit-animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
   
-  animation-duration: 400ms;
+  animation-duration: 900ms;
   animation-name: blink;
   animation-iteration-count: infinite;
   animation-direction: alternate;
@@ -25,7 +25,7 @@ body{
 @-moz-keyframes blink {
   from {
     opacity: 1;
-    color: #151172
+    color:  #00ff00
   }
   
   to {
@@ -37,7 +37,7 @@ body{
 @-webkit-keyframes blink {
   from {
     opacity: 1;
-    color: #151172
+    color: #  #00ff00
   }
   
   to {
@@ -50,7 +50,7 @@ body{
 @keyframes blink {
   from {
     opacity: 1;
-    color: #151172
+    color: #  #00ff00
   }
   
   to {
