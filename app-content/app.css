@@ -6,7 +6,7 @@ body{
 }
 /*blin the First pateint */
 .selected{
-  color: #10ff00;
+  color: #0ee500;
   -moz-animation-duration: 600ms;
   -moz-animation-name: blink;
   -moz-animation-iteration-count: infinite;
@@ -26,7 +26,7 @@ body{
 @-moz-keyframes blink {
   from {
     opacity: 1;
-    color: #10ff00;
+    color: #0ee500;
   }
   
   to {
@@ -38,7 +38,7 @@ body{
 @-webkit-keyframes blink {
   from {
     opacity: 1;
-    color: #10ff00;
+    color: #0ee500;
   }
   
   to {
@@ -50,7 +50,7 @@ body{
 @keyframes blink {
   from {
     opacity: 1;
-    color: #10ff00;
+    color: #0ee500;
 
   }
   
