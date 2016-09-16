@@ -5,60 +5,36 @@ body{
 	
 }
 /*blin the First pateint */
-.selected{
-  -moz-animation-duration: 1000ms;
-  -moz-animation-name: blink;
-  -moz-animation-iteration-count: infinite;
-  -moz-animation-direction: alternate;
-  
-  -webkit-animation-duration: 1000ms;
-  -webkit-animation-name: blink;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-  
-  animation-duration: 1000ms;
-  animation-name: blink;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-@-moz-keyframes blink {
-  from {
-    opacity: 1;
-    color: #00ff00
-  }
-  
-  to {
-    opacity: 0;
-   
-  }
-}
-
+..blink {background: #ccc;}
 @-webkit-keyframes blink {
-  from {
-    opacity: 1;
-    color: #00ff00
+    from { color:   #00ff00; }
+    to { color: black; }
   }
-  
-  to {
-    opacity: 0;
- 
+  @-moz-keyframes blink {
+    from { color:   #00ff00; }
+    to { color: black; }
+  }
+  @-ms-keyframes blink {
+    from { color:   #00ff00; }
+    to { color: black; }
+  }
+  @-o-keyframes blink {
+    from { color:   #00ff00; }
+    to { color: black; }
+  }
+  @keyframes blink {
+    from { color:   #00ff00; }
+    to { color: black; }
+  }
 
+ .blink {
+     color: green;
+     -webkit-animation: blink 2s 3 alternate;
+     -moz-animation: blink 2s 3 alternate;  
+     -ms-animation: blink 2s 3 alternate;  
+     -o-animation: blink 2s 3 alternate;  
+     animation: blink 2s 3 alternate;   
   }
-}
-
-@keyframes blink {
-  from {
-    opacity: 1;
-    color: #00ff00
-  }
-  
-  to {
-    opacity: 0;
-    
-  }
-}
-
 
 
 .navbar-centered {
