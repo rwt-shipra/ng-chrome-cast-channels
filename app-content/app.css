@@ -5,7 +5,7 @@ body{
 	
 }
 /*blin the First pateint */
-..blink {background: #ccc;}
+.blink {background: #00ff00;}
 @-webkit-keyframes blink {
     from { color:   #00ff00; }
     to { color: black; }
@@ -29,11 +29,11 @@ body{
 
  .blink {
      color: green;
-     -webkit-animation: blink 2s 3 alternate;
-     -moz-animation: blink 2s 3 alternate;  
-     -ms-animation: blink 2s 3 alternate;  
-     -o-animation: blink 2s 3 alternate;  
-     animation: blink 2s 3 alternate;   
+     -webkit-animation: blink 5s 3 alternate;
+     -moz-animation: blink 5s 3 alternate;  
+     -ms-animation: blink 5s 3 alternate;  
+     -o-animation: blink 5s 3 alternate;  
+     animation: blink 5s 3 alternate;   
   }
 
 
