@@ -5,35 +5,35 @@ body{
 	
 }
 /*blin the First pateint */
-.blink {color: #00ff00;}
+.blink {color: #D7492D;}
 @-webkit-keyframes blink {
-    from { color:   #00ff00; }
+    from { color:   #D7492D; }
     to { color: black; }
   }
   @-moz-keyframes blink {
-    from { color:   #00ff00; }
+    from { color:   #D7492D; }
     to { color: black; }
   }
   @-ms-keyframes blink {
-    from { color:   #00ff00; }
+    from { color:   #D7492D; }
     to { color: black; }
   }
   @-o-keyframes blink {
-    from { color:   #00ff00; }
+    from { color:  #D7492D; }
     to { color: black; }
   }
   @keyframes blink {
-    from { color:   #00ff00; }
+    from { color:   #D7492D; }
     to { color: black; }
   }
 
  .blink {
      color: green;
-     -webkit-animation: blink 5s 3 alternate;
-     -moz-animation: blink 5s 3 alternate;  
-     -ms-animation: blink 5s 3 alternate;  
-     -o-animation: blink 5s 3 alternate;  
-     animation: blink 5s 3 alternate;   
+     -webkit-animation: blink 3s 3 alternate;
+     -moz-animation: blink 3s 3 alternate;  
+     -ms-animation: blink 3s 3 alternate;  
+     -o-animation: blink 3s 3 alternate;  
+     animation: blink 3s 3 alternate;   
   }
 
 
