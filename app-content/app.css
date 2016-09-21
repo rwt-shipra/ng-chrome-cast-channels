@@ -7,16 +7,13 @@ body{
 
 
 .selected{
-  color: #0ee500;
- 
-
 
   text-decoration:   inherit;
-    animation:         blink 0.75s ease-in infinite alternate;
-    -webkit-animation: blink 0.75s ease-in infinite alternate;
-    -moz-animation:    blink 0.75s ease-in infinite alternate;
-    -ms-animation:     blink 0.75s ease-in infinite alternate;
-    -o-animation:      blink 0.75s ease-in infinite alternate;
+    animation:         blink 0.75s ease-in infinite ;
+    -webkit-animation: blink 0.75s ease-in infinite ;
+    -moz-animation:    blink 0.75s ease-in infinite ;
+    -ms-animation:     blink 0.75s ease-in infinite ;
+    -o-animation:      blink 0.75s ease-in infinite ;
 
   
 }
