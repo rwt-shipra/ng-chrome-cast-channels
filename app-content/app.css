@@ -8,18 +8,15 @@ body{
 
 .selected{
   color: #0ee500;
-  -moz-animation-duration: 500ms ease-in infinite alternate;
-  -moz-animation-name: blink;
  
 
-  
-  -webkit-animation-duration: 500ms ease-in infinite alternate;
-  -webkit-animation-name: blink;
- 
 
-  
-  animation-duration: 500ms ease-in infinite alternate;
-  animation-name: blink;
+  text-decoration:   inherit;
+    animation:         blink 0.75s ease-in infinite alternate;
+    -webkit-animation: blink 0.75s ease-in infinite alternate;
+    -moz-animation:    blink 0.75s ease-in infinite alternate;
+    -ms-animation:     blink 0.75s ease-in infinite alternate;
+    -o-animation:      blink 0.75s ease-in infinite alternate;
 
   
 }
