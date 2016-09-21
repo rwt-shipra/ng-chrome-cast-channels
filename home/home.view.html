@@ -8,7 +8,7 @@
     <!--  <audio  id="#breakingnew_player" style="visibility: hidden;" controls  loop>
            <source src="sounds/rail.mp3" type="audio/mpeg">
        </audio>-->
-    <!--<button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>-->
+    <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
     <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements">
 
@@ -113,7 +113,7 @@
 
   
 
-                    <tr ng-repeat="appointment in patientQueue"  ng-class="{'selected':startIndex === 1}">
+                    <tr ng-repeat="appointment in patientQueue">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center"><b>{{appointment.token}}</b></td>
