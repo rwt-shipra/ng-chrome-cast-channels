@@ -26,7 +26,7 @@
       "adId": "RAHUL_CLINIC_AD_2",
       "adPriority": "LOW",
       "adName": "RAHUL_CLINIC_AD_2",
-      "adUrl": "images/raul_hospital_ad.gif",
+      "adUrl": "images/rahul_hospital_ad.gif",
       "adMimeType": "image/gif",
       "adTime": "10",
       "adCount": "Infinity",
@@ -36,19 +36,6 @@
       "showticker": true
     },
 
-     {
-      "adId": "QORQL_AD_3",
-      "adPriority": "LOW",
-      "adName": "QORQL_AD_3",
-      "adUrl": "images/qorql-ads-03-Rahul.png",
-      "adMimeType": "image/png",
-      "adTime": "10",
-      "adCount": "Infinity",
-      "adIntervel": 0,
-      "lastDisplayed": 0,
-      "show_ad":true,
-      "showticker": false
-    },
     {
       "adId": "QORQL_AD_5",
       "adPriority": "LOW",
@@ -61,6 +48,19 @@
       "lastDisplayed": 0,
       "show_ad":true,
       "showticker": false
+    },
+    {
+      "adId": "RAHUL_CLINIC_AD_YOGA_3",
+      "adPriority": "LOW",
+      "adName": "RAHUL_CLINIC_AD_YOGA_3",
+      "adUrl": "images/yoga-ad-rahul-clinc.gif",
+      "adMimeType": "image/gif",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 900,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": true
     }
   ],
   "knowndoctors": [

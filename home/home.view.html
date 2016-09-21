@@ -96,7 +96,7 @@
 
             <div class="table-responsive container" style="margin-top:1px;">
 
-                <table cellpadding="0" class=" table table-bordered" style="font-size:34px;">
+                <table cellpadding="0" class=" table table-bordered" style="font-size:32px;">
 
                     <thead>
 
@@ -111,9 +111,9 @@
 
                     </thead>
 
+  
 
-
-                    <tr ng-repeat="appointment in patientQueue"  ng-class="{'selected':startIndex+$index+1 === 1}" >
+                    <tr ng-repeat="appointment in patientQueue"  ng-class="{'selected':startIndex === 1}">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center"><b>{{appointment.token}}</b></td>
