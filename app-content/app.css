@@ -6,44 +6,31 @@ body{
 }
 
 
-#blink {
-  -webkit-animation: blink .75s linear infinite;
-  -moz-animation: blink .75s linear infinite;
-  -ms-animation: blink .75s linear infinite;
-  -o-animation: blink .75s linear infinite;
-   animation: blink .75s linear infinite;
+@-webkit-keyframes invalid {
+  from { background-color: red; }
+  to { background-color: inherit; }
 }
-@-webkit-keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 1; }
-  50.01% { opacity: 0; }
-  100% { opacity: 0; }
+@-moz-keyframes invalid {
+  from { background-color: red; }
+  to { background-color: inherit; }
 }
-@-moz-keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 1; }
-  50.01% { opacity: 0; }
-  100% { opacity: 0; }
+@-o-keyframes invalid {
+  from { background-color: red; }
+  to { background-color: inherit; }
 }
-@-ms-keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 1; }
-  50.01% { opacity: 0; }
-  100% { opacity: 0; }
+@keyframes invalid {
+  from { background-color: red; }
+  to { background-color: inherit; }
 }
-@-o-keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 1; }
-  50.01% { opacity: 0; }
-  100% { opacity: 0; }
-}
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 1; }
-  50.01% { opacity: 0; }
-  100% { opacity: 0; }
+.invalid {
+  -webkit-animation: invalid 1s infinite; /* Safari 4+ */
+  -moz-animation:    invalid 1s infinite; /* Fx 5+ */
+  -o-animation:      invalid 1s infinite; /* Opera 12+ */
+  animation:         invalid 1s infinite; /* IE 10+ */
 }
 
+
+}
 
 
 
