@@ -205,8 +205,7 @@ var app = angular.module('app')
             }
 
             $scope.$watch('docVisible',function(newValue,oldValue,scope){
-                    if(newValue)
-                         $scope.isTrue=false;
+                    $scope.isTrue=false;
                     $timeout(function(){
                            console.log("new value="+newValue +" old Value="+ oldValue);
                            if(newValue)
