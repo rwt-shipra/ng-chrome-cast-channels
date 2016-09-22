@@ -7,37 +7,15 @@ body{
 
 
 .selected{
-  text-decoration:   inherit;
-    animation:         blink 0.75s ease-in infinite ;
-    -webkit-animation: blink 0.75s ease-in infinite ;
-    -moz-animation:    blink 0.75s ease-in infinite ;
-    -ms-animation:     blink 0.75s ease-in infinite ;
-    -o-animation:      blink 0.75s ease-in infinite ;
+ 
+    animation:         blink 0.75s  infinite ;
+    -webkit-animation: blink 0.75s infinite ;
+    -moz-animation:    blink 0.75s infinite ;
+    -ms-animation:     blink 0.75s infinite ;
+    -o-animation:      blink 0.75s infinite ;
 }
 
-@-moz-keyframes blink {
-  from {
-    opacity: 1;
-    color: #0ee500;
-  }
-  
-  to {
-    opacity: 1;
-    color: #631cd9;
-  }
-}
 
-@-webkit-keyframes blink {
-  from {
-    opacity: 1;
-    color: #0ee500;
-  }
-  
-  to {
-    opacity: 1;
-     color: #631cd9;
-  }
-}
 
 @keyframes blink {
   from {
