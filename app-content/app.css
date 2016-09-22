@@ -9,10 +9,7 @@ body{
 .selected{
  
     animation:         blink 0.75s  infinite ;
-    -webkit-animation: blink 0.75s infinite ;
-    -moz-animation:    blink 0.75s infinite ;
-    -ms-animation:     blink 0.75s infinite ;
-    -o-animation:      blink 0.75s infinite ;
+   
 }
 
 
