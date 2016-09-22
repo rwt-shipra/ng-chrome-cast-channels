@@ -113,7 +113,7 @@
 
   
 
-                    <tr ng-repeat="appointment in patientQueue" ng-class="$index === 0?selected:"">
+                    <tr ng-repeat="appointment in patientQueue" ng-class="$index === 0?'selected':''">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center"><b>{{appointment.token}}</b></td>
