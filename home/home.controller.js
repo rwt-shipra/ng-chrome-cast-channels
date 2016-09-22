@@ -204,6 +204,17 @@ var app = angular.module('app')
                 }
             }
 
+            $scope.$watch('docVisible',function(newValue,oldValue,scope){
+                    if(newValue)
+                         $scope.isTrue=false;
+                    $timeout(function(){
+                           console.log("new value="+newValue +" old Value="+ oldValue);
+                           if(newValue)
+                             $scope.isTrue=true;     
+
+                    },1000);  
+            },true);
+
 
             function post_ad_display_count(ad_data) {
 
