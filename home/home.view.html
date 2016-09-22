@@ -111,9 +111,7 @@
 
                     </thead>
 
-  
-
-                    <tr ng-repeat="appointment in patientQueue" ng-attr-id= "{{appointment.patientid}">
+                    <tr ng-repeat="appointment in patientQueue" ng-class="appointment.patientid === doctor.body.queue[0].patientid?'blink':''">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center"><b>{{appointment.token}}</b></td>
