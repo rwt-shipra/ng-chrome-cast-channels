@@ -204,10 +204,11 @@ var app = angular.module('app')
                 }
             }
 
+            //watch function to enable blinking for first user
+
             $scope.$watch('docVisible',function(newValue,oldValue,scope){
                     $scope.isTrue=false;
                     $timeout(function(){
-                           console.log("new value="+newValue +" old Value="+ oldValue);
                            if(newValue)
                              $scope.isTrue=true;     
 
