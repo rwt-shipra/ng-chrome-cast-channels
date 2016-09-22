@@ -450,6 +450,12 @@ var app = angular.module('app')
                 }, 1000);
             }
 
+            $scope.$watch('docVisible',function(newValue,oldValue,scope){
+                    $timeout(function(){
+                                console.log("new value="+newValue +" old Value="+ oldValue);
+                    },300);  
+            },true);
+            
             function showAdv() {
 
                 $scope.advertisement = $scope.advertisements[currentIndexForAd];
