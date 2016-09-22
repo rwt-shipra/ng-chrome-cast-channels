@@ -100,20 +100,20 @@
 
                     <thead>
 
-                    <tr style="background-color:#7EB6FF;">
-                        <th style="text-align:center"><b>S.No.</b></th>
-                        <th style="text-align:center"><b>Name</b></th>
-                        <th style="text-align:center"><b>Token</b> No.</th>
-                        <th style="text-align:center"><b>Appt-Time</b></th>
-                        <th style="text-align:center"><b>In-time</b></th>
-                        <th style="text-align:center">Type</th>
-                    </tr>
+                        <tr style="background-color:#7EB6FF;">
+                            <th style="text-align:center"><b>S.No.</b></th>
+                            <th style="text-align:center"><b>Name</b></th>
+                            <th style="text-align:center"><b>Token</b> No.</th>
+                            <th style="text-align:center"><b>Appt-Time</b></th>
+                            <th style="text-align:center"><b>In-time</b></th>
+                            <th style="text-align:center">Type</th>
+                        </tr>
 
                     </thead>
 
   
 
-                    <tr ng-repeat="appointment in patientQueue" ng-class="$index === 0?'selected':''">
+                    <tr ng-repeat="appointment in patientQueue" ng-class="$index === 0?'blink':''">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center"><b>{{appointment.token}}</b></td>
