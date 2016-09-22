@@ -376,6 +376,7 @@ var app = angular.module('app')
             $scope.docVisible = false;
             $scope.advVisible = false;
             $scope.flashVisible = false;
+            $scope.isTrue=false;
 
             $scope.patientQueue = [];
 
@@ -387,6 +388,18 @@ var app = angular.module('app')
                     $scope.advertisements[i].show = false;
                 }
             }
+
+            $scope.$watch('docVisible',function(newValue,oldValue,scope){
+                    $timeout(function(){
+                                console.log("new value="+newValue +" old Value="+ oldValue);
+                                if(newValue && $scope.doctor && $scope.doctor.body && $scope.doctor.body.queue){
+                                   $scope.isTrue=true;
+                                }else{
+                                    $scope.isTrue=false;
+                                }
+
+                    },300);  
+            },true);
 
             function showDoc() {
 
@@ -455,7 +468,7 @@ var app = angular.module('app')
                                 console.log("new value="+newValue +" old Value="+ oldValue);
                     },300);  
             },true);
-            
+
             function showAdv() {
 
                 $scope.advertisement = $scope.advertisements[currentIndexForAd];
