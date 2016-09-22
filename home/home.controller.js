@@ -376,7 +376,6 @@ var app = angular.module('app')
             $scope.docVisible = false;
             $scope.advVisible = false;
             $scope.flashVisible = false;
-            $scope.isTrue=false;
 
             $scope.patientQueue = [];
 
@@ -388,20 +387,6 @@ var app = angular.module('app')
                     $scope.advertisements[i].show = false;
                 }
             }
-
-            $scope.$watch('docVisible',function(newValue,oldValue,scope){
-                    $timeout(function(){
-                                console.log("new value="+newValue +" old Value="+ oldValue);
-                                
-                                if(newValue && $scope.doctor && $scope.doctor.body && $scope.doctor.body.queue){
-                                   $scope.isTrue=true;
-                                }else{
-                                    $scope.isTrue=false;
-                                }
-                                
-
-                    },300);  
-            },true);
 
             function showDoc() {
 
@@ -417,6 +402,7 @@ var app = angular.module('app')
 
                 if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue) {
                     if ($scope.doctor.body.queue.length > 0) {
+
                         var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
                         appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
                         $scope.patientQueue = [];
@@ -429,6 +415,7 @@ var app = angular.module('app')
 
                         if (diff >= 7) {
                             showDocExtra();
+
                         }
                     } else {
                         $scope.counter = 24;
@@ -464,12 +451,6 @@ var app = angular.module('app')
 
                 }, 1000);
             }
-
-            $scope.$watch('docVisible',function(newValue,oldValue,scope){
-                    $timeout(function(){
-                                console.log("new value="+newValue +" old Value="+ oldValue);
-                    },300);  
-            },true);
 
             function showAdv() {
 

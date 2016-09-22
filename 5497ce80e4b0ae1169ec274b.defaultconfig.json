@@ -7,21 +7,33 @@
   "fontSize": 38,
   "flash-color": "#0092cb",
   "defaultads": [
-
-     {
-      "adId": "Ajay_Ratogi_AD_1",
+    {
+      "adId": "QORQL_AD_1",
       "adPriority": "LOW",
-      "adName": "Ajay_Ratogi_AD_1",
-      "adUrl": "images/Ajay_Rastogi_ad.png",
+      "adName": "QORQL_AD_1",
+      "adUrl": "images/qorql-ads-01.png",
       "adMimeType": "image/png",
       "adTime": "10",
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
       "show_ad":true,
-      "showticker": false
+      "showticker": true
     },
-    {
+     {
+            "adId": "YOG_CLINIC_AD_1",
+            "adPriority": "LOW",
+            "adName": "YOG_CLINIC_AD_1",
+            "adUrl": "images/yoga_ad_01.png",
+            "adMimeType": "image/png",
+            "adTime": "10",
+            "adCount": "Infinity",
+            "adIntervel": 900,
+            "lastDisplayed": 0,
+            "show_ad":true,
+            "showticker": true
+        },
+{
       "adId": "QORQL_AD_5",
       "adPriority": "LOW",
       "adName": "QORQL_AD_5",
@@ -34,19 +46,74 @@
       "show_ad":true,
       "showticker": false
     },
+
     {
-      "adId": "RAHUL_CLINIC_AD_YOGA_3",
+      "adId": "LOCAL_TRIBE_AD_1",
       "adPriority": "LOW",
-      "adName": "RAHUL_CLINIC_AD_YOGA_3",
-      "adUrl": "images/yoga-ad-rahul-clinc.gif",
+      "adName": "LOCAL_TRIBE_AD_1",
+      "adUrl": "images/localtribe_ad_1.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 900,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
+    },
+    {
+      "adId": "MUSKAN_COOKING_CLASSES_AD_1",
+      "adPriority": "LOW",
+      "adName": "MUSKAN_COOKING_CLASSES_AD_1",
+      "adUrl": "images/cooking-ad.gif",
       "adMimeType": "image/gif",
       "adTime": "10",
       "adCount": "Infinity",
       "adIntervel": 900,
       "lastDisplayed": 0,
       "show_ad":true,
+      "showticker": false
+    },
+    {
+      "adId": "QORQL_AD_2",
+      "adPriority": "LOW",
+      "adName": "QORQL_AD_2",
+      "adUrl": "images/qorql-ads-02.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
+    },
+    {
+      "adId": "QORQL_AD_3",
+      "adPriority": "LOW",
+      "adName": "QORQL_AD_3",
+      "adUrl": "images/qorql-ads-03.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
+    },
+    {
+      "adId": "QORQL_AD_4",
+      "adPriority": "LOW",
+      "adName": "QORQL_AD_4",
+      "adUrl": "images/qorql-ads-04.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
       "showticker": true
     }
+
+
   ],
   "knowndoctors": [
     {
