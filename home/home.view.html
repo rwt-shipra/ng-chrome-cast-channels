@@ -114,7 +114,7 @@
   
   <!-- ng-class="{true: 'selected', false: 'selected'}[isTrue]" -->
 
-                    <tr ng-repeat="appointment in patientQueue"    class="blink:{{startIndex+$index+1===1}}">
+                    <tr ng-repeat="appointment in patientQueue"    class="blink:startIndex+$index+1===1">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center"><b>{{appointment.token}}</b></td>
