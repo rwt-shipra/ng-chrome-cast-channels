@@ -392,11 +392,13 @@ var app = angular.module('app')
             $scope.$watch('docVisible',function(newValue,oldValue,scope){
                     $timeout(function(){
                                 console.log("new value="+newValue +" old Value="+ oldValue);
+                                
                                 if(newValue && $scope.doctor && $scope.doctor.body && $scope.doctor.body.queue){
                                    $scope.isTrue=true;
                                 }else{
                                     $scope.isTrue=false;
                                 }
+                                
 
                     },300);  
             },true);
