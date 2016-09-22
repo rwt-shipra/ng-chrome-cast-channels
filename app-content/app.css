@@ -6,7 +6,7 @@ body{
 }
 
 
-.blink {
+#blink {
   -webkit-animation: blink .75s linear infinite;
   -moz-animation: blink .75s linear infinite;
   -ms-animation: blink .75s linear infinite;
