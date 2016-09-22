@@ -403,6 +403,8 @@ var app = angular.module('app')
                 if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue) {
                     if ($scope.doctor.body.queue.length > 0) {
 
+                        var currentElement = angular.element($scope.doctor.body.queue[0].patientid);
+
                         var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
                         appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
                         $scope.patientQueue = [];
