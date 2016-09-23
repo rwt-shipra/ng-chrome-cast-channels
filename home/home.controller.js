@@ -26,6 +26,9 @@ var app = angular.module('app')
     .controller('HomeController', ['audio', 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
         function (audio, CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
 
+
+                
+            $scope.show = false;
             $scope.advertisements = [];
             $scope.advertisement = {};
 
@@ -207,12 +210,11 @@ var app = angular.module('app')
             //watch function to enable blinking for first user
 
             $scope.$watch('docVisible',function(newValue,oldValue,scope){
-                    $scope.isTrue=false;
-                    $timeout(function(){
                            if(newValue)
-                             $scope.isTrue=true;     
-
-                    },1000);  
+                              $scope.isTrue=true;  
+                            else
+                              $scope.isTrue=false;
+   
             },true);
 
 
