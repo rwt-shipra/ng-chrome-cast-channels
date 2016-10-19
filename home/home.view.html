@@ -116,8 +116,8 @@
              <tr ng-repeat="appointment in patientQueue"  ng-class="{'selected':(appointment.patientid === doctor.body.queue[0].patientid && isTrue)}">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
-                        <td align="center" ng-if="appointment.token>0"><b>{{appointment.token}} </b></td>
-                            <td align="center" ng-if="appointment.token === 0"> <b> Null </b></td>
+                        <td align="center" ng-if="appointment.token > 0"><b>{{appointment.token}} </b></td>
+                            <td align="center" ng-if="appointment.token === 0"> - </td>
                        
                         <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{ appointment.entrySlotTime*1000 |  date:'shortTime':'+0530' }}</b></td>
                        
