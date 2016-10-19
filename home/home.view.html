@@ -8,7 +8,7 @@
     <!--  <audio  id="#breakingnew_player" style="visibility: hidden;" controls  loop>
            <source src="sounds/rail.mp3" type="audio/mpeg">
        </audio>-->
-    <!--<button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>-->
+<button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
     <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements">
 
@@ -116,7 +116,8 @@
              <tr ng-repeat="appointment in patientQueue"  ng-class="{'selected':(appointment.patientid === doctor.body.queue[0].patientid && isTrue)}">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
-                        <td align="center"><b>{{appointment.token}}</b></td>
+                        <td align="center" ng-if="appointment.token<0"><b>{{appointment.token}}</b></td>
+                        <td align="center" ng-if="appointment.token===0"> null </td>
 
                         <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{ appointment.entrySlotTime*1000 |  date:'shortTime':'+0530' }}</b></td>
                         <td align="center" ng-if="appointment.typeOfEntry ===fromWalkinQ "><b>NA</b></td>
