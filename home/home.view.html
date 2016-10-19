@@ -8,7 +8,7 @@
     <!--  <audio  id="#breakingnew_player" style="visibility: hidden;" controls  loop>
            <source src="sounds/rail.mp3" type="audio/mpeg">
        </audio>-->
-<button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
+   <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
     <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements">
 
@@ -116,19 +116,24 @@
              <tr ng-repeat="appointment in patientQueue"  ng-class="{'selected':(appointment.patientid === doctor.body.queue[0].patientid && isTrue)}">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
-                        <td align="center" ng-if="appointment.token<0"><b>{{appointment.token}}</b></td>
-                        <td align="center" ng-if="appointment.token===0"> null </td>
-
+                        <td align="center" ng-if="appointment.token>0"><b>{{appointment.token}} </b></td>
+                            <td align="center" ng-if="appointment.token === 0"> <b> Null </b></td>
+                       
                         <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{ appointment.entrySlotTime*1000 |  date:'shortTime':'+0530' }}</b></td>
+                       
                         <td align="center" ng-if="appointment.typeOfEntry ===fromWalkinQ "><b>NA</b></td>
 
                         <td align="center"><b>{{appointment.timeOfEntry | date:'shortTime' :'':'+0530'}}</b></td>
+                       
+
                         <td ng-if="appointment.typeOfEntry === fromChekinQ" style="text-align:center !important;
     vertical-align:middle !important;">
                         <img class="img-thumbnail text-center" style="display: block !important;
     margin-left: auto !important;
     margin-right: auto!important;"  src="./images/appointment.png"/>
                     </td>
+
+
                         <td ng-if="appointment.typeOfEntry ===fromWalkinQ" style="text-align:center;
     vertical-align:middle !important;">
                             <img class="img-thumbnail text-center" style="display: block !important;
