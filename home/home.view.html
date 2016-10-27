@@ -8,7 +8,7 @@
     <!--  <audio  id="#breakingnew_player" style="visibility: hidden;" controls  loop>
            <source src="sounds/rail.mp3" type="audio/mpeg">
        </audio>-->
-   <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
+    <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
 
     <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements">
 
@@ -111,27 +111,28 @@
 
                     </thead>
 
-  
 
-             <tr ng-repeat="appointment in patientQueue"  ng-class="{'selected':(appointment.patientid === doctor.body.queue[0].patientid && isTrue)}">
+                    <tr ng-repeat="appointment in patientQueue"
+                        ng-class="{'selected':(appointment.patientid === doctor.body.queue[0].patientid && isTrue)}">
                         <td align="center"><b>{{startIndex+$index+1}}</b></td>
                         <td align="center"><b>{{appointment.patientName}}</b></td>
                         <td align="center" ng-if="appointment.token > 0"><b>{{appointment.token}} </b></td>
-                            <td align="center" ng-if="appointment.token === 0"> - </td>
-                       
-                        <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{ appointment.entrySlotTime*1000 |  date:'shortTime':'+0530' }}</b></td>
-                       
+                        <td align="center" ng-if="appointment.token === 0"> -</td>
+
+                        <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{
+                            appointment.entrySlotTime*1000 | date:'shortTime':'+0530' }}</b></td>
+
                         <td align="center" ng-if="appointment.typeOfEntry ===fromWalkinQ "><b>NA</b></td>
 
                         <td align="center"><b>{{appointment.timeOfEntry | date:'shortTime' :'':'+0530'}}</b></td>
-                       
+
 
                         <td ng-if="appointment.typeOfEntry === fromChekinQ" style="text-align:center !important;
     vertical-align:middle !important;">
-                        <img class="img-thumbnail text-center" style="display: block !important;
+                            <img class="img-thumbnail text-center" style="display: block !important;
     margin-left: auto !important;
-    margin-right: auto!important;"  src="./images/appointment.png"/>
-                    </td>
+    margin-right: auto!important;" src="./images/appointment.png"/>
+                        </td>
 
 
                         <td ng-if="appointment.typeOfEntry ===fromWalkinQ" style="text-align:center;
@@ -157,34 +158,32 @@
         <div class="footer row"
              style="font-family: 'Open Sans', sans-serif; position: absolute; right: 0;bottom: 0;left: 0;background-color: #151172; padding-top:2%; font-size:40px!important;">
 
-              <div  class="col-md-2"  style="margin-left:2%!important"> 
-               <img src="images/Diwali.gif" ></div>
+            <div class="col-md-2" style="margin-left:2%!important">
+                <img src="images/Diwali.gif"></div>
 
-
-        </div>
 
             <div class="col-md-10 text-center">
 
-            <marquee style="margin-top:10%!important;">
-              <!--  <b style="letter-spacing:.2em" class="text-center"><span style="font-size:34px; padding-top:1%"> Download &nbsp;</span>
-                    <span> <img src="images/q-logo.png" style="padding-bottom:12px;">  &nbsp; &nbsp;</span>
-                                <span style="font-size:40px ;">from  &nbsp;
-                 <img src="images/logo.png"> to view scanned prescription </span> &nbsp; &nbsp; &nbsp; &nbsp;<span
-                            style="font-size:34px; padding-top:1%"> Download &nbsp;</span>
-                    <span> <img src="images/q-logo.png" style="padding-bottom:12px;">  &nbsp; &nbsp;</span>
-                                <span style="font-size:40px ;">from  &nbsp;
-                 <img src="images/logo.png"> to view scanned prescription </span>
+                <marquee style="margin-top:5%!important;">
+                    <!--  <b style="letter-spacing:.2em" class="text-center"><span style="font-size:34px; padding-top:1%"> Download &nbsp;</span>
+                          <span> <img src="images/q-logo.png" style="padding-bottom:12px;">  &nbsp; &nbsp;</span>
+                                      <span style="font-size:40px ;">from  &nbsp;
+                       <img src="images/logo.png"> to view scanned prescription </span> &nbsp; &nbsp; &nbsp; &nbsp;<span
+                                  style="font-size:34px; padding-top:1%"> Download &nbsp;</span>
+                          <span> <img src="images/q-logo.png" style="padding-bottom:12px;">  &nbsp; &nbsp;</span>
+                                      <span style="font-size:40px ;">from  &nbsp;
+                       <img src="images/logo.png"> to view scanned prescription </span>
 
-                </b>-->
+                      </b>-->
 
-                <b style="letter-spacing:.2em;   color:#0ee500!important;" >  Wishing &nbsp;  You &nbsp;  A &nbsp;Very  &nbsp; &nbsp;Happy&nbsp; Diwali &nbsp;</b>
+                    <b style="letter-spacing:.2em;   color:#0ee500!important;"> Wishing &nbsp; You &nbsp; A &nbsp;Very
+                        &nbsp; &nbsp;Happy&nbsp; Diwali &nbsp;</b>
 
 
-            </marquee></div>
-           
+                </marquee>
+            </div>
 
-     
 
-    </div>
 
-</div>
+
+    
