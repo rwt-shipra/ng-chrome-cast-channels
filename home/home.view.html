@@ -75,7 +75,7 @@
 
                     <li ng-if="doctor.body.is_disconnected==undefined || doctor.body.is_disconnected==false">
                         <a href="#">
-                            <b> {{CurrentDate | date:'HH:mm'}}</b></a></li>
+                            <b> {{CurrentDate | date:'shortTime':'+0530' }}</b></a></li>
 <!--doctor.header.cinicName-->
                 </ul>
 
