@@ -113,24 +113,24 @@
 
 
                     <tr ng-repeat="appointment in patientQueue"
-                        ng-class="{'selected':(appointment.patientid === doctor.body.queue[0].patientid && isTrue)} row" >
-                        <td align="center" class="col-lg-1"><b>{{startIndex+$index+1}}</b></td>
-                        <td align="center" class="col-lg-4" style="width: 14em; overflow: hidden;text-overflow: ellipsis;"><b>{{appointment.patientName}}</b></td>
-                        <td align="center" class="col-lg-1" ng-if="appointment.token > 0"><b>{{appointment.token}} </b></td>
-                        <td align="center" class="col-lg-1" ng-if="appointment.token === 0"> -</td>
+                        ng-class="{'selected':(appointment.patientid === doctor.body.queue[0].patientid && isTrue)}" >
+                        <td align="center"><b>{{startIndex+$index+1}}</b></td>
+                        <td align="center" style="width: 10em; overflow: hidden;text-overflow: ellipsis;"><b style="width: 14em; overflow: hidden;text-overflow: ellipsis;">{{appointment.patientName}}</b></td>
+                        <td align="center" ng-if="appointment.token > 0"><b>{{appointment.token}} </b></td>
+                        <td align="center" ng-if="appointment.token === 0"> -</td>
 
-                        <td align="center" class="col-lg-1" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{
+                        <td align="center" ng-if="appointment.typeOfEntry ===fromChekinQ"><b>{{
                             appointment.entrySlotTime*1000 | date:'shortTime':'+0530' }}</b></td>
                         <td align="center" ng-if="appointment.typeOfEntry ===fromWalkinQ "><b>NA</b></td>
 
-                        <td align="center" class="col-lg-1"><b>{{appointment.timeOfEntry | date:'shortTime' :'':'+0530'}}</b></td>
-                        <td class="col-lg-1" ng-if="appointment.typeOfEntry === fromChekinQ" style="text-align:center !important;
+                        <td align="center"><b>{{appointment.timeOfEntry | date:'shortTime' :'':'+0530'}}</b></td>
+                        <td ng-if="appointment.typeOfEntry === fromChekinQ" style="text-align:center !important;
     vertical-align:middle !important;">
                             <img class="img-thumbnail text-center" style="display: block !important;
     margin-left: auto !important;
     margin-right: auto!important;" src="./images/appointment.png"/>
                         </td>
-                        <td class="col-lg-1" ng-if="appointment.typeOfEntry ===fromWalkinQ" style="text-align:center;
+                        <td ng-if="appointment.typeOfEntry ===fromWalkinQ" style="text-align:center;
     vertical-align:middle !important;">
                             <img class="img-thumbnail text-center" style="display: block !important;
     margin-left: auto !important ;  text-align:center !important;
