@@ -42,9 +42,9 @@ var app = angular.module('app')
             $scope.device_doctors_map = [];
 
             $scope.is_doctor_connected = false;
-            $scope.CurrentDate = new Date();
-            
-               $scope.Appointment_time = Date(patientQueue.entrySlotTime * 1000);
+
+            $scope.CurrentDate=new Date();
+            //   $scope.Appointment_time = Date(patientQueue.entrySlotTime * 1000);
             // $scope.In_time = Date(patientQueue.timeOfEntry );
             //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted) {
