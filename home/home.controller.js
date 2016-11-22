@@ -42,6 +42,9 @@ var app = angular.module('app')
             $scope.device_doctors_map = [];
 
             $scope.is_doctor_connected = false;
+
+            $scope.Date=getTime();
+            console.log($scope.Date);
             //   $scope.Appointment_time = Date(patientQueue.entrySlotTime * 1000);
             // $scope.In_time = Date(patientQueue.timeOfEntry );
             //////////////////////////////////////slack Call//////////////
@@ -415,16 +418,16 @@ var app = angular.module('app')
                     if ($scope.doctor.body.queue.length > 0) {
 
                         var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
-                        appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
+                        appointmentLeft = diff >= 6 ? 6 : $scope.doctor.body.queue.length;
                         $scope.patientQueue = [];
                         hideAllAds();
                         console.log("start index is " + $scope.startIndex + "appointment left" + appointmentLeft);
-                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice($scope.startIndex, $scope.startIndex + 7));
+                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice($scope.startIndex, $scope.startIndex + 6));
 
                         prevIndex_backup = prevIndex;
                         prevIndex = prevIndex + appointmentLeft;
 
-                        if (diff >= 7) {
+                        if (diff >= 6) {
                             showDocExtra();
 
                         }
