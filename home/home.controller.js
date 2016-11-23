@@ -42,8 +42,8 @@ var app = angular.module('app')
             $scope.device_doctors_map = [];
 
             $scope.is_doctor_connected = false;
-
-
+            //   $scope.Appointment_time = Date(patientQueue.entrySlotTime * 1000);
+            // $scope.In_time = Date(patientQueue.timeOfEntry );
             //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted) {
 
@@ -105,16 +105,19 @@ var app = angular.module('app')
 
             function playDisconnectionSound() {
                 console.log("playing disconnection sound");
-                responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
-                audio.play("sound")
+                //   responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
+                //   audio.play("sound")
+                audio.playInLoop("sounds/alert.mp3");
+                $timeout(function () {
+                    audio.stop();
+                }, 3000);
             }
 
 
-
             function playSound(text) {
-                console.log("playing disconnection sound");
-                responsiveVoice.speak(text,"Hindi Female", {rate: 0.8});
-                audio.play("sound")
+                console.log("playing breaking news sound");
+                // responsiveVoice.speak(text,"Hindi Female", {rate: 0.8});
+                //  audio.play("sound")
             }
 
             /////////////Disconnection player End////////////////////////////////
@@ -122,16 +125,13 @@ var app = angular.module('app')
 
             /////////////Breaking news player ////////////////////////////////
 
-            // function stopbreakingnewssound(){
-            //    console.log("stopped playing braking news sound");
-            //   $('#breakingnew_player').get(0).pause();
-            ///   $('#breakingnew_player').get(0).currentTime=0;
-            //  }
-            //  function playbreakingnewssound(){
-            //     console.log("playing dbraking news sound");
-            //     $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
-//
-            // }
+
+            function playbreakingnewssound() {
+                audio.playInLoop("sounds/rail.mp3");
+                $timeout(function () {
+                    audio.stop();
+                }, 5000);
+            }
 
             /////////////Breaking news player End ////////////////////////////////
 
@@ -205,6 +205,17 @@ var app = angular.module('app')
             }
 
 
+                 //watch function to enable blinking for first user
+
+            $scope.$watch('docVisible',function(newValue,oldValue,scope){
+                           if(newValue)
+                              $scope.isTrue=true;  
+                            else
+                              $scope.isTrue=false;
+   
+            },true);
+
+
             function post_ad_display_count(ad_data) {
 
                 var ad_post_ip = $scope.defconfig.ip_for_logs;
@@ -275,8 +286,8 @@ var app = angular.module('app')
             //*********queue types end**********//
 
             //*********type of appointment********//
-            var fromWalkinQ = 136932;
-            var fromChekinQ = 132432;
+            $scope.fromWalkinQ = 136932;
+            $scope.fromChekinQ = 132432;
             //*********type of appointment end********//
 
             //******patient status******//
@@ -302,6 +313,40 @@ var app = angular.module('app')
                 }
                 if (!already_present) {
                     $scope.doctors.push(data);
+                    $http.get('../' + data.header.clinicID + '.defaultconfig.json').success(function (data_from_configfile) {
+                        //when you get success reset the advertisement
+                        //$scope.defconfig = data;
+                        $scope.advertisements_newly_added = data_from_configfile.defaultads;
+                        if ($scope.advertisements_newly_added && $scope.advertisements) {
+
+                            for (var j = 0; j < $scope.advertisements_newly_added.length; j++) {
+                                var ad_already_present = false;
+                                for (var i = 0; i < $scope.advertisements.length; i++) {
+                                    if ($scope.advertisements[i].adId === $scope.advertisements_newly_added[j].adId) {
+
+                                        ad_already_present = true;
+                                        break;
+
+                                    }
+                                }
+                                if (!ad_already_present) {
+                                    $scope.advertisements.push($scope.advertisements_newly_added[j]);
+                                }
+                            }
+
+                            $scope.advertisements_newly_added = [];
+                        }
+                        /*for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
+                         $scope.advertisements[i].show = false;
+                         if (i === 0)
+                         $scope.advertisements[i].show = true;
+                         }*/
+                        //nextAd();
+                        //showAdv();
+                        //$scope.counter += 1;
+                        //countDown();
+                    });
+
                 }
             };
 
@@ -348,29 +393,40 @@ var app = angular.module('app')
             var prevIndex = 0;
             var prevIndex_backup = 0;
 
+            function hideAllAds() {
+                for (var i = 0; i < $scope.advertisements.length; i++) {
+                    $scope.advertisements[i].show = false;
+                }
+            }
+
             function showDoc() {
 
                 $scope.advertisements[currentIndexForAd].show = false;
+
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
                 ////////////////Doc Splice Function ////////////////////////////////
 
-                var startIndex = prevIndex;
+                $scope.startIndex = prevIndex;
                 var appointmentLeft = 0;
 
 
                 if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue) {
                     if ($scope.doctor.body.queue.length > 0) {
+
                         var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
-                        appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
+                        appointmentLeft = diff >= 6 ? 6 : $scope.doctor.body.queue.length;
                         $scope.patientQueue = [];
-                        console.log("start index is " + startIndex + "appointment left" + appointmentLeft);
-                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, startIndex + 7));
+                        hideAllAds();
+                        console.log("start index is " + $scope.startIndex + "appointment left" + appointmentLeft);
+                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice($scope.startIndex, $scope.startIndex + 6));
+
                         prevIndex_backup = prevIndex;
                         prevIndex = prevIndex + appointmentLeft;
 
-                        if (diff >= 7) {
+                        if (diff >= 6) {
                             showDocExtra();
+
                         }
                     } else {
                         $scope.counter = 24;
@@ -433,6 +489,7 @@ var app = angular.module('app')
                     showAdv();
                     return;
                 }
+
                 else {
                     $scope.docVisible = false;
                     $scope.flashVisible = false;
@@ -519,11 +576,13 @@ var app = angular.module('app')
             function showFlash(flashindex) {
                 $scope.advertisements[currentIndexForAd].show = false;
 
-                $scope.insideflash = true;
+
                 $scope.docVisible = false;
                 $scope.advVisible = false;
+                $scope.insideflash = true;
                 $scope.flashVisible = true;
                 //playbreakingnewssound();
+
                 stopCountDown();
                 if ($scope.flashQueue.length <= 0) {
 
@@ -561,7 +620,9 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                    playSound("Attention .  Token No. "+ $scope.flashBus.body.token +". Patient . "+ $scope.flashBus.body.patientName +  " . please  proceed to the doctor .  " + $scope.flashBus.header.doctorName);
+                    hideAllAds();
+                    playbreakingnewssound();
+                    //playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . kripya Dr.  .  " + $scope.flashBus.header.doctorName + " ke pas jayea");
 
                     $timeout(function () {
                         showFlash(++flashindex)
