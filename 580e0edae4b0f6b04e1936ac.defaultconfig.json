@@ -8,12 +8,38 @@
   "flash-color": "#0092cb",
   "defaultads": [
 
-
+     
     {
-      "adId": "QORQL_AD_2",
+      "adId": "MANAS_Hospital_AD_1",
       "adPriority": "LOW",
-      "adName": "QORQL_AD_2",
-      "adUrl": "images/qorql-ads-03.png",
+      "adName": "MANAS_Hospital_AD_1",
+      "adUrl": "images/manasHospitalAd01.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
+    },
+   {
+      "adId": "MANAS_Hsptl_Visitiing_Doc_AD_02",
+      "adPriority": "LOW",
+      "adName": "MANAS_Hsptl_Visitiing_Doc_AD_02",
+      "adUrl": "images/Visiting_Mansa_hospital02.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
+    },
+    {
+      "adId": "MANAS_Hsptl_Visitiing_Doc_AD_03",
+      "adPriority": "LOW",
+      "adName": "MANAS_Hsptl_Visitiing_Doc_AD_03",
+      "adUrl": "images/Visiting_Mansa_hospital03.png",
       "adMimeType": "image/png",
       "adTime": "10",
       "adCount": "Infinity",
@@ -22,8 +48,8 @@
       "show_ad":true,
       "showticker": false
     }
-    
 
+    
   ],
   "knowndoctors": [
     {

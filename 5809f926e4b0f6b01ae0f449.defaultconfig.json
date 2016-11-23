@@ -8,12 +8,12 @@
   "flash-color": "#0092cb",
   "defaultads": [
 
-
+     
     {
-      "adId": "QORQL_AD_2",
+      "adId": "Amicare_AD_1",
       "adPriority": "LOW",
-      "adName": "QORQL_AD_2",
-      "adUrl": "images/qorql-ads-03.png",
+      "adName": "Amicare_AD_1",
+      "adUrl": "images/amicareHimanshu.png",
       "adMimeType": "image/png",
       "adTime": "10",
       "adCount": "Infinity",
@@ -22,8 +22,9 @@
       "show_ad":true,
       "showticker": false
     }
+  
     
-
+    
   ],
   "knowndoctors": [
     {

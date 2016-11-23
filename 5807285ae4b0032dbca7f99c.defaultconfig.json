@@ -8,22 +8,34 @@
   "flash-color": "#0092cb",
   "defaultads": [
 
-
+     
     {
-      "adId": "QORQL_AD_2",
+      "adId": "Gurav_Clinic_asian_medical_center_aligardh_01",
       "adPriority": "LOW",
-      "adName": "QORQL_AD_2",
-      "adUrl": "images/qorql-ads-03.png",
-      "adMimeType": "image/png",
+      "adName": "Gurav_Clinic_asian_medical_center_aligardh_01",
+      "adUrl": "images/description_Ad.jpg",
+      "adMimeType": "image/jpg",
       "adTime": "10",
       "adCount": "Infinity",
       "adIntervel": 0,
       "lastDisplayed": 0,
       "show_ad":true,
       "showticker": false
-    }
+    },
+    {
+      "adId": "Gurav_Clinic_asian_medical_center_aligardh_02",
+      "adPriority": "LOW",
+      "adName": "Gurav_Clinic_asian_medical_center_aligardh_02",
+      "adUrl": "images/Facility_Ad.jpg",
+      "adMimeType": "image/jpg",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
+    }    
     
-
   ],
   "knowndoctors": [
     {
