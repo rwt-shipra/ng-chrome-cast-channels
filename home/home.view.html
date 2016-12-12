@@ -1,3 +1,5 @@
+
+
 <div>
 
     <p style="position:absolute; ">
@@ -52,7 +54,7 @@
     </div>
 
 
-    <div ng-show="docVisible">
+    <div ng-show="docVisible" onload="startTime()">
         <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:38px;">
             <div class="container">
 
@@ -75,7 +77,11 @@
 
                     <li ng-if="doctor.body.is_disconnected==undefined || doctor.body.is_disconnected==false">
                         <a href="#">
-                            <b> {{doctor.header.cinicName}}</b></a></li>
+                           <!-- <b> <div id="txt"></div> 
+                           {{doctor.header.cinicName}}</b></a></li>
+                           -->
+
+                             <div id="txt" style="z-index:1;color:#ffffff">  <div></a></li>
 
                 </ul>
 
@@ -174,3 +180,22 @@
     </div>
 
 </div>
+
+
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
