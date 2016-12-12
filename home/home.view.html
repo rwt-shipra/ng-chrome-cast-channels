@@ -54,7 +54,7 @@
 
 
 
-        <div ng-show="docVisible"  onload="startTime()">
+        <div ng-show="docVisible" >
                 <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:35px;">
                 <div class="container">
 
@@ -75,8 +75,9 @@
 
                         <li ng-if="doctor.body.is_disconnected==undefined || doctor.body.is_disconnected==false"><a href="#" >
                                   <b> <div ng-controller='TimeCtrl'>
-    <p>{{ clock  | date:'medium'}}</p>
-</div></b>
+                                      <p>{{ clock  | date:'medium'}}</p>
+                                    </div>
+                                </b>
                       <!--{{doctor.header.cinicName}}-->
 
                       </a>
