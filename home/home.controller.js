@@ -26,6 +26,20 @@ var app = angular.module('app')
     .controller('HomeController', ['audio', 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
         function (audio, CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
 
+
+    $scope.clock = "loading clock..."; // initialise the time variable
+    $scope.tickInterval = 1000 //ms
+
+    var tick = function() {
+        $scope.clock = Date.now() // get the current time
+        $timeout(tick, $scope.tickInterval); // reset the timer
+    }
+
+    // Start the timer
+    $timeout(tick, $scope.tickInterval);
+
+
+
             $scope.advertisements = [];
             $scope.advertisement = {};
 
