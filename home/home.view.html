@@ -1,4 +1,23 @@
-<div>
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('txt').innerHTML =
+    h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+</script>
+
+
+<div onload="startTime()">
 
     <p style="position:absolute; ">
         <audio id="disconnection_player" style="visibility:hidden" controls loop>
@@ -8,7 +27,7 @@
     <!--  <audio  id="#breakingnew_player" style="visibility: hidden;" controls  loop>
            <source src="sounds/rail.mp3" type="audio/mpeg">
        </audio>-->
-    <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>
+  <!--  <button type="button" class="btn btn-danger btn-circle btn-lg close-image">{{counter}}</button>-->
 
     <div ng-show="advertisement.show" ng-repeat="advertisement in advertisements">
 
@@ -75,7 +94,8 @@
 
                     <li ng-if="doctor.body.is_disconnected==undefined || doctor.body.is_disconnected==false">
                         <a href="#">
-                            <b> {{CurrentDate | date:'shortTime':'+0530' }}</b></a></li>
+                            <b> <div id="txt"></div></b></a></li>
+                            
                     <!--doctor.header.cinicName-->
                 </ul>
 
