@@ -20,32 +20,6 @@
       "show_ad":true,
       "showticker": true
     },
-     {
-            "adId": "YOG_CLINIC_AD_1",
-            "adPriority": "LOW",
-            "adName": "YOG_CLINIC_AD_1",
-            "adUrl": "images/yoga_ad_01.png",
-            "adMimeType": "image/png",
-            "adTime": "10",
-            "adCount": "Infinity",
-            "adIntervel": 900,
-            "lastDisplayed": 0,
-            "show_ad":true,
-            "showticker": true
-        },
-{
-      "adId": "QORQL_AD_5",
-      "adPriority": "LOW",
-      "adName": "QORQL_AD_5",
-      "adUrl": "images/dengue_ad.png",
-      "adMimeType": "image/png",
-      "adTime": "10",
-      "adCount": "Infinity",
-      "adIntervel": 0,
-      "lastDisplayed": 0,
-      "show_ad":true,
-      "showticker": false
-    },
 
     {
       "adId": "LOCAL_TRIBE_AD_1",
@@ -68,7 +42,7 @@
       "adMimeType": "image/gif",
       "adTime": "10",
       "adCount": "Infinity",
-      "adIntervel": 900,
+      "adIntervel": 1800,
       "lastDisplayed": 0,
       "show_ad":true,
       "showticker": false
@@ -85,34 +59,7 @@
       "lastDisplayed": 0,
       "show_ad":true,
       "showticker": false
-    },
-    {
-      "adId": "QORQL_AD_3",
-      "adPriority": "LOW",
-      "adName": "QORQL_AD_3",
-      "adUrl": "images/qorql-ads-03.png",
-      "adMimeType": "image/png",
-      "adTime": "10",
-      "adCount": "Infinity",
-      "adIntervel": 0,
-      "lastDisplayed": 0,
-      "show_ad":true,
-      "showticker": false
-    },
-    {
-      "adId": "QORQL_AD_4",
-      "adPriority": "LOW",
-      "adName": "QORQL_AD_4",
-      "adUrl": "images/qorql-ads-04.png",
-      "adMimeType": "image/png",
-      "adTime": "10",
-      "adCount": "Infinity",
-      "adIntervel": 0,
-      "lastDisplayed": 0,
-      "show_ad":true,
-      "showticker": true
     }
-
 
   ],
   "knowndoctors": [
@@ -147,8 +94,8 @@
       "flash_color": "#151172"
     }
   ],
-  "connection_issue_collection": "qliveconnection",
-  "ad_count_collection": "qliveadcount",
+  "connection_issue_collection": "test_qliveconnection",
+  "ad_count_collection": "test_qliveadcount",
   "ip_for_logs": "52.76.159.84",
   "port_for_logs": 8091
 }

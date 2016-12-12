@@ -7,13 +7,25 @@
   "fontSize": 38,
   "flash-color": "#0092cb",
   "defaultads": [
-
+    {
+      "adId": "QORQL_AD_1",
+      "adPriority": "LOW",
+      "adName": "QORQL_AD_1",
+      "adUrl": "images/qorql-ads-01.png",
+      "adMimeType": "image/png",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": true
+    },
 
     {
       "adId": "QORQL_AD_2",
       "adPriority": "LOW",
       "adName": "QORQL_AD_2",
-      "adUrl": "images/qorql-ads-03.png",
+      "adUrl": "images/qorql-ads-02.png",
       "adMimeType": "image/png",
       "adTime": "10",
       "adCount": "Infinity",
@@ -22,7 +34,6 @@
       "show_ad":true,
       "showticker": false
     }
-    
 
   ],
   "knowndoctors": [
@@ -57,8 +68,8 @@
       "flash_color": "#151172"
     }
   ],
-  "connection_issue_collection": "qliveconnection",
-  "ad_count_collection": "qliveadcount",
+  "connection_issue_collection": "test_qliveconnection",
+  "ad_count_collection": "test_qliveadcount",
   "ip_for_logs": "52.76.159.84",
   "port_for_logs": 8091
 }
