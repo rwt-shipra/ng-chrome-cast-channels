@@ -16,7 +16,7 @@ function checkTime(i) {
 }
 </script>
 
-<div onload="startTime()">
+<div >
 
     <p style="position:absolute; ">
         <audio id="disconnection_player"   style="visibility: hidden;" controls >
@@ -70,7 +70,7 @@ function checkTime(i) {
 
 
 
-        <div ng-show="docVisible" >
+        <div ng-show="docVisible"  onload="startTime()">
                 <nav class="navbar navbar-default" role="navigation" style="background-color:#151172 ; font-size:35px;">
                 <div class="container">
 
