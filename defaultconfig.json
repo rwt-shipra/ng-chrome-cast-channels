@@ -7,7 +7,6 @@
   "fontSize": 38,
   "flash-color": "#0092cb",
   "defaultads": [
-    
     {
       "adId": "QORQL_AD_1",
       "adPriority": "LOW",
@@ -21,6 +20,7 @@
       "show_ad":true,
       "showticker": true
     },
+
     {
       "adId": "QORQL_AD_2",
       "adPriority": "LOW",
@@ -33,8 +33,7 @@
       "lastDisplayed": 0,
       "show_ad":true,
       "showticker": false
-    },
-    
+    }
 
   ],
   "knowndoctors": [
