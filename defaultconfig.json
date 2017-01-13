@@ -11,7 +11,7 @@
       "adId": "QORQL_AD_1",
       "adPriority": "LOW",
       "adName": "QORQL_AD_1",
-      "adUrl": "https://www.youtube.com/results?search_query=health+tips+animated+video+10+sec+?autoplay=1",
+      "adUrl": "images/20170113_125034.gif",
       "adMimeType": "video",
       "adTime": "10",
       "adCount": "Infinity",
@@ -19,34 +19,9 @@
       "lastDisplayed": 0,
       "show_ad":true,
       "showticker": true
-    },
-
-    {
-      "adId": "QORQL_AD_2",
-      "adPriority": "LOW",
-      "adName": "QORQL_AD_2",
-      "adUrl": "images/animeted%20-%20Copy.html",
-      "adMimeType": "image/png",
-      "adTime": "10",
-      "adCount": "Infinity",
-      "adIntervel": 0,
-      "lastDisplayed": 0,
-      "show_ad":true,
-      "showticker": false
-    },
-    {
-      "adId": "QORQL_AD_2",
-      "adPriority": "LOW",
-      "adName": "QORQL_AD_2",
-      "adUrl": "images/animeted%20-%20Copy.swf",
-      "adMimeType": "image/swf",
-      "adTime": "10",
-      "adCount": "Infinity",
-      "adIntervel": 0,
-      "lastDisplayed": 0,
-      "show_ad":true,
-      "showticker": false
     }
+
+    
 
   ],
   "knowndoctors": [
