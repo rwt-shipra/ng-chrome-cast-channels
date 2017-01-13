@@ -577,7 +577,7 @@ var app = angular.module('app')
                     $timeout(function () {
 
 
-                        if ($scope.counter <= 10) {
+                        if ($scope.counter <= 20) {
                             showAdv();
                         }
                         else if ($scope.counter <= 30) {
@@ -594,7 +594,7 @@ var app = angular.module('app')
                     $scope.flashQueue = [];
                     $scope.insideflash = false;
                     $timeout(function () {
-                        if ($scope.counter <= 10)
+                        if ($scope.counter <= 20)
                             showAdv();
 
                         else if ($scope.counter <= 30) {
@@ -617,7 +617,7 @@ var app = angular.module('app')
             }
 
 
-            // var TIMER_ADV = 10;
+            // var TIMER_ADV = 20;
             // var TIMER_DOC= 20;
             // var TIMER_FLASH = 6000;
             $scope.counter = 0;
@@ -633,7 +633,7 @@ var app = angular.module('app')
                     if ($scope.counter === 0) {
                         nextAd();
                         showAdv();
-                    } else if ($scope.counter === 10) {
+                    } else if ($scope.counter === 20) {
                         prevIndex = 0;
                         nextDoc();
                         showDoc();
