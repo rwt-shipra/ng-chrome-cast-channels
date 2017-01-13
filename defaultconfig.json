@@ -11,7 +11,20 @@
       "adId": "QORQL_AD_1",
       "adPriority": "LOW",
       "adName": "QORQL_AD_1",
-      "adUrl": "images/20170113_125034.gif",
+      "adUrl": "images/videoplayback.3gp",
+      "adMimeType": "video",
+      "adTime": "10",
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": true
+    },
+    {
+      "adId": "QORQL_AD_1",
+      "adPriority": "LOW",
+      "adName": "QORQL_AD_1",
+      "adUrl": "images/videoplayback.3gp",
       "adMimeType": "video",
       "adTime": "10",
       "adCount": "Infinity",
@@ -20,6 +33,7 @@
       "show_ad":true,
       "showticker": true
     }
+
 
     
 

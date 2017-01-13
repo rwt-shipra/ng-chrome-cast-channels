@@ -580,7 +580,7 @@ var app = angular.module('app')
                         if ($scope.counter <= 20) {
                             showAdv();
                         }
-                        else if ($scope.counter <= 30) {
+                        else if ($scope.counter <= 40) {
                             prevIndex = prevIndex_backup;
                             showDoc();
 
@@ -597,7 +597,7 @@ var app = angular.module('app')
                         if ($scope.counter <= 20)
                             showAdv();
 
-                        else if ($scope.counter <= 30) {
+                        else if ($scope.counter <= 40) {
                             prevIndex = prevIndex_backup;
                             showDoc();
                         }
@@ -637,7 +637,7 @@ var app = angular.module('app')
                         prevIndex = 0;
                         nextDoc();
                         showDoc();
-                    } else if ($scope.counter === 30) {
+                    } else if ($scope.counter === 40) {
                         $scope.counter = -1;
                     }
                     $scope.counter += 1;
