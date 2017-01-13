@@ -7,19 +7,7 @@
   "fontSize": 38,
   "flash-color": "#0092cb",
   "defaultads": [
-    {
-      "adId": "QORQL_AD_1",
-      "adPriority": "LOW",
-      "adName": "QORQL_AD_1",
-      "adUrl": "images/animetedv3.mp4",
-      "adMimeType": "video",
-      "adTime": "10",
-      "adCount": "Infinity",
-      "adIntervel": 0,
-      "lastDisplayed": 0,
-      "show_ad":true,
-      "showticker": true
-    },
+    
     {
       "adId": "QORQL_AD_1",
       "adPriority": "LOW",
