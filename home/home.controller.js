@@ -23,22 +23,36 @@ var app = angular.module('app')
             }
         }
     })
-    .controller('HomeController', ['audio', 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout',
-        function (audio, CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout) {
+    .controller('HomeController', ['audio', 'CastReceiver', 'UserService', 'AuthenticationService', '$rootScope', '$scope', '$http', '$timeout','$sce',
+        function (audio, CastReceiver, UserService, AuthenticationService, $rootScope, $scope, $http, $timeout,$sce) {
 
-
-             $scope.clock = "loading clock..."; // initialise the time variable
-    $scope.tickInterval = 1000 //ms
-
-    var tick = function() {
-        $scope.clock = Date.now() // get the current time
-        $timeout(tick, $scope.tickInterval); // reset the timer
-    }
-
-    // Start the timer
-    $timeout(tick, $scope.tickInterval);
             $scope.advertisements = [];
+        $scope.youtube_advertisement_player={
+        advertisement:{
+            adId:"",
+            adUrl:"",
+            adMimeType:""
+        },
+        show:false
+        }
+            
+        $scope.getYouTubePlayerInstance=function(){
+        var player=new YT.Player( "youtube_advertisement_player",{
+                                    events:{
+                                        'onReady':onPlayerReady,
+                                        'onStateChange':onPlayerStateChange
+                                        },
+                                    playerVars: {rel: 0}
+                                })
+        return player
+        }
+        var player=$scope.getYouTubePlayerInstance()
             $scope.advertisement = {};
+        $scope.state={
+        "advertisement":false,
+        "queue":false,
+        "flash":false
+        }
 
             $scope.doctors = [];
             $scope.doctor = {};
@@ -53,8 +67,8 @@ var app = angular.module('app')
             $scope.device_doctors_map = [];
 
             $scope.is_doctor_connected = false;
-
-
+            //   $scope.Appointment_time = Date(patientQueue.entrySlotTime * 1000);
+            // $scope.In_time = Date(patientQueue.timeOfEntry );
             //////////////////////////////////////slack Call//////////////
             function post_log_on_slack(logtobeposted) {
 
@@ -116,16 +130,19 @@ var app = angular.module('app')
 
             function playDisconnectionSound() {
                 console.log("playing disconnection sound");
-                responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
-                audio.play("sound")
+                //   responsiveVoice.speak("disconnected","Hindi Female", {rate: 1.0});
+                //   audio.play("sound")
+                audio.playInLoop("sounds/alert.mp3");
+                $timeout(function () {
+                    audio.stop();
+                }, 3000);
             }
 
 
-
             function playSound(text) {
-                console.log("playing disconnection sound");
-                responsiveVoice.speak(text,"Hindi Female", {rate: 0.8});
-                audio.play("sound")
+                console.log("playing breaking news sound");
+                // responsiveVoice.speak(text,"Hindi Female", {rate: 0.8});
+                //  audio.play("sound")
             }
 
             /////////////Disconnection player End////////////////////////////////
@@ -133,16 +150,13 @@ var app = angular.module('app')
 
             /////////////Breaking news player ////////////////////////////////
 
-            // function stopbreakingnewssound(){
-            //    console.log("stopped playing braking news sound");
-            //   $('#breakingnew_player').get(0).pause();
-            ///   $('#breakingnew_player').get(0).currentTime=0;
-            //  }
-            //  function playbreakingnewssound(){
-            //     console.log("playing dbraking news sound");
-            //     $('#breakingnew_player').get(0).play().then(function (){setTimeout(stopbreakingnewssound,2000)});
-//
-            // }
+
+            function playbreakingnewssound() {
+                audio.playInLoop("sounds/rail.mp3");
+                $timeout(function () {
+                    audio.stop();
+                }, 5000);
+            }
 
             /////////////Breaking news player End ////////////////////////////////
 
@@ -216,6 +230,17 @@ var app = angular.module('app')
             }
 
 
+                 //watch function to enable blinking for first user
+
+            $scope.$watch('docVisible',function(newValue,oldValue,scope){
+                           if(newValue)
+                              $scope.isTrue=true;  
+                            else
+                              $scope.isTrue=false;
+   
+            },true);
+
+
             function post_ad_display_count(ad_data) {
 
                 var ad_post_ip = $scope.defconfig.ip_for_logs;
@@ -286,8 +311,8 @@ var app = angular.module('app')
             //*********queue types end**********//
 
             //*********type of appointment********//
-            var fromWalkinQ = 136932;
-            var fromChekinQ = 132432;
+            $scope.fromWalkinQ = 136932;
+            $scope.fromChekinQ = 132432;
             //*********type of appointment end********//
 
             //******patient status******//
@@ -313,34 +338,35 @@ var app = angular.module('app')
                 }
                 if (!already_present) {
                     $scope.doctors.push(data);
-                    $http.get('../'+data.header.clinicID+'.defaultconfig.json').success(function (data_from_configfile) {
+                    $http.get('../' + data.header.clinicID + '.defaultconfig.json').success(function (data_from_configfile) {
                         //when you get success reset the advertisement
                         //$scope.defconfig = data;
                         $scope.advertisements_newly_added = data_from_configfile.defaultads;
-                        if($scope.advertisements_newly_added && $scope.advertisements){
+                        if ($scope.advertisements_newly_added && $scope.advertisements) {
 
-                            for(var j=0;j<$scope.advertisements_newly_added.length;j++){
-                                var ad_already_present=false;
-                                for(var i=0;i<$scope.advertisements.length;i++) {
-                                    if($scope.advertisements[i].adId===$scope.advertisements_newly_added[j].adId){
+                            for (var j = 0; j < $scope.advertisements_newly_added.length; j++) {
+                                var ad_already_present = false;
+                                for (var i = 0; i < $scope.advertisements.length; i++) {
+                                    if ($scope.advertisements[i].adId === $scope.advertisements_newly_added[j].adId) {
 
-                                        ad_already_present=true;
+                                        ad_already_present = true;
                                         break;
 
                                     }
                                 }
-                                if(!ad_already_present){
+                                if (!ad_already_present) {
+                    $scope.advertisements_newly_added[j].adUrl=$sce.trustAsResourceUrl($scope.advertisements_newly_added[j].adUrl)
                                     $scope.advertisements.push($scope.advertisements_newly_added[j]);
                                 }
                             }
 
-                            $scope.advertisements_newly_added=[];
+                            $scope.advertisements_newly_added = [];
                         }
                         /*for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
-                            $scope.advertisements[i].show = false;
-                            if (i === 0)
-                                $scope.advertisements[i].show = true;
-                        }*/
+                         $scope.advertisements[i].show = false;
+                         if (i === 0)
+                         $scope.advertisements[i].show = true;
+                         }*/
                         //nextAd();
                         //showAdv();
                         //$scope.counter += 1;
@@ -393,30 +419,54 @@ var app = angular.module('app')
             var prevIndex = 0;
             var prevIndex_backup = 0;
 
+            function hideAllAds() {
+                for (var i = 0; i < $scope.advertisements.length; i++) {
+                    $scope.advertisements[i].show = false;
+                }
+        $scope.youtube_advertisement_player.show=false
+        if($scope.youtube_advertisement_player.player){
+            $scope.youtube_advertisement_player.player.pauseVideo()
+        }
+            }
+
             function showDoc() {
 
                 $scope.advertisements[currentIndexForAd].show = false;
+        if($scope.advertisements[currentIndexForAd].adMimeType==="video/youtube"){
+                //console.log('found a youtube video')
+                //console.log(document)
+                //var player=new YT.Player( $scope.advertisements[currentIndexForAd].adId,{events:{'onReady':onPlayerReady,'onStateChange':onPlayerStateChange}})
+                 $scope.youtube_advertisement_player.show = false;
+                if($scope.youtube_advertisement_player.player){
+                    $scope.youtube_advertisement_player.player.pauseVideo()
+                    $scope.youtube_advertisement_player.player.seekTo(0)
+                }
+        }
 
                 $scope.doctor = {};
                 $scope.doctor = $scope.doctors[currentIndexForDoc];
                 ////////////////Doc Splice Function ////////////////////////////////
 
-                var startIndex = prevIndex;
+                $scope.startIndex = prevIndex;
                 var appointmentLeft = 0;
 
 
                 if ($scope.doctor && $scope.doctor.body && $scope.doctor.body.queue) {
                     if ($scope.doctor.body.queue.length > 0) {
+
                         var diff = $scope.doctor.body.queue.length - (prevIndex + 1);
-                        appointmentLeft = diff >= 7 ? 7 : $scope.doctor.body.queue.length;
+                        appointmentLeft = diff >= 6 ? 6 : $scope.doctor.body.queue.length;
                         $scope.patientQueue = [];
-                        console.log("start index is " + startIndex + "appointment left" + appointmentLeft);
-                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice(startIndex, startIndex + 7));
+                        hideAllAds();
+                        console.log("start index is " + $scope.startIndex + "appointment left" + appointmentLeft);
+                        $scope.patientQueue = angular.copy($scope.doctor.body.queue.slice($scope.startIndex, $scope.startIndex + 6));
+
                         prevIndex_backup = prevIndex;
                         prevIndex = prevIndex + appointmentLeft;
 
-                        if (diff >= 7) {
+                        if (diff >= 6) {
                             showDocExtra();
+
                         }
                     } else {
                         $scope.counter = 24;
@@ -464,7 +514,7 @@ var app = angular.module('app')
                     return;
 
                 }
-                console.log("showing advertisement " + JSON.stringify($scope.advertisement));
+                console.log("showing advertisement " + JSON.stringify($scope.advertisement.adName));
                 console.log("las displayed was " + $scope.advertisement.lastDisplayed);
 
                 if ($scope.advertisement.show_ad === false) {
@@ -479,12 +529,49 @@ var app = angular.module('app')
                     showAdv();
                     return;
                 }
+
                 else {
+            if($scope.advertisements[currentIndexForAd].adMimeType==="video/youtube" && $scope.youtube_advertisement_player.player === undefined){
+                console.log('found a youtube video')
+                console.log(document)
+                /*var player=new YT.Player( "youtube_advertisement_player",{
+                                                videoId: $scope.advertisements[currentIndexForAd].adUrl,
+                                                events:{
+                                                    'onReady':onPlayerReady,
+                                                    'onStateChange':onPlayerStateChange
+                                                    }
+                                            });*/
+                var player=$scope.getYouTubePlayerInstance()
+                nextAd();
+                            showAdv();
+                            return;
+                
+            }else if ($scope.advertisements[currentIndexForAd].adMimeType==="video/youtube" && $scope.youtube_advertisement_player.player){
+                //$scope.youtube_advertisement_player.player.loadVideoByUrl($scope.advertisements[currentIndexForAd].adUrl)
+                /*if($scope.advertisements[currentIndexForAd].player.getPlayerState()==YT.PlayerState.UNSTARTED){
+                    $scope.advertisements[currentIndexForAd].player.loadVideoByUrl($scope.advertisements[currentIndexForAd].adUrl)
+                }*/
+                console.log("type of adUrl: "+typeof($scope.advertisements[currentIndexForAd].adUrl))
+                console.log("player status : "+$scope.youtube_advertisement_player.player.getPlayerState())
+                
+                if($scope.youtube_advertisement_player.player.getPlayerState()==YT.PlayerState.UNSTARTED ||  $scope.youtube_advertisement_player.player.getPlayerState()==YT.PlayerState.ENDED || $scope.youtube_advertisement_player.player.getPlayerState()==YT.PlayerState.CUED || !($scope.youtube_advertisement_player.advertisement.adId === $scope.advertisements[currentIndexForAd].adId)  ){
+                    $scope.youtube_advertisement_player.player=$scope.youtube_advertisement_player.player.loadVideoById(
+                    $scope.advertisements[currentIndexForAd].adUrl.toString(),0,"large")
+                    $scope.youtube_advertisement_player.advertisement=$scope.advertisements[currentIndexForAd]
+                }else {
+                    $scope.youtube_advertisement_player.player.playVideo()
+                    $scope.youtube_advertisement_player.advertisement=$scope.advertisements[currentIndexForAd]
+                }
+                
+                //$scope.youtube_advertisement_player.player.playVideo()
+                $scope.youtube_advertisement_player.show=true
+            }
                     $scope.docVisible = false;
                     $scope.flashVisible = false;
                     $scope.advVisible = true;
                     $scope.advertisements[currentIndexForAd].show = true;
                     $scope.advertisements[currentIndexForAd].lastDisplayed = curr_time_millis;
+            
                 }
 
 
@@ -560,16 +647,21 @@ var app = angular.module('app')
                     $scope.flashQueue.push(received_flash_msg);
                 }
             }
+        $scope.attachPlayer=function (){
+        console.log('element created need to attach player')
+        }
 
 
             function showFlash(flashindex) {
                 $scope.advertisements[currentIndexForAd].show = false;
 
-                $scope.insideflash = true;
+
                 $scope.docVisible = false;
                 $scope.advVisible = false;
+                $scope.insideflash = true;
                 $scope.flashVisible = true;
                 //playbreakingnewssound();
+
                 stopCountDown();
                 if ($scope.flashQueue.length <= 0) {
 
@@ -577,10 +669,10 @@ var app = angular.module('app')
                     $timeout(function () {
 
 
-                        if ($scope.counter <= 20) {
+                        if ($scope.counter <= ($scope.advertisement.adTime?$scope.advertisement.adTime:10)) {
                             showAdv();
                         }
-                        else if ($scope.counter <= 40) {
+                        else if ($scope.counter <= ($scope.advertisement.adTime?$scope.advertisement.adTime+30:30)) {
                             prevIndex = prevIndex_backup;
                             showDoc();
 
@@ -594,10 +686,10 @@ var app = angular.module('app')
                     $scope.flashQueue = [];
                     $scope.insideflash = false;
                     $timeout(function () {
-                        if ($scope.counter <= 20)
+                        if ($scope.counter <= ($scope.advertisement.adTime?$scope.advertisement.adTime:10))
                             showAdv();
 
-                        else if ($scope.counter <= 40) {
+                        else if ($scope.counter <= ($scope.advertisement.adTime?$scope.advertisement.adTime+30:30)) {
                             prevIndex = prevIndex_backup;
                             showDoc();
                         }
@@ -607,7 +699,9 @@ var app = angular.module('app')
                 }
                 else {
                     $scope.flashBus = $scope.flashQueue[flashindex];
-                    playSound("Attention .  Token No. "+ $scope.flashBus.body.token +". Patient . "+ $scope.flashBus.body.patientName +  " . please  proceed to the doctor .  " + $scope.flashBus.header.doctorName);
+                    hideAllAds();
+                    playbreakingnewssound();
+                    //playSound("Attention .  Token No. "+ $scope.flashBus.body.token + $scope.flashBus.body.patientName +  " . kripya Dr.  .  " + $scope.flashBus.header.doctorName + " ke pas jayea");
 
                     $timeout(function () {
                         showFlash(++flashindex)
@@ -617,7 +711,7 @@ var app = angular.module('app')
             }
 
 
-            // var TIMER_ADV = 20;
+            // var TIMER_ADV = 10;
             // var TIMER_DOC= 20;
             // var TIMER_FLASH = 6000;
             $scope.counter = 0;
@@ -627,24 +721,75 @@ var app = angular.module('app')
                 $timeout.cancel(stopped);
                 $timeout.cancel(extraTimeout);
             }
+        /*function videoMonitor(){
+        videomonitor=$timeout(function (){
+        
+        },1000)
+        }*/
 
             function countDown() {
                 stopped = $timeout(function () {
                     if ($scope.counter === 0) {
                         nextAd();
                         showAdv();
-                    } else if ($scope.counter === 20) {
+                    }
+            /*else if($scope.counter < ($scope.advertisement.adTime?$scope.advertisement.adTime:10)){
+                if($scope.advertisement.adMimeType==="video/youtube"){
+                    if($scope.advertisement.lastplayed && $scope.advertisement.lastplayed!=-1){
+                        $scope.adstatecounter++
+                    }else{
+                        $scope.adstatecounter=0
+                    }
+                    if($scope.adstatecounter>=5){
+                        
+                    }
+                }
+                
+            
+            }*/ 
+            else if ($scope.counter === ($scope.advertisement.adTime?$scope.advertisement.adTime:10)) {
                         prevIndex = 0;
                         nextDoc();
                         showDoc();
-                    } else if ($scope.counter === 40) {
+                    } else if ($scope.counter === ($scope.advertisement.adTime?$scope.advertisement.adTime+30:30)) {
                         $scope.counter = -1;
                     }
                     $scope.counter += 1;
                     countDown();
                 }, 1000);
             }
-
+        function onPlayerReady(event) {
+            $scope.youtube_advertisement_player.player=event.target
+            //event.target.playVideo()
+            /*for(var ad_no=0;ad_no<$scope.advertisements.length;ad_no++){
+                if($scope.advertisements[ad_no].adId===event.target.a.id){
+                    console.log('player binded')
+                    if($scope.advertisements[ad_no].adTime===-1){
+                        $scope.advertisements[ad_no].adTime==event.target.getDuration()
+                    }
+                    $scope.advertisements[ad_no].player=event.target
+                    console.log("advertisement url is : "+$scope.advertisements[ad_no].adUrl)
+                    
+                    //$scope.advertisements[ad_no].player.loadVideoById($scope.advertisements[ad_no].adUrl)
+                    $scope.advertisements[ad_no].player.playVideo()
+                    //$scope.advertisements[ad_no].player.pauseVideo()
+                    $scope.advertisements[ad_no].player.a.accessKey='AIzaSyDPwSyQsRKKZjm3SMYrr6Tipgk7D4tJkhk'
+                    console.log("video loaded fraction is"+$scope.advertisements[ad_no].player.getVideoLoadedFraction())
+                    break
+                }
+            }*/
+        }
+        function onPlayerStateChange(event) {
+            console.log("event is "+event.data)
+            /*if(event.a.id===$scope.advertisement.adId){
+                if(event.data==YT.PlayerState.UNSTARTED || event.data==YT.PlayerState.BUFFERING){
+                    $scope.advertisement.lastplayed=new Date().getTime()
+                }else{
+                    $scope.advertisement.lastplayed=-1
+                }
+            }*/
+            //console.log("available events are "+JSON.stringify(YT.PlayerState))
+            }
 
             $http.get('../defaultconfig.json').success(function (data) {
                 //when you get success reset the advertisement
@@ -652,6 +797,12 @@ var app = angular.module('app')
                 $scope.advertisements = data.defaultads;
                 for (var i = $scope.advertisements.length - 1; i >= 0; i--) {
                     $scope.advertisements[i].show = false;
+            $scope.advertisements[i].adUrl=$sce.trustAsResourceUrl($scope.advertisements[i].adUrl)
+            /*if($scope.advertisements[i].adMimeType==="video/youtube"){
+                console.log('found a youtube video')
+                console.log(document)
+                var player=new YT.Player( $scope.advertisements[i].adId,{events:{'onReady':onPlayerReady,'onStateChange':onPlayerStateChange}})
+            }*/
                     if (i === 0)
                         $scope.advertisements[i].show = true;
                 }
@@ -800,4 +951,5 @@ var app = angular.module('app')
             console.log('Receiver Manager started');
         }
     });
+
 
