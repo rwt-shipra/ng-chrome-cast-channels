@@ -24,7 +24,7 @@
     {"adId": "html_Ad",
       "adPriority": "LOW",
       "adName": "html_Ad",
-      "adUrl": "Qorql_Defaulad.html",
+      "adUrl": "./images/Qorql_Defaulad.html",
       "adMimeType": "html/ad",
       "adStartTime":0,
       "adEndTime":-1,
