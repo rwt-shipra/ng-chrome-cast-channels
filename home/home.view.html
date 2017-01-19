@@ -24,8 +24,17 @@
 
         <!--div ng-if="advertisement.adMimeType==='video/youtube'"class="img-responsive "  id="{{advertisement.adId}}"  
              style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;"/-->
-            <iframe  ng-if="advertisement.adMimeType.includes('images/')" class="img-responsive "  ng-src="{{advertisement.adUrl}}" id="{{advertisement.adId}}"
-                     style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;"/></iframe>
+            <img ng-if="advertisement.adMimeType.includes('image/')" class="img-responsive "  ng-src="{{advertisement.adUrl}}" id="{{advertisement.adId}}"
+             style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;"/>
+
+              <div ng-if="advertisement.adMimeType.includes('html/')" class="img-responsive "  ng-src="{{advertisement.adUrl}}" id="{{advertisement.adId}}"
+             style="position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;">
+                 
+
+             </div>
+
+
+    </div>
     </div>
     </div>
 

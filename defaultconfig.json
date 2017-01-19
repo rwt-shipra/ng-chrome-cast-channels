@@ -21,6 +21,21 @@
       "show_ad":true,
       "showticker": false
     },
+    {"adId": "html_Ad",
+      "adPriority": "LOW",
+      "adName": "html_Ad",
+      "adUrl": "Qorql_Defaulad.html",
+      "adMimeType": "html/ad",
+      "adStartTime":0,
+      "adEndTime":-1,
+      "adTime": 30,
+      "adCount": "Infinity",
+      "adIntervel": 0,
+      "lastDisplayed": 0,
+      "show_ad":true,
+      "showticker": false
+
+    }
    
     {
       "adId": "VIDEO_TEST_2",
