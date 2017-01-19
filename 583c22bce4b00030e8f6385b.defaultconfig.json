@@ -8,12 +8,12 @@
   "flash-color": "#0092cb",
   "defaultads": [
 
-
+     
     {
-      "adId": "QORQL_AD_2",
+      "adId": "Gaurav_Dental_Alighar_AD_1",
       "adPriority": "LOW",
-      "adName": "QORQL_AD_2",
-      "adUrl": "images/qorql-ads-03.png",
+      "adName": "Gaurav_Dental_Alighar_AD_1",
+      "adUrl": "images/Gaurav_Dental_Alighar_Ad01.png",
       "adMimeType": "image/png",
       "adTime": 10,
       "adCount": "Infinity",
@@ -21,40 +21,11 @@
       "lastDisplayed": 0,
       "show_ad":true,
       "showticker": false
-    },
-   
-    {
-      "adId": "VIDEO_TEST_2",
-      "adPriority": "LOW",
-      "adName": "VIDEO_TEST_2",
-      "adUrl": "wOreIB4GYr4",
-      "adMimeType": "video/youtube",
-      "adStartTime":0,
-      "adEndTime":-1,
-      "adTime": 30,
-      "adCount": "Infinity",
-      "adIntervel": 0,
-      "lastDisplayed": 0,
-      "show_ad":true,
-      "showticker": false
-    },
-    {
-      "adId": "VIDEO_TEST_3",
-      "adPriority": "LOW",
-      "adName": "VIDEO_TEST_3",
-      "adUrl": "tTz2QsUxmz8",
-      "adMimeType": "video/youtube",
-      "adStartTime":0,
-      "adEndTime":-1,
-      "adTime": 50,
-      "adCount": "Infinity",
-      "adIntervel": 0,
-      "lastDisplayed": 0,
-      "show_ad":true,
-      "showticker": false
     }
+  
     
 
+    
   ],
   "knowndoctors": [
     {
